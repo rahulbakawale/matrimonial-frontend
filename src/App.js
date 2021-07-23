@@ -1,8 +1,8 @@
 import React from 'react';
-import PrivateRoute from './components/privateRoute';
-import PublicRoute from './components/publicRoute';
-import Home from  './components/home';
-import Login from './components/login';
+import PrivateRoute from './components/login/privateRoute';
+import PublicRoute from './components/login/publicRoute';
+import Home from  './components/login/home';
+import Login from './components/login/login';
 
  
   import {

@@ -14,7 +14,7 @@ const Login = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',values).then((resonse) =>{
-        debugger  
+        // debugger  
             localStorage.setItem('user',JSON.stringify(resonse.data))
             props.history.push('/home')
         }).catch((error) =>{
