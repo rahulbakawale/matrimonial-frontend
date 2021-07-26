@@ -11,15 +11,33 @@ const Login = (props) => {
         [event.target.name]: event.target.value,
       });
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     axios.post('https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',values).then((resonse) =>{
+    //     // debugger  
+    //         localStorage.setItem('user',JSON.stringify(resonse.data))
+    //         props.history.push('/home')
+    //     }).catch((error) =>{
+    //     })
     const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',values).then((resonse) =>{
-        // debugger  
-            localStorage.setItem('user',JSON.stringify(resonse.data))
-            props.history.push('/home')
-        }).catch((error) =>{
-        })
+      
+      event.preventDefault()
+      axios({ 
+        url: 'https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',
+        method:'post',
+        data: values,
+        headers : {
+          'Access-Control-Expose-Headers': 'Access-Token, Uid, Client'
+        }
+        }).then((response) =>{  
+        debugger   
+        response.data['Access-Token'] = response.headers['Access-Token']
+        response.data['Uid'] = response.headers['Uid']
 
+        localStorage.setItem('user',JSON.stringify(response.data))
+          props.history.push('/home')
+        }).catch((error) =>{
+      })
     }
     return(
     <div className="login-wrapper">
