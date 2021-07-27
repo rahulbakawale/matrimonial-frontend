@@ -3,6 +3,7 @@ import PrivateRoute from './components/login/privateRoute';
 import PublicRoute from './components/login/publicRoute';
 import Home from  './components/login/home';
 import Login from './components/login/login';
+import Signup from './components/signup/signup'
 
  
   import {
@@ -21,6 +22,7 @@ import Login from './components/login/login';
               <Route path='/Login'   component={Login} /> */}
               <PublicRoute restricted={true} component={Login} path="/login" exact />
               <PrivateRoute component={Home} path="/home" exact />
+              <Route path='/Signup' component={Signup} />
             </Switch>
          </div>
       </Router>
