@@ -3,12 +3,14 @@ import PrivateRoute from './components/login/privateRoute';
 import PublicRoute from './components/login/publicRoute';
 import Home from  './components/login/home';
 import Login from './components/login/login';
-import Signup from './components/signup/signup'
+import signup from './components/signup/signup';
+import VerifyMobile from './components/VerifyMobile/VerifyMobile';
+import { isLogin, currentUser } from './components/utils/helpers'
 
- 
   import {
     BrowserRouter as Router,
     Switch,
+    Redirect,
     Route,
 
   } from "react-router-dom";
@@ -20,9 +22,16 @@ import Signup from './components/signup/signup'
             <Switch>
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
-              <PublicRoute restricted={true} component={Login} path="/login" exact />
-              <PrivateRoute component={Home} path="/home" exact />
-              <Route path='/Signup' component={Signup} />
+              <Route exact path="/">
+                {!isLogin() ? <Redirect to="/login" /> :
+                  (currentUser()['verified'] ? 
+                <Redirect to="/home" /> : <Redirect to='/verifyMobile'/>) }
+              </Route>
+
+              <Route  component={Login} path="/login"  />
+              <PrivateRoute component={Home} path="/home" />
+              <Route path='/signup' component={signup} />
+              <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
       </Router>
