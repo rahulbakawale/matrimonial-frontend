@@ -20,6 +20,7 @@ import { isLogin, currentUser } from './components/utils/helpers'
       <Router>
         <div>
             <Switch>
+              debugger
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
               <Route exact path="/">
