@@ -25,7 +25,6 @@ const VerifyMobile = (props) => {
 
     const generateOtp = () => { 
         axiosInstance.put('https://wedded-raghu.herokuapp.com/api/v1/mobiles/retry',{},{timeout: 5000}).then((resonse) =>{
-          //debugger
           }).catch((error) =>{
             //debugger
         })
