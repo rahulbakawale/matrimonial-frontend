@@ -5,8 +5,8 @@ import { isLogin } from '../utils/helpers';
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
     return (
         <Route {...rest} render={props => (
-            isLogin() && restricted ?
-                <Redirect to="/home" />
+            !isLogin() ?
+                <Redirect to="/login" />
             : <Component {...props} />
         )} />
     );
