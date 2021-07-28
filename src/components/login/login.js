@@ -30,14 +30,14 @@ const Login = (props) => {
           'Access-Control-Expose-Headers': 'Access-Token, Uid, Client'
         }
         }).then((response) =>{  
-        debugger   
-        response.data['Access-Token'] = response.headers['Access-Token']
-        response.data['Uid'] = response.headers['Uid']
-
+          debugger   
+          response.data['access-token'] = response.headers['access-token']
+          response.data['uid'] = response.headers['uid']
+          response.data['client'] = response.headers["client"]
+          debugger
         localStorage.setItem('user',JSON.stringify(response.data))
-          props.history.push('/home')
-        }).catch((error) =>{
-      })
+        props.history.push('/verifyMobile')
+        })
     }
     return(
     <div className="login-wrapper">
