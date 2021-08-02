@@ -4,6 +4,7 @@ import PublicRoute from './components/login/publicRoute';
 import Home from  './components/login/home';
 import Login from './components/login/login';
 import signup from './components/signup/signup';
+import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
 import { isLogin, currentUser } from './components/utils/helpers'
 
@@ -14,13 +15,14 @@ import { isLogin, currentUser } from './components/utils/helpers'
     Route,
 
   } from "react-router-dom";
+ 
+ const app = (props) => {
 
-  export default function app(){
     return(
       <Router>
         <div>
+        
             <Switch>
-              debugger
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
               <Route exact path="/">
@@ -29,12 +31,15 @@ import { isLogin, currentUser } from './components/utils/helpers'
                 <Redirect to="/home" /> : <Redirect to='/verifyMobile'/>) }
               </Route>
 
-              <Route  component={Login} path="/login"  />
-              <PrivateRoute component={Home} path="/home" />
-              <Route path='/signup' component={signup} />
+              <Route  component={Login} path="/login" />
+              <PrivateRoute component={Home} path="/home"  />
+              <Route path='/signup' component={signup}  />
+              <PrivateRoute  component={updateUser} path="/updateUser"  />
+
               <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
       </Router>
     );
   };
+  export default app
