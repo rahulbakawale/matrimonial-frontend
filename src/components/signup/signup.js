@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from "react-router";
-import axios from 'axios';
+import axiosInstance from '../../axiosInstance';
+import { toast } from 'react-toastify';
 import './signup.css';
 const Signup = (props) => {
     const [ values,setValues] = useState({})
@@ -13,24 +14,17 @@ const Signup = (props) => {
     const handleSubmit = (event) => {
       
         event.preventDefault()
-        axios({ 
-          url: 'https://wedded-raghu.herokuapp.com/api/v1/auth',
-          method:'post',
-          data: values,
-          headers : {
-            'Access-Control-Expose-Headers': 'Access-Token, Uid, Client'
-          }
-          }).then((response) =>{  
+
+        axiosInstance.post('/auth',values).then((response) =>{
           response.data['access-token'] = response.headers['access-token']
           response.data['uid'] = response.headers['uid']
           response.data['client'] = response.headers["client"]
-
-            
-            localStorage.setItem('user',JSON.stringify(response.data))
-            props.history.push('/verifyMobile')
-        }).catch((error) =>{
+          localStorage.setItem('user',JSON.stringify(response.data))
+          window.location.href = '/verifyMobile'
+          
+        }).catch((error) => {
+          toast.error(error?.response?.data?.errors)
         })
-
     }
 
     return(
