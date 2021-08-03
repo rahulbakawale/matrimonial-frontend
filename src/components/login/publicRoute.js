@@ -7,7 +7,7 @@ const PublicRoute = ({component: Component, restricted, ...rest}) => {
         <Route {...rest} render={props => (
             !isLogin() ?
                 <Redirect to="/login" />
-            : <Component {...props} />
+            : <Component {...props} {...rest } />
         )} />
     );
 };
