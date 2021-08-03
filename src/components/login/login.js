@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import axios from 'axios'
+import axiosInstance from '../../axiosInstance'
 import './login.css';
 const Login = (props) => {
     const [ values,setValues] = useState({})
@@ -11,32 +12,19 @@ const Login = (props) => {
         [event.target.name]: event.target.value,
       });
     }
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     axios.post('https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',values).then((resonse) =>{
-    //     // debugger  
-    //         localStorage.setItem('user',JSON.stringify(resonse.data))
-    //         props.history.push('/home')
-    //     }).catch((error) =>{
-    //     })
+
     const handleSubmit = (event) => {
       
       event.preventDefault()
-      axios({ 
-        url: 'https://wedded-raghu.herokuapp.com/api/v1/auth/sign_in',
-        method:'post',
-        data: values,
-        headers : {
-          'Access-Control-Expose-Headers': 'Access-Token, Uid, Client'
-        }
-        }).then((response) =>{  
-          debugger   
+
+      axiosInstance.post('/auth/sign_in',values).then((response) =>{  
           response.data['access-token'] = response.headers['access-token']
           response.data['uid'] = response.headers['uid']
           response.data['client'] = response.headers["client"]
-          debugger
-        localStorage.setItem('user',JSON.stringify(response.data))
-        props.history.push('/verifyMobile')
+          localStorage.setItem('user',JSON.stringify(response.data))
+          window.location.href = '/verifyMobile'
+        }).catch((error) => {
+          toast.error(error?.response?.data?.errors)
         })
     }
     return(
@@ -58,5 +46,5 @@ const Login = (props) => {
       </div>
     )
   }
- 
+
   export default withRouter(Login)
