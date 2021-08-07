@@ -2,11 +2,13 @@ import React from 'react';
 import PrivateRoute from './components/login/privateRoute';
 import PublicRoute from './components/login/publicRoute';
 import Home from  './components/login/home';
-import Login from './components/login/login';
-import signup from './components/signup/signup';
+import LandingPage from './components/LandingPage/landingpage';
 import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
-import { isLogin, currentUser } from './components/utils/helpers'
+//import Login from './components/login/login';
+//import signup from './components/signup/signup';
+//import { isLogin, currentUser } from './components/utils/helpers'
+
 
   import {
     BrowserRouter as Router,
@@ -25,15 +27,15 @@ import { isLogin, currentUser } from './components/utils/helpers'
             <Switch>
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
-              <Route exact path="/">
+              {/* <Route exact path="/">
                 {!isLogin() ? <Redirect to="/login" /> :
                   (currentUser()['verified'] ? 
                 <Redirect to="/home" /> : <Redirect to='/verifyMobile'/>) }
-              </Route>
-
-              <Route  component={Login} path="/login" />
+              </Route> */}
+              {/* <Route  component={Login} path="/login" /> */}
+              {/* <Route path='/signup' component={signup}  /> */}
+              <Route exact='true' component={LandingPage} path="/" />
               <PrivateRoute component={Home} path="/home"  />
-              <Route path='/signup' component={signup}  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
 
               <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
