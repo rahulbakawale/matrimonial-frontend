@@ -4,12 +4,12 @@ import React from 'react';
  const Home = (props) => {
   const handleClick = () =>{
     localStorage.clear();
-    props.history.push('/login')
+    props.history.push('/')
 
 
   }
     return(
-      <button type="button" className="logout-button" onClick={handleClick}>Logout</button>
+      <button type="submit" className="btn query_btn" onClick={handleClick}>Logout</button>
     );
   };
      
