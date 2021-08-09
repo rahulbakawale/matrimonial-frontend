@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
 import { currentUser } from '../utils/helpers'
-import './verifyMobile.css';
+import logoImg from 'assets/images/logo.png'
 
 
 const VerifyMobile = (props) => {
@@ -21,7 +21,6 @@ const VerifyMobile = (props) => {
       async function onLoad() {
         try {
          const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
-         //  debugger
          if(response.data.mobile_verified){
             if(!currentUser().name){
               props.history.push('/updateUser')
@@ -37,7 +36,6 @@ const VerifyMobile = (props) => {
    
     const handleSubmit = (event) => {
         event.preventDefault()
-        // debugger
         axiosInstance.put('/mobiles/verify',values).then((resonse) =>{
           if(!currentUser().name){
             props.history.push('/updateUser')
@@ -45,13 +43,11 @@ const VerifyMobile = (props) => {
             props.history.push('/home')
           }
         }).catch((error) =>{
-          // debugger
           toast.error(error?.response?.data?.errors)
         })
     }
     
     const generateOtp = () => { 
-      // debugger
         axiosInstance.put('/mobiles/retry',{},{timeout: 5000}).then((resonse) =>{
           toast.success('OTP has sent')
           }).catch((error) =>{
@@ -60,21 +56,52 @@ const VerifyMobile = (props) => {
     }
 
     return(
-    <div className="verifymobile-wrapper">
-      <h1> Enter OTP</h1>
-      <form onSubmit={(event) => handleSubmit(event)} >
-        <label>
-          <h2>OTP</h2>
-          <input type="text" name='otp' onChange={handleChange} />
-        </label>
-        <div>
-        <button type="submit">Submit</button>
-        <button type='button' onClick={generateOtp} >Resend</button>
-        </div>
-      </form>
-      </div>
-    )
-  }
+      <>
+      <section class="form_section login_form">
+         <div class="form_header">
+            <div class="container">
+               <a class="form_logo" href="#">
+               <img src={logoImg} className="img-fluid" alt=""  />
+               </a>
+            </div>
+         </div>
+         <div class="container">
+            <div class="login-reg-panel">
+               <div class="login-info-box" style={{ display: 'none'}}>
+               <h2>Have an account?</h2>
+               <p>Lorem ipsum dolor sit amet</p>
+               <div class="logreg_form">
+                  <label id="label-register" for="log-reg-show">Login</label>
+                  <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked" />
+               </div>
+            </div>
+            <div class="register-info-box">
+               <h2>User Profile</h2>
+            </div>
+            <div class="white-panel user_info_form">
+               <div class="login-show">
+                  <h2>OTP</h2>
+                  <form onSubmit={(event) =>
+                     handleSubmit(event)}>
+                     <div class="form-group">
+                        <input type="text" name='otp' placeolder='Enter OTP' onChange={handleChange} required /> 
+                     </div>
+                     <button type="submit" className="btn log_reg_btn">Submit</button>
+                     <a href="#" onClick={generateOtp} >Resend</a>
+                  </form>
+               </div>
+               <div class="white-panel user_info_form">
+                  <div class="register-show">
+                     <h2>USER PROFILE</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      </>
+    );
+  };
  
   export default withRouter(VerifyMobile)
 
