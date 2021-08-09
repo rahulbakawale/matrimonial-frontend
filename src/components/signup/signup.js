@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import axiosInstance from '../../axiosInstance';
 import { toast } from 'react-toastify';
-import './signup.css';
 const Signup = (props) => {
     const [ values,setValues] = useState({})
     const handleChange = (event) =>{
@@ -28,30 +27,42 @@ const Signup = (props) => {
     }
 
     return(
-        <div className="signup-wrapper">
-          <form onSubmit={(event) => handleSubmit(event)} >
-          <h1>Please SignUp</h1>
-            <label>
-              <h2>Email</h2>
-              <input type="text" name='mobile' onChange={handleChange} />
-            </label>
-            <label>
-              <h2>Password</h2>
-              <input type="password" name='password' onChange={handleChange}/>
-            </label>
-            <label>
-              <h2>Password  Conformation</h2>
-              <input type="password" name='password_confirmation' onChange={handleChange}/>
-            </label>
-            <div>
-            <button type="submit">Submit</button>
-            {/* <button type="Submit" className="submit" onClick={handleChange}>Logout</button> */}
-
-            </div>
-          </form>
+      <div style={{display: 'none'}}className="modal query_modal modalizer animate__animated animate__fast" id="regs" tabindex="-1" role="dialog" data-animate-in="zoomIn" data-animate-out="zoomOut">
+      <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">Signup</h5>
+            <button type="button" className="close align-self-end closemodal">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        )
-      }
+          <div className="modal-body mx-0 d-flex flex-column">
+            <div className="query_form">
+              <form onSubmit={(event) => handleSubmit(event)}>
+                <div className="form-group">
+                <input type="text" name='mobile' onChange={handleChange} className="form-control" required />
+                  <label for="mobile">Mobile</label>
+                </div>
+                <div className="form-group">
+                  <input type="password" name='password' onChange={handleChange} className="form-control" required/>
+                  <label for="password">Password</label>
+                </div>
+                <div className="form-group">
+                  <input type="password" name='password_confirmation' onChange={handleChange} className="form-control" required/>
+                  <label for="con-password">Confirm Password</label>
+                </div>
+                <button type="submit" className="btn query_btn">Sign Up</button>
+                <span className="login_txt">If you are already Member?
+                  <a className="nav-link modalinit" href="javascript:;" onClick={() => window.openLoginModal() }>Login</a>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 
   export default withRouter(Signup)
