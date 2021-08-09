@@ -22,8 +22,7 @@ import VerifyMobile from './components/VerifyMobile/VerifyMobile';
 
     return(
       <Router>
-        <div>
-        
+        <div>   
             <Switch>
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
