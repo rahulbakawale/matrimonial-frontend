@@ -79,10 +79,15 @@ const UpdateUser = (props) => {
                                   )
                               }
                               </select>
-                            </div> 
-                            <div class="form-group">
+                            </div>
+
+                            { values.your_relation === 'other' && 
+      
+                              <div class="form-group">
                               <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
                             </div>
+                           }
+                              
                             <div class="form-group switch_btn">
                               <h6>Can Contact You</h6>
                               <label class="switch">
