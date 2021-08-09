@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
-import axios from 'axios'
+import logoImg from 'assets/images/logo.png'
+// import Login from '../login/login';
+// import axios from 'axios'
+
 
 
 const UpdateUser = (props) => {
-    const [ values,setValues] = useState({})
+    const [ values,setValues] = useState({'can_contact_you': false})
+    useEffect(() => {
+      window.openUpdateModal()
+    },[])
     const handleChange = (event) =>{
       setValues({
         ...values,
         [event.target.name]: event.target.value,
       });
     }
-   
+    
+
+    const handleRadio = (event) => {
+      setValues({
+        ...values,
+        [event.target.name]: event.target.checked
+      })
+    }
+
+
     const handleSubmit = (event) => {
         event.preventDefault()
-        debugger
         axiosInstance.put('/users',values).then((response) =>{  
            
             
@@ -24,36 +38,69 @@ const UpdateUser = (props) => {
           })
       }
       return(
-      <div className="login-wrapper">
-        <h1>Update User Information</h1>
-        <form onSubmit={(event) => handleSubmit(event)} >
-          <label>
-            <h2>Name</h2>
-            <input type="text" name='name' onChange={handleChange} />
-          </label>
-          <label>
-            <h2>Your Relation</h2>
-            <select  onChange={handleChange} name='your_relation'>
-              {
-              ["myself", "father", "mother", "brother", "sister", "cousine", "relative", "friend", "other"].map((item,index)=> 
-                <option key={ index } value={ item } >{ item }</option>
-              )
-              }
-            </select>
-          </label>
-          <label>
-            <h2>Other Relation</h2>
-            <input type="text" name='other_relation' onChange={handleChange}/>
-          </label>
-          <label>
-            <h2>Can Contact You</h2>
-            <input type="text" name='can_contact_you' onChange={handleChange}/>
-          </label>
-          <div>
-          <button type="submit">Update</button>
-          </div>
-        </form>
-        </div>
-    );
-};
+      <>
+        <section class="form_section login_form">
+            <div class="form_header">
+              <div class="container">
+                  <a class="form_logo" href="#">
+                  <img src={logoImg} className="img-fluid" alt=""  />
+                  </a>
+              </div>
+            </div>
+          <div class="container">
+            <div class="login-reg-panel">
+                <div class="login-info-box" style={{ display: 'block !important'}}>
+                  <h2></h2>
+                  <p></p>
+                  <div class="logreg_form">
+                  </div>
+                </div>
+                <div class="register-info-box" style={{display: 'none'}}>
+                  <h2>Don't have an account?</h2>
+                  <p>Lorem ipsum dolor sit amet</p>
+                  <div class="logreg_form">
+                    <label id="label-login" for="log-login-show">Register</label>
+                    <input type="radio" name="active-log-panel" id="log-login-show" />
+                  </div>
+                 </div>
+                 <div class="white-panel user_info_form right-log">
+                    <div class="login-show">
+                    <h2>Update User profile</h2>
+                    <form onSubmit={(event) => handleSubmit(event)} >
+                            <div class="form-group">
+                              <input type="text" name='name' placeHolder='Profile Name' onChange={handleChange} class="form-control" required />
+                            </div>
+                             <div class="form-group">
+                             <select onChange={handleChange} name='your_relation' class="operator form-control user_relation" required >
+                              <option value selected={true } disabled={ true } >Your Relation</option>
+                              {
+                                  ["myself", "father", "mother", "brother", "sister", "cousine", "relative", "friend", "other"].map((item,index)=> 
+                                    <option key={ index } value={ item } >{ item }</option>
+                                  )
+                              }
+                              </select>
+                            </div> 
+                            <div class="form-group">
+                              <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
+                            </div>
+                            <div class="form-group switch_btn">
+                              <h6>Can Contact You</h6>
+                              <label class="switch">
+                                <input type="checkbox" name='can_contact_you' onChange={ handleRadio } required />
+                                <span class="slider round"></span>
+                              </label>
+
+                              </div>
+                              <button type="submit" class="btn log_reg_btn">Update</button>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+           </section>
+         </>
+        );
+    };
+
 export default withRouter(UpdateUser)
+
