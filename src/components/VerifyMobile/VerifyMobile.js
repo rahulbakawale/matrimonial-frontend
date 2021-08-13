@@ -17,22 +17,22 @@ const VerifyMobile = (props) => {
       });
     }
 
-   //  useEffect(() => {
-   //    async function onLoad() {
-   //      try {
-   //       const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
-   //       if(response.data.mobile_verified){
-   //          if(!currentUser().name){
-   //            props.history.push('/updateUser')
-   //          }
-   //          props.history.push('/home')   
-   //       }        
-   //      } catch (e) {
-   //        alert(e);
-   //      }
-   //    }
-   //    onLoad()
-   //  },[])
+    useEffect(() => {
+      async function onLoad() {
+        try {
+         const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
+         if(response.data.mobile_verified){
+            if(!currentUser().name){
+              props.history.push('/updateUser')
+            }
+            props.history.push('/home')   
+         }        
+        } catch (e) {
+          alert(e);
+        }
+      }
+      onLoad()
+    },[])
    
     const handleSubmit = (event) => {
         event.preventDefault()
