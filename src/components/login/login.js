@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
 import axiosInstance from '../../axiosInstance'
 const Login = (props) => {
     const [ values,setValues] = useState({})
@@ -16,15 +15,16 @@ const Login = (props) => {
       
       event.preventDefault()
 
-      axiosInstance.post('/auth/sign_in',values).then((response) =>{  
+      axiosInstance.post('/auth/sign_in',values).then((response) =>{
           response.data['access-token'] = response.headers['access-token']
           response.data['uid'] = response.headers['uid']
           response.data['client'] = response.headers["client"]
           localStorage.setItem('user',JSON.stringify(response.data))
           window.location.href = '/verifyMobile'
-        }).catch((error) => {
-          toast.error(error?.response?.data?.errors)
-        })
+          }).catch((error) =>{
+            debugger
+            toast.error(error?.response?.data?.errors[0])
+          })
     }
     return(
     <div className="modal query_modal modalizer animate__animated animate__fast" id="login" tabindex="-1" role="dialog" data-animate-in="zoomIn" data-animate-out="zoomOut">
