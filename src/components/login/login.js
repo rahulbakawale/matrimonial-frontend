@@ -22,7 +22,6 @@ const Login = (props) => {
           localStorage.setItem('user',JSON.stringify(response.data))
           window.location.href = '/verifyMobile'
           }).catch((error) =>{
-            debugger
             toast.error(error?.response?.data?.errors[0])
           })
     }
