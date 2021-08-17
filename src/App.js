@@ -5,6 +5,7 @@ import Home from  './components/login/home';
 import LandingPage from './components/LandingPage/landingpage';
 import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
+import ParentsInfo from './components/ParentsInfo/ParentsInfo';
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -33,10 +34,10 @@ import VerifyMobile from './components/VerifyMobile/VerifyMobile';
               </Route> */}
               {/* <Route  component={Login} path="/login" /> */}
               {/* <Route path='/signup' component={signup}  /> */}
-              <Route exact='true' component={LandingPage} path="/" />
+              <Route exact='true' component={LandingPage} path="/" /> 
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
-
+              <PrivateRoute  component={ParentsInfo} path="/parents-info" />
               <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
