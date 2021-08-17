@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
 import axiosInstance from '../../axiosInstance'
 const Login = (props) => {
     const [ values,setValues] = useState({})
@@ -16,7 +15,7 @@ const Login = (props) => {
       
       event.preventDefault()
 
-      axiosInstance.post('/auth/sign_in',values).then((response) =>{  
+      axiosInstance.post('/auth/sign_in',values).then((response) =>{
           response.data['access-token'] = response.headers['access-token']
           response.data['uid'] = response.headers['uid']
           response.data['client'] = response.headers["client"]

@@ -17,8 +17,7 @@ const UpdateUser = (props) => {
         ...values,
         [event.target.name]: event.target.value,
       });
-    }
-    
+    } 
 
     const handleRadio = (event) => {
       setValues({
