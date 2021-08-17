@@ -94,7 +94,7 @@ const FatherInfo = (props) => {
         <div className="form-group">
           <div className="row">
               <div className="col-md-3 col-sm-3 col-12">
-                <h6>Family Status</h6>
+              <h6>Family Status</h6>
               </div>
               <div className="col-md-9 col-sm-9 col-12">
                 <div className="radio_opst">
