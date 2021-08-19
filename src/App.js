@@ -1,11 +1,13 @@
 import React from 'react';
-import PrivateRoute from './components/login/privateRoute';
-import PublicRoute from './components/login/publicRoute';
+import PrivateRoute from './components/routes/privateRoute';
+//import PublicRoute from './components/routes/PublicRoute';
+import PrivateRouteOTP from './components/routes/privateRouteOTP';
 import Home from  './components/login/home';
 import LandingPage from './components/LandingPage/landingpage';
 import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
 import ParentsInfo from './components/ParentsInfo/ParentsInfo';
+import CompleteStep from 'components/CompleteStep/CompleteStep';
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -14,7 +16,7 @@ import ParentsInfo from './components/ParentsInfo/ParentsInfo';
   import {
     BrowserRouter as Router,
     Switch,
-    Redirect,
+   // Redirect,
     Route,
 
   } from "react-router-dom";
@@ -38,7 +40,10 @@ import ParentsInfo from './components/ParentsInfo/ParentsInfo';
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
               <PrivateRoute  component={ParentsInfo} path="/parents-info" />
-              <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
+              <PrivateRoute  component={CompleteStep} path="/complete-step" />
+
+
+              <PrivateRouteOTP restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
       </Router>
