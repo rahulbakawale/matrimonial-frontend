@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
+import { getCompleteStep } from 'components/utils/helpers'
 
 
 const FatherInfo = (props) => {
@@ -31,8 +32,8 @@ const FatherInfo = (props) => {
     const handleSubmit = (event) => {
       
       event.preventDefault()
-      debugger
       axiosInstance.put(`/parents/${id}`,values).then((response) =>{  
+            getCompleteStep()
             setActiveTab('mother')
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])

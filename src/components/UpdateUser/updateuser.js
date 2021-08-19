@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png'
+import { getCompleteStep } from 'components/utils/helpers'
 // import Login from '../login/login';
 // import axios from 'axios'
 
@@ -30,6 +31,8 @@ const UpdateUser = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axiosInstance.put('/users',values).then((response) =>{   
+          getCompleteStep()
+
           //localStorage.setItem('user',JSON.stringify(response.data))
           props.history.push('/parents-info')
         })

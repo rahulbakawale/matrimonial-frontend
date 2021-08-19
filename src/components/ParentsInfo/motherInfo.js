@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
+import { getCompleteStep } from 'components/utils/helpers'
 
 
 
@@ -25,6 +26,7 @@ const MotherInfo = (props) => {
     const handleSubmit = (event) => {   
       event.preventDefault()
       axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
+        getCompleteStep()
         props.history.push('/siblings')
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
