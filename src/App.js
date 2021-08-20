@@ -6,6 +6,7 @@ import LandingPage from './components/LandingPage/landingpage';
 import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
 import Profile from 'components/Profiles/profile';
+import QualiFications from 'components/Profiles/qualifications' 
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -38,7 +39,7 @@ import Profile from 'components/Profiles/profile';
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
               <Route  component={Profile} path="/profiles"  />
-
+              <Route component={QualiFications} path="/qualifications" />
 
               <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
