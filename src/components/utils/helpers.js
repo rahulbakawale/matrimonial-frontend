@@ -3,5 +3,6 @@ export const isLogin = () => {
 }
 
 export const currentUser = () => {
+    debugger
     return localStorage.user && JSON.parse(localStorage.user)
 }

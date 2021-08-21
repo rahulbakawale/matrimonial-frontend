@@ -31,9 +31,10 @@ const Profile = (props) => {
         event.preventDefault()
         debugger
         axiosInstance.post(`/profiles`,values).then((response) =>{ 
+          localStorage.setItem('profile',JSON.stringify(response.data))
 
         // axiosInstance.put('/profiles/${ id }',values).then((response) =>{   
-          props.history.push('/home')
+          props.history.push('/qualifications')
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])
           })
