@@ -8,6 +8,7 @@ import VerifyMobile from './components/VerifyMobile/VerifyMobile';
 import Profile from 'components/Profiles/profile';
 import QualiFications from 'components/Profiles/qualifications';
 import OccupaTions from 'components/Profiles/occupations';
+import DocumentInfo from 'components/Profiles/DocumentInfo'
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -40,8 +41,9 @@ import OccupaTions from 'components/Profiles/occupations';
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
               <Route  component={Profile} path="/profiles"  />
-              <Route component={QualiFications} path="/qualifications" />
+              <PrivateRoute component={QualiFications} path="/qualifications" />
               <Route component={OccupaTions} path="/occupations" />
+              <Route component={DocumentInfo} path="/documents" />
 
               <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
