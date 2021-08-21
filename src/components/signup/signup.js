@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import axiosInstance from '../../axiosInstance';
+import { getCompleteStep } from 'components/utils/helpers'
+
 import { toast } from 'react-toastify';
 const Signup = (props) => {
     const [ values,setValues] = useState({})
@@ -19,6 +21,7 @@ const Signup = (props) => {
           response.data['uid'] = response.headers['uid']
           response.data['client'] = response.headers["client"]
           localStorage.setItem('user',JSON.stringify(response.data))
+          getCompleteStep(response.headers)
           window.location.href = '/verifyMobile' 
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])

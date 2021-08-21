@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
 import { currentUser } from '../utils/helpers'
 import logoImg from 'assets/images/logo.png'
-
+import { getCompleteStep } from 'components/utils/helpers'
 
 const VerifyMobile = (props) => {
     const [ values,setValues] = useState({})
@@ -37,6 +37,8 @@ const VerifyMobile = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axiosInstance.put('/mobiles/verify',values).then((resonse) =>{
+         getCompleteStep()
+
           if(!currentUser().name){
             props.history.push('/updateUser')
           }else{

@@ -1,6 +1,7 @@
 import React from 'react';
-import PrivateRoute from './components/login/privateRoute';
-import PublicRoute from './components/login/publicRoute';
+import PrivateRoute from './components/routes/privateRoute';
+//import PublicRoute from './components/routes/PublicRoute';
+import PrivateRouteOTP from './components/routes/privateRouteOTP';
 import Home from  './components/login/home';
 import LandingPage from './components/LandingPage/landingpage';
 import updateUser from './components/UpdateUser/updateuser';
@@ -9,6 +10,8 @@ import Profile from 'components/Profiles/profile';
 import QualiFications from 'components/Profiles/qualifications';
 import OccupaTions from 'components/Profiles/occupations';
 import DocumentInfo from 'components/Profiles/DocumentInfo'
+import ParentsInfo from './components/ParentsInfo/ParentsInfo';
+import CompleteStep from 'components/CompleteStep/CompleteStep';
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -17,7 +20,7 @@ import DocumentInfo from 'components/Profiles/DocumentInfo'
   import {
     BrowserRouter as Router,
     Switch,
-    Redirect,
+   // Redirect,
     Route,
 
   } from "react-router-dom";
@@ -37,15 +40,18 @@ import DocumentInfo from 'components/Profiles/DocumentInfo'
               </Route> */}
               {/* <Route  component={Login} path="/login" /> */}
               {/* <Route path='/signup' component={signup}  /> */}
-              <Route exact='true' component={LandingPage} path="/" />
+              <Route exact='true' component={LandingPage} path="/" /> 
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
               <Route  component={Profile} path="/profiles"  />
               <PrivateRoute component={QualiFications} path="/qualifications" />
               <Route component={OccupaTions} path="/occupations" />
               <Route component={DocumentInfo} path="/documents" />
+              <PrivateRoute  component={ParentsInfo} path="/parents-info" />
+              <PrivateRoute  component={CompleteStep} path="/complete-step" />
 
-              <PublicRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
+
+              <PrivateRouteOTP restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
       </Router>

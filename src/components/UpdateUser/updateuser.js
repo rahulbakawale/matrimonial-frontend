@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png'
+import { getCompleteStep } from 'components/utils/helpers'
 // import Login from '../login/login';
 // import axios from 'axios'
 
@@ -17,8 +18,7 @@ const UpdateUser = (props) => {
         ...values,
         [event.target.name]: event.target.value,
       });
-    }
-    
+    } 
 
     const handleRadio = (event) => {
       setValues({
@@ -30,12 +30,12 @@ const UpdateUser = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axiosInstance.put('/users',values).then((response) =>{  
-           
-            
-            //localStorage.setItem('user',JSON.stringify(response.data))
-            props.history.push('/home')
-          })
+        axiosInstance.put('/users',values).then((response) =>{   
+          getCompleteStep()
+
+          //localStorage.setItem('user',JSON.stringify(response.data))
+          props.history.push('/parents-info')
+        })
       }
       return(
       <>
@@ -82,11 +82,10 @@ const UpdateUser = (props) => {
                             </div>
 
                             { values.your_relation === 'other' && 
-      
                               <div class="form-group">
-                              <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
-                            </div>
-                           }
+                                <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
+                              </div>
+                            }
                               
                             <div class="form-group switch_btn">
                               <h6>Can Contact You</h6>
