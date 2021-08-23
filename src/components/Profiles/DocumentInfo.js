@@ -15,13 +15,6 @@ const DocumentInfo = (props) => {
         [event.target.name]: event.target.value,
       });
     }
-
-    const handleRadio = (event) => {
-        setValues({
-          ...values,
-          [event.target.name]: event.target.checked
-        })
-      }
   
       const handleSubmit = (event) => {   
         event.preventDefault()
@@ -33,7 +26,7 @@ const DocumentInfo = (props) => {
           })
       }
     return(
-   <>
+<>
   <section class="form_section">
     <div class="form_header">
       <div class="container">
