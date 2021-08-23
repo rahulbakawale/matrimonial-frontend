@@ -6,6 +6,9 @@ import axiosInstance from '../../axiosInstance';
 
 import logoImg from 'assets/images/logo.png'
 
+ 
+
+
 
 const OccupaTions = (props) => {
     const { id } = props

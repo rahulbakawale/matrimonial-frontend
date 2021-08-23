@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { completeStep } from 'components/utils/helpers';
 
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png'
 
 
 const QualiFications = (props) => {
-    const {id} = props
-    const [ values,setValues] = useState({})
+
+   const id = completeStep()?.profile?.id
+   const [ profile, setProfile ] = useState({})
+   const [ values,setValues] = useState({})
+
+
+
+   useEffect(() => {
+   async function onLoad() {
+
+      axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
+            setProfile(response.data)
+         }).catch((error) =>{
+            toast.error(error?.response?.data?.errors)
+         })
+         }
+         onLoad()
+   },[])
+  
     const handleChange = (event) =>{
       setValues({
         ...values,
@@ -19,6 +37,7 @@ const QualiFications = (props) => {
       const handleSubmit = (event) => {   
         event.preventDefault()
         axiosInstance.get(`/qualifications/${id}`,values).then((response) =>{ 
+            
           props.history.push('/occupations')
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors)
