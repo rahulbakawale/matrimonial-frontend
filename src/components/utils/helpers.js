@@ -6,10 +6,14 @@ export const isLogin = () => {
 }
 
 export const currentUser = () => {
-    debugger
     return localStorage.user && JSON.parse(localStorage.user)
+
 }
 
+export const currentProfile= () => {
+    return localStorage.profile && JSON.parse(localStorage.profile)
+
+}
 export const getCompleteStep = async(headersData) => {
     let res;
     if(headersData){
@@ -27,5 +31,5 @@ export const getCompleteStep = async(headersData) => {
 }
 
 export const completeStep = () => {
-    localStorage.getItem('completeStep') && JSON.parse(localStorage.completeStep)
+   return localStorage.getItem('completeStep') && JSON.parse(localStorage.completeStep)
 }
