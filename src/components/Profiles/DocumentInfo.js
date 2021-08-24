@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { getCompleteStep } from 'components/utils/helpers';
+import { completeStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png'
 
 
 const DocumentInfo = (props) => {
-    const { id } = props
-    const [ values,setValues] = useState({})
+  const id = completeStep()?.profile?.id
+  const [ values,setValues] = useState({})
     const handleChange = (event) =>{
       setValues({
         ...values,
@@ -18,9 +19,10 @@ const DocumentInfo = (props) => {
   
       const handleSubmit = (event) => {   
         event.preventDefault()
-        debugger
-        axiosInstance.put(`/document_ids/${id}`,values).then((response) =>{ 
-          props.history.push('/home')
+        axiosInstance.put(`profiles/${id}/documents`,values).then((response) =>{ 
+          getCompleteStep(response.headers)
+          localStorage.setItem('document_ids',JSON.stringify(response.data))
+          props.history.push('/')
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])
           })
@@ -37,7 +39,7 @@ const DocumentInfo = (props) => {
       <div class="row">
         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 col-12">
           <div class="user_info_form">
-            <h2 class="form_heading">Occupation Info</h2>
+            <h2 class="form_heading">Document  Info</h2>
             <form onSubmit={(event) => handleSubmit(event)}>
             <div class="form-group">
                 <select onChange={handleChange} name='id_type' class="operator form-control" required>
@@ -49,16 +51,20 @@ const DocumentInfo = (props) => {
                                 }
                  </select>
                 </div>
-                <div class="form-group">
+                { (values.id_type === 'AadharCard' || values.id_type === 'DrivingLicence' || values.id_type === 'VoterId' || values.id_type === 'Passport' || values.id_type === 'PanCard') && 
+
+                  <div class="form-group">
                     <input type="text" name='id_number' onChange={handleChange} classNameName="form-control" required />
                     <label for="mtrprofession">Id Number</label>
-                </div>
+                  </div>
+                }
                 <button type="submit" class="btn form_btn">Submit</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+
   </section>
   </>
  );
