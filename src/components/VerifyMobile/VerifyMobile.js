@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
 import { currentUser } from '../utils/helpers'
 import logoImg from 'assets/images/logo.png'
-import { getCompleteStep } from 'components/utils/helpers'
+// import { getCompleteStep } from 'components/utils/helpers'
 
 const VerifyMobile = (props) => {
     const [ values,setValues] = useState({})
@@ -17,22 +17,22 @@ const VerifyMobile = (props) => {
       });
     }
 
-   //   useEffect(() => {
-   //   async function onLoad() {
-   //     try {
-   //      const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
-   //      if(response.data.mobile_verified){
-   //         if(!currentUser().name){
-   //           props.history.push('/updateUser')
-   //         }
-   //         props.history.push('/home')   
-   //      }        
-   //     } catch (e) {
-   //       alert(e);
-   //     }
-   //   }
-   //   onLoad()
-   // },[])
+     useEffect(() => {
+     async function onLoad() {
+       try {
+        const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
+        if(response.data.mobile_verified){
+           if(!currentUser().name){
+             props.history.push('/updateUser')
+           }
+           props.history.push('/home')   
+        }        
+       } catch (e) {
+         alert(e);
+       }
+     }
+     onLoad()
+   },[])
   
       
    
@@ -40,7 +40,7 @@ const VerifyMobile = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axiosInstance.put('/mobiles/verify',values).then((resonse) =>{
-         getCompleteStep()
+          // getCompleteStep(response.headers)
          
           if(!currentUser().name ){
             props.history.push('/updateUser')
@@ -56,7 +56,7 @@ const VerifyMobile = (props) => {
         axiosInstance.put('/mobiles/retry',{},{timeout: 5000}).then((resonse) =>{
           toast.success('OTP has sent')
           }).catch((error) =>{
-            toast.error(error?.response?.data?.errors)
+            toast.error(error?.response?.data?.errors[0])
           })
     }
 
