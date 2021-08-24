@@ -27,7 +27,7 @@ const MotherInfo = (props) => {
       event.preventDefault()
       axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
         getCompleteStep()
-        props.history.push('/siblings')
+        props.history.push('/profiles')
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
         })
