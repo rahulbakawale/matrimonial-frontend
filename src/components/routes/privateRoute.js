@@ -8,7 +8,9 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 
     const renderRoutes = (props) => {
        const pathname = props.location.pathname
-       const mobileVerified = completeStep()?.mobile_verified
+       const compStep = completeStep()
+       debugger
+       const mobileVerified = compStep?.mobile_verified
        if(isLogin()){
           if(mobileVerified){
             return (pathname === AppRoutes.QUALIFICATIONS && currentProfile() ) ? <Component {...props} /> : <Redirect to={AppRoutes.PROFILES} />

@@ -18,7 +18,7 @@ const Profile = (props) => {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
             setProfile(response.data)
         }).catch((error) =>{
-            toast.error(error?.response?.data?.errors)
+            toast.error(error?.response?.data?.errors[0])
         })
         }
         id && onLoad()
@@ -33,6 +33,7 @@ const Profile = (props) => {
     }
 
     const handleRadio = (event) => {
+       debugger
         setValues({
           ...values,
           [event.target.name]: event.target.checked
@@ -52,7 +53,7 @@ const Profile = (props) => {
           localStorage.setItem('completeStep',JSON.stringify(obj))
             props.history.push('/qualifications')
             }).catch((error) =>{
-            toast.error(error?.response?.data?.errors)
+            toast.error(error?.response?.data?.errors[0])
             })
          }
 
@@ -63,7 +64,7 @@ const Profile = (props) => {
           localStorage.setItem('completeStep',JSON.stringify(obj))
           props.history.push('/qualifications')
           }).catch((error) =>{
-            toast.error(error?.response?.data?.errors)
+            toast.error(error?.response?.data?.errors[0])
           })
       }
   
@@ -276,16 +277,17 @@ const Profile = (props) => {
                               <div className="form-group switch_btn">
                                  <h6>Manglik</h6>
                                  <label className="switch">
-                                 <input type="checkbox" name='manglik' value={ values.manglik } onChange={ handleRadio } required />
+                                    
+                                 <input type="checkbox" checked={ values.manglik }  name='manglik' value={ values.manglik } onChange={ handleRadio } />
                                  <span className="slider round"></span>
                                  </label>
                               </div>
                            </div>
                            <div class="col-md-3 col-sm-3 col-12">
                               <div className="form-group switch_btn">
-                                 <h6>divorced</h6>
+                                 <h6>Divorced</h6>
                                  <label className="switch">
-                                 <input type="checkbox" name='divorced' value={ values.divorced } onChange={ handleRadio } required />
+                                 <input type="checkbox" name='divorced' checked={ values.divorced } value={ values.divorced } onChange={ handleRadio } />
                                  <span className="slider round"></span>
                                  </label>
                               </div>
@@ -294,7 +296,7 @@ const Profile = (props) => {
                               <div className="form-group switch_btn">
                                  <h6>Disable</h6>
                                  <label className="switch">
-                                 <input type="checkbox" name='disable' value={ values.divorced } onChange={ handleRadio } required />
+                                 <input type="checkbox" name='disable' checked={ values.disabled } value={ values.disabled } onChange={ handleRadio }  />
                                  <span className="slider round"></span>
                                  </label>
                               </div>

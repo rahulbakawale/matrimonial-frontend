@@ -43,15 +43,13 @@ import CompleteStep from 'components/CompleteStep/CompleteStep';
               <Route exact='true' component={LandingPage} path="/" /> 
               <PrivateRoute component={Home} path="/home"  />
               <PrivateRoute  component={updateUser} path="/updateUser"  />
-              <Route  component={Profile} path="/profiles"  />
+              <PrivateRoute  component={Profile} path="/profiles"  />
               <PrivateRoute component={QualiFications} path="/qualifications" />
-              <Route component={OccupaTions} path="/occupations" />
-              <Route component={DocumentInfo} path="/documents" />
+              <PrivateRoute component={OccupaTions} path="/occupations" />
+              <PrivateRoute component={DocumentInfo} path="/documents" />
               <PrivateRoute  component={ParentsInfo} path="/parents-info" />
               <PrivateRoute  component={CompleteStep} path="/complete-step" />
-
-
-              <PrivateRouteOTP restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
+              <PrivateRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
       </Router>

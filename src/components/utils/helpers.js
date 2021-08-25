@@ -19,10 +19,11 @@ export const getCompleteStep = async(headersData) => {
     if(headersData){
         const headers = {
             'access-token': headersData['access-token'],
-            'client': headersData['uid'],
-            'uid': headersData["client"],
+            'client': headersData['client'],
+            'uid': headersData["uid"],
+            
         }
-        res = await axiosInstance.get(`/profiles/completed_steps`,{ headers: headers })
+        res = await axiosInstance.get(`/profiles/completed_steps`,{ headers: headers, timeout: 30000 })
     }else{
         res = await axiosInstance.get(`/profiles/completed_steps`)
     }
