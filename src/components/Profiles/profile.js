@@ -3,14 +3,19 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { completeStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
-import { getCompleteStep } from 'components/utils/helpers'
-import logoImg from 'assets/images/logo.png'
-import { Formik,Field } from 'formik';
+// import { getCompleteStep, truncateString } from 'components/utils/helpers'
+// import logoImg from 'assets/images/logo.png'
 
+import { getCompleteStep } from 'components/utils/helpers'
+
+import { Formik,Field } from 'formik';
 const Profile = (props) => {
-   const id = completeStep()?.profile?.id
+   // debugger
+   const id = completeStep()?.profile?.id && props?.match?.params?.id
+ //  debugger
    const [ profile, setProfile ] = useState({})
    const [ values,setValues] = useState({})
+   // manglik: false, divorced: false, disabled: false
 
    useEffect(() => {
    getCompleteStep()
@@ -33,7 +38,7 @@ const Profile = (props) => {
     }
 
     const handleRadio = (event) => {
-       debugger
+      //   debugger
         setValues({
           ...values,
           [event.target.name]: event.target.checked
@@ -51,6 +56,7 @@ const Profile = (props) => {
           const obj = completeStep()
           obj['profile'] = response.data
           localStorage.setItem('completeStep',JSON.stringify(obj))
+         //  debugger
             props.history.push('/qualifications')
             }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])
@@ -62,7 +68,8 @@ const Profile = (props) => {
           const obj = completeStep()
           obj['profile'] = response.data
           localStorage.setItem('completeStep',JSON.stringify(obj))
-          props.history.push('/qualifications')
+         //  debugger
+          props.history.push('/user-profiles')
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])
           })
@@ -78,7 +85,9 @@ const Profile = (props) => {
       <section className="form_section">
          <div className="form_header">
             <div className="container">
-              <img src={logoImg} className="img-fluid" alt=""  />
+               {/* <a className="logo" href="#">
+                  <img src={ logoImg } className="img-fluid" alt=""  />
+               </a>             */}
             </div>
          </div>
          <Formik
@@ -192,7 +201,9 @@ const Profile = (props) => {
                          <div class="row">
                            <div className="col-md-6 col-sm-6 col-9">
                               <div className="form-group">
-                                 <input type="text" name='kundli_url' value={ values.kundli_url } onChange={handleChange} classNameName="form-control" required />
+                                 {/* <input type="text" name='kundli_url' value={ truncateString(5,values.kundli_url)} onChange={handleChange} classNameName="form-control" required /> */}
+                                 <input type="text" name='kundli_url' value={values.kundli_url} onChange={handleChange} classNameName="form-control" required />
+
                                  <label for="mtrprofession">kundli Url</label>
                               </div>
                            </div>
@@ -253,7 +264,7 @@ const Profile = (props) => {
                            </div>
                            <div class="col-md-6 col-sm-6 col-9">
                               <div className="form-group">
-                                 <input type="time" name='time' value={ values.time } onChange={handleChange} classNameName="form-control" required />
+                                 <input type="time" name='time' value={ values.time } onChange={handleChange} classNameName="form-control"  />
                                  <label for="mtrprofession">Time</label>
                               </div>
                            </div>
@@ -277,8 +288,8 @@ const Profile = (props) => {
                               <div className="form-group switch_btn">
                                  <h6>Manglik</h6>
                                  <label className="switch">
-                                    
-                                 <input type="checkbox" checked={ values.manglik }  name='manglik' value={ values.manglik } onChange={ handleRadio } />
+                                 <Field type="checkbox" name="manglik" />
+
                                  <span className="slider round"></span>
                                  </label>
                               </div>
@@ -287,7 +298,7 @@ const Profile = (props) => {
                               <div className="form-group switch_btn">
                                  <h6>Divorced</h6>
                                  <label className="switch">
-                                 <input type="checkbox" name='divorced' checked={ values.divorced } value={ values.divorced } onChange={ handleRadio } />
+                                 <Field type="checkbox" name="divorced" />
                                  <span className="slider round"></span>
                                  </label>
                               </div>
@@ -296,14 +307,13 @@ const Profile = (props) => {
                               <div className="form-group switch_btn">
                                  <h6>Disable</h6>
                                  <label className="switch">
-                                 <input type="checkbox" name='disable' checked={ values.disabled } value={ values.disabled } onChange={ handleRadio }  />
+                                 <Field type="checkbox" name="disabled" />
                                  <span className="slider round"></span>
                                  </label>
                               </div>
                            </div>
                         </div>
-                        
-                        <button type="submit" className="btn log_reg_btn">Submit</button>
+                        <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
                      </form>
                   </div>
                </div>
@@ -313,6 +323,6 @@ const Profile = (props) => {
       </section>
     </>
 
-)
+   )
 }
 export default withRouter(Profile)
