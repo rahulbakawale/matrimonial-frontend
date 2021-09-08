@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import MotherInfo from './motherInfo';
 import FatherInfo  from './fatherInfo';
-import logoImg from 'assets/images/logo.png'
+// import logoImg from 'assets/images/logo.png'
 import axiosInstance from '../../axiosInstance'
 
 
 const ParentsInfo = () =>{
     const [ activeTab, setActiveTab ] = useState('father')
-    const [fatherId, setFatherId ] = useState(null)
-    const [motherId, setMotherId ] = useState(null)
+    const [father, setFather ] = useState({})
+    const [mother, setMother ] = useState({})
 
     useEffect(() => {
         async function fetchData() {
             const response =  await axiosInstance.get('/parents')
-            const fatherId = response.data.filter((item) => item.father)[0]?.id
-            const motherId = response.data.filter((item) => item.mother)[0]?.id
-            setFatherId(fatherId)
-            setMotherId(motherId)
+            const father = response.data.filter((item) => item.father)[0]
+            const mother = response.data.filter((item) => item.mother)[0]
+            setFather(father)
+            setMother(mother)
           }
           fetchData();
        
@@ -26,9 +26,9 @@ const ParentsInfo = () =>{
      <section className="form_section">
         <div className="form_header">
           <div className="container">
-            <a className="logo" href="#">
+            {/* <a className="logo" href="#">
             <img src={logoImg} className="img-fluid" alt=""  />
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="container">
@@ -51,10 +51,10 @@ const ParentsInfo = () =>{
                 </ul>
                 <div className="tab-content">
                     <div className={`tab-pane fade ${ activeTab === 'father' ? 'show active' : ''}`} id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <FatherInfo id={ fatherId } setActiveTab={ setActiveTab } />
+                        <FatherInfo father={ father } setActiveTab={ setActiveTab } />
                     </div>
                     <div className={`tab-pane fade ${ activeTab === 'mother' ? 'show active' : ''}`} id="profile" role="tabpanel" aria-labelledby="home-tab">
-                        <MotherInfo id={ motherId } setActiveTab={ setActiveTab } />
+                        <MotherInfo mother={ mother } setActiveTab={ setActiveTab } />
                     </div>
                 </div>
             </div>
