@@ -190,7 +190,7 @@ import React from 'react';
             </div>
           </div>
         </section>
-        <section className="footer_section">
+        {/* <section className="footer_section">
           <div className="container">
             <ul className="list-inline">
               <li className="list-inline-item foot_menu">
@@ -202,10 +202,10 @@ import React from 'react';
               </li>
               <li className="list-inline-item copy_right">Copyright <i className="far fa-copyright"></i> <a href="javascript:;">Kliftox Technology Pvt. ltd.</a> </li>
             </ul>
-          </div>
+          </div> */}
           <Login />
           <Signup />
-        </section>
+        {/* </section> */}
       </>
     );
   };

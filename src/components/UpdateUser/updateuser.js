@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
-import logoImg from 'assets/images/logo.png'
+//import logoImg from 'assets/images/logo.png'
+import { toast } from 'react-toastify';
+
+import { getCompleteStep } from 'components/utils/helpers'
 // import Login from '../login/login';
 // import axios from 'axios'
 
@@ -17,8 +20,7 @@ const UpdateUser = (props) => {
         ...values,
         [event.target.name]: event.target.value,
       });
-    }
-    
+    } 
 
     const handleRadio = (event) => {
       setValues({
@@ -30,21 +32,24 @@ const UpdateUser = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axiosInstance.put('/users',values).then((response) =>{  
-           
-            
-            //localStorage.setItem('user',JSON.stringify(response.data))
-            props.history.push('/home')
+        axiosInstance.put('/users',values).then((response) =>{   
+          getCompleteStep(response.headers)
+
+          //localStorage.setItem('user',JSON.stringify(response.data))
+          props.history.push('/parents-info')
+          }).catch((error) => {
+            toast.error(error?.response?.data?.errors)
           })
+       
       }
       return(
       <>
         <section class="form_section login_form">
             <div class="form_header">
               <div class="container">
-                  <a class="form_logo" href="#">
-                  <img src={logoImg} className="img-fluid" alt=""  />
-                  </a>
+                  {/* <a class="form_logo" href="#">
+                  <img src={logoImg} classNam//e="img-fluid" alt=""  />
+                  </a> */}
               </div>
             </div>
           <div class="container">
@@ -82,11 +87,10 @@ const UpdateUser = (props) => {
                             </div>
 
                             { values.your_relation === 'other' && 
-      
                               <div class="form-group">
-                              <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
-                            </div>
-                           }
+                                <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
+                              </div>
+                            }
                               
                             <div class="form-group switch_btn">
                               <h6>Can Contact You</h6>

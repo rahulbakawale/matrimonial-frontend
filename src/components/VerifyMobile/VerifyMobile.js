@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
 import { currentUser } from '../utils/helpers'
-import logoImg from 'assets/images/logo.png'
-
+// import logoImg from 'assets/images/logo.png'
+// import { getCompleteStep } from 'components/utils/helpers'
 
 const VerifyMobile = (props) => {
     const [ values,setValues] = useState({})
@@ -17,27 +17,32 @@ const VerifyMobile = (props) => {
       });
     }
 
-    useEffect(() => {
-      async function onLoad() {
-        try {
-         const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
-         if(response.data.mobile_verified){
-            if(!currentUser().name){
-              props.history.push('/updateUser')
-            }
-            props.history.push('/home')   
-         }        
-        } catch (e) {
-          alert(e);
-        }
-      }
-      onLoad()
-    },[])
+     useEffect(() => {
+   //   async function onLoad() {
+   //     try {
+   //      const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
+   //      if(response.data.mobile_verified){
+   //         if(!currentUser().name){
+   //           props.history.push('/updateUser')
+   //         }
+   //         props.history.push('/home')   
+   //      }        
+   //     } catch (e) {
+   //       alert(e);
+   //     }
+   //   }
+   //   onLoad()
+   },[])
+  
+      
+   
    
     const handleSubmit = (event) => {
         event.preventDefault()
         axiosInstance.put('/mobiles/verify',values).then((resonse) =>{
-          if(!currentUser().name){
+          // getCompleteStep(response.headers)
+         
+          if(!currentUser().name ){
             props.history.push('/updateUser')
           }else{
             props.history.push('/home')
@@ -51,7 +56,7 @@ const VerifyMobile = (props) => {
         axiosInstance.put('/mobiles/retry',{},{timeout: 5000}).then((resonse) =>{
           toast.success('OTP has sent')
           }).catch((error) =>{
-            toast.error(error?.response?.data?.errors)
+            toast.error(error?.response?.data?.errors[0])
           })
     }
 
@@ -60,9 +65,9 @@ const VerifyMobile = (props) => {
       <section class="form_section login_form">
          <div class="form_header">
             <div class="container">
-               <a class="form_logo" href="#">
+               {/* <a class="form_logo" href="#">
                <img src={logoImg} className="img-fluid" alt=""  />
-               </a>
+               </a> */}
             </div>
          </div>
          <div class="container">
