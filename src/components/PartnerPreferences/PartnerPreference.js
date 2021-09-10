@@ -25,12 +25,15 @@ const PartnerPreference = (props) => {
 
     const handleSubmit = (values) => {   
         //pass value for handleSubmit and with help of Formik
-        axiosInstance.put('/partner_preferences',values).then((response) =>{   
+        axiosInstance.put('/partner_preferences',values).then((response) =>{  
         props.history.push('/')
         }).catch((error) =>{
         toast.error(error?.response?.data?.errors[0])
+
     })
 }
+console.log(PartnerPreference)    
+
 return(
   
     <>

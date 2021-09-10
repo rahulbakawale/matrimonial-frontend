@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import logoImg from 'assets/images/logo.png'
+// import logoImg from 'assets/images/logo.png'
 import axiosInstance from '../../axiosInstance'
 
 
@@ -24,7 +24,6 @@ const UserSetting = (props) => {
       const handleSubmit = (event) => {   
         event.preventDefault()
         axiosInstance.put('/settings',values).then((response) =>{ 
-            debugger  
           props.history.push('/')
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors[0])
@@ -36,11 +35,11 @@ const UserSetting = (props) => {
         <>
             <section className="form_section">
                 <div className="form_header">
-                    <div className="container">
+                    {/* <div className="container">
                         <a class="logo" href="#">  
                         <img src={logoImg} className="img-fluid" alt=""  />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="container">
                     <div className="row">

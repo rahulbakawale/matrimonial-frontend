@@ -14,6 +14,10 @@ export const currentProfile= () => {
     return localStorage.profile && JSON.parse(localStorage.profile)
 
 }
+
+export const truncateString = (length,value) => {
+    return value.substring(0, length) + '...';
+}
 export const getCompleteStep = async(headersData) => {
     let res;
     if(headersData){
@@ -27,7 +31,6 @@ export const getCompleteStep = async(headersData) => {
     }else{
         res = await axiosInstance.get(`/profiles/completed_steps`)
     }
-    debugger
     localStorage.setItem('completeStep',JSON.stringify(res.data))
 }
 

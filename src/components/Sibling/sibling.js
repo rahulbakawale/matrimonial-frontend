@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import logoImg from 'assets/images/logo.png'
+// import logoImg from 'assets/images/logo.png'
 
 import axiosInstance from '../../axiosInstance'
 
@@ -29,7 +29,6 @@ const Sibling = (props) => {
   
       const handleSubmit = (event) => {   
         event.preventDefault()
-        debugger
         axiosInstance.post('/siblings',values).then((response) =>{   
           props.history.push('/home')
           }).catch((error) =>{
@@ -40,9 +39,9 @@ return(
 <>
 <section class="form_section">
     <div class="form_header">
-        <div class="container">
-            <img src={logoImg} className="img-fluid" alt=""  />
-        </div>
+          {/* <a className="logo" href="#">
+                  <img src={ logoImg } className="img-fluid" alt=""  />
+               </a>             */}
     </div>
     <div class="container">
         <div class="row">

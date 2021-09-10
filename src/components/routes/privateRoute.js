@@ -9,7 +9,6 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     const renderRoutes = (props) => {
        const pathname = props.location.pathname
        const compStep = completeStep()
-       debugger
        const mobileVerified = compStep?.mobile_verified
        if(isLogin()){
           if(mobileVerified){

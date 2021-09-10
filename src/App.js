@@ -4,14 +4,24 @@ import PrivateRoute from './components/routes/privateRoute';
 import PrivateRouteOTP from './components/routes/privateRouteOTP';
 import Home from  './components/login/home';
 import LandingPage from './components/LandingPage/landingpage';
-import updateUser from './components/UpdateUser/updateuser';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
+import updateUser from './components/UpdateUser/updateuser';
+import ParentsInfo from './components/ParentsInfo/ParentsInfo';
 import Profile from 'components/Profiles/profile';
 import QualiFications from 'components/Profiles/qualifications';
 import OccupaTions from 'components/Profiles/occupations';
 import DocumentInfo from 'components/Profiles/DocumentInfo'
-import ParentsInfo from './components/ParentsInfo/ParentsInfo';
-import CompleteStep from 'components/CompleteStep/CompleteStep';
+import UserProfile from 'components/userProfiles/UserProfile';
+import SearchProfile from 'components/Searchprofiles/SearchProfile';
+import FavoriteProfile from 'components/favoriteprofiles/favoriteProfile';
+import UserSetting from 'components/userSettings/userSetting';
+import Notification from 'components/Notification/notification';
+import PartnerPreference from 'components/PartnerPreferences/PartnerPreference';
+import CompleteStep from 'components/CompleteStep/CompleteStep'
+import Footer from 'components/shared/footer'
+
+ import Header from 'components/shared/header'
+
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
 //import { isLogin, currentUser } from './components/utils/helpers'
@@ -29,7 +39,11 @@ import CompleteStep from 'components/CompleteStep/CompleteStep';
 
     return(
       <Router>
-        <div>   
+        <Header /> 
+
+        <div>
+        <Route exact='true' component={LandingPage} path="/" /> 
+
             <Switch>
               {/* <Route path='/Home'    component={Home} />
               <Route path='/Login'   component={Login} /> */}
@@ -40,18 +54,35 @@ import CompleteStep from 'components/CompleteStep/CompleteStep';
               </Route> */}
               {/* <Route  component={Login} path="/login" /> */}
               {/* <Route path='/signup' component={signup}  /> */}
-              <Route exact='true' component={LandingPage} path="/" /> 
-              <PrivateRoute component={Home} path="/home"  />
-              <PrivateRoute  component={updateUser} path="/updateUser"  />
-              <PrivateRoute  component={Profile} path="/profiles"  />
-              <PrivateRoute component={QualiFications} path="/qualifications" />
-              <PrivateRoute component={OccupaTions} path="/occupations" />
-              <PrivateRoute component={DocumentInfo} path="/documents" />
-              <PrivateRoute  component={ParentsInfo} path="/parents-info" />
+              <Route component={Home} path="/home"  />
+              <Route restricted={true} component={VerifyMobile} path="/verifyMobile" />
+              <Route  component={updateUser} path="/updateUser"  />
+              <Route  component={ParentsInfo} path="/parents-info" />
+              <Route  component={Profile} path="/profiles"  />
+              <Route component={QualiFications} path="/qualifications" />
+              <Route component={OccupaTions} path="/occupations" />
+              <Route component={DocumentInfo} path="/documents" />
+              <Route component={UserProfile} path="/user-profiles" />
+              {/* create route with ID  profile (UserProfile) create button edit all routes  */}
+              <Route component={ Profile } path="/user-profile/:id/edit" />
+              <Route component={ QualiFications } path="/user-education/:id/edit" />
+              <Route component={ OccupaTions } path="/user-occupation/:id/edit" />
+              <Route component={ DocumentInfo } path="/user-document/:id/edit" />
+              <Route component={ ParentsInfo } path="/user-Parents/:id/edit" />
+
+
+
+
+              <Route component={SearchProfile} path="/search-profile" />
+              <Route component={FavoriteProfile} path="/favorite-profile" />
+              <Route component={UserSetting} path="/user-setting" />
+              <Route component={Notification} path="/notification" />
+              <Route component={PartnerPreference} path="/partner-preference" /> 
               <PrivateRoute  component={CompleteStep} path="/complete-step" />
-              <PrivateRoute restricted={true} component={VerifyMobile} path="/verifyMobile" exact />
             </Switch>
          </div>
+         <Footer/>
+
       </Router>
     );
   };

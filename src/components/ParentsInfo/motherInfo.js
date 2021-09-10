@@ -35,10 +35,9 @@ const MotherInfo = (props) => {
     const handleSubmit = (values) => { 
         
       // event.preventDefault()
-      debugger
       axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
         getCompleteStep()
-        props.history.push('/profiles')
+        props.history.push('/user-profiles')
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
         })

@@ -44,7 +44,6 @@ const ParentsInfo = () =>{
                     </li>
                     <li className="nav-item">
                     <a className={`nav-link ${activeTab ==='mother' && 'active'}`} id="profile-tab" onClick={() => {
-                        debugger
                     } } data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
                         Mother</a>
                     </li>

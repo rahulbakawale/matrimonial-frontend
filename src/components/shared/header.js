@@ -31,28 +31,13 @@ const Header = () => {
                             </li>
                             <li class="dropdown ntf_btn">
                                 <a class="nav-link ntf_bell" href="javascript:;" id="ntf_bell" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell"></i>
-                                <mark class="rubberBand">9</mark>
                                 </a>
                                 <div class="dropdown-menu ntf_box" aria-labelledby="ntf_bell">
                                     <div class="ntf_heading">
                                         <h5>Notification</h5>
-                                        <a href="javascript:;"><i class="fas fa-cog"></i></a>
+                                        <Link to={"/notification"}><i class="fas fa-cog"></i></Link>
                                     </div>
-                                    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast ntf_txt" data-autohide="false">
-                                        <div class="ntf_toast_box">
-                                            <div class="toast-header">
-                                                <i class="fas fa-circle"></i>
-                                                <span>Jivesh Jaiswal and 8 others have viewed your profile.</span>
-                                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="ntf_btm">
-                                                <a href="javascript:;" class="ntf_view">view</a>
-                                                <small>11 mins ago</small>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </li>
                         </ul>
