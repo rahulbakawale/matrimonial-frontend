@@ -6,6 +6,44 @@ import userImg from 'assets/images/user.png'
 
 import axiosInstance from '../../axiosInstance'
 
+const Sibling = ({ item }) => {
+  return(
+    <div class="col-lg-4 col-md-4 col-sm-6 col-12 rgt_border">
+    <div class="detail_parent sibling_dtl" data-aos="zoom-in-right" data-aos-duration="1000">
+      <p style={{ float: 'right'}}>
+        <Link to={`/siblings/${ item.id }`} >
+          <i className='far fa-edit'/>
+        </Link>
+      </p>
+      <ul class="list-unstyled">
+        <li>
+            <b> Name :</b>
+            <span>{item?.name}</span>
+        </li>
+        <li> 
+            <b>Age :</b>
+            <span>{item?.age}</span>
+        </li>
+        <li>
+            <b>Gender :</b>
+            <span> {item.gender} </span>
+
+        </li>
+        <li>
+            <b>Profession :</b>
+            <span>{item?.profession}</span>
+        </li>
+        
+        <li>
+            <b>Married :</b>
+            <span>{item?.married}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  )
+}
+
 const UserProfile = (props) => {
 
     const [ profile, setProfile ] = useState({})
@@ -212,41 +250,19 @@ console.log('testProfiles',profile)
             </div>
           </div>
           <div class="parent_info">
-            <h5 class="fmly_info_heading">Siblings Information</h5>
+            <h5 class="fmly_info_heading">Siblings Information: </h5>
+            <Link to='/siblings'>+Add</Link>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="detail_parent">
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 col-sm-6 col-12 rgt_border">
-                <div class="detail_parent sibling_dtl" data-aos="zoom-in-right" data-aos-duration="1000">
-                  <ul class="list-unstyled">
-                    <li>
-                        <b> Name :</b>
-                        <span>{profile?.siblings?.name}</span>
-                    </li>
-                    <li> 
-                        <b>Age :</b>
-                        <span>{profile?.siblings?.age}</span>
-                    </li>
-                    <li>
-                        <b>Gender :</b>
-                            {profile?.siblings?.map((item,index) =>{
-                                return(<p> <b>Gender- :</b> {item.gender} </p>)
-                            }) }
-                    </li>
-                    <li>
-                        <b>Profession :</b>
-                        <span>{profile?.siblings?.profession}</span>
-                    </li>
-                    
-                    <li>
-                        <b>Married :</b>
-                        <span>{profile?.siblings?.married}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+
+
+              { (profile?.siblings || []).map((item,index) => {
+                return( <Sibling key={ index } item={ item } />)
+              })}
+      
             </div>
           </div>
           </div>

@@ -5,7 +5,7 @@ import PrivateRoute from './components/routes/privateRoute';
 import Home from  './components/login/home';
 import LandingPage from './components/LandingPage/landingpage';
 import VerifyMobile from './components/VerifyMobile/VerifyMobile';
-import sibling from './components/Sibling/sibling';
+import Sibling from './components/Sibling/sibling';
 import updateUser from './components/UpdateUser/updateuser';
 import ParentsInfo from './components/ParentsInfo/ParentsInfo';
 import Profile from 'components/Profiles/profile';
@@ -56,7 +56,9 @@ import Footer from 'components/shared/footer'
               {/* <Route  component={Login} path="/login" /> */}
               {/* <Route path='/signup' component={signup}  /> */}
               <Route exact='true' component={LandingPage} path="/" />
-              <PrivateRoute  component={sibling} path="/siblings"  />
+              <Route  component={Sibling} path="/siblings"  />
+              <Route  component={Sibling} path="/siblings/:id/edit"  />
+
               <Route component={Home} path="/home"  />
               <Route restricted={true} component={VerifyMobile} path="/verifyMobile" />
               <Route  component={updateUser} path="/updateUser"  />
