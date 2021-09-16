@@ -26,7 +26,7 @@ const Sibling = ({ item }) => {
         </li>
         <li>
             <b>Gender :</b>
-            <span> {item.gender} </span>
+            <span> {item?.gender} </span>
 
         </li>
         <li>
@@ -36,7 +36,7 @@ const Sibling = ({ item }) => {
         
         <li>
             <b>Married :</b>
-            <span>{item?.married}</span>
+            <span>{item?.married?.getString()}</span>
         </li>
       </ul>
     </div>
@@ -103,26 +103,25 @@ console.log('testProfiles',profile)
                         <Link to={`user-education/${profile.id }/edit`} class="edit_icon"><i class="far fa-edit"></i></Link>
 
                         {
-                        profile?.education?.highest_qualification &&
+                          profile?.education?.highest_qualification &&
                         
                            <div class='row'>
-                             <p><b> Highest Qualification :</b>  {profile?.education?.highest_qualification}</p>
+                             <p><b> Highest Qualification : </b>{profile?.education?.highest_qualification}</p>
                             </div>
-                          }
-
-                            
-                            {
-                              profile?.education?.graduation && <>
-                                <div class='row'>
-                                <p> <b>Graduation College :</b>  {profile?.education?.graduation},{profile?.education?.graduation_college},{profile?.education?.graduation_stream} </p>
-                                </div>
-                              </>
-                            }
+                        }
+                        
+                        {
+                          profile?.education?.graduation && <>
+                            <div class='row'>
+                              <p> <b>Graduation  : </b>{profile?.education?.graduation}, {profile?.education?.graduation_college}, {profile?.education?.graduation_stream} </p>
+                            </div>
+                          </>
+                        }
 
                         {
-                         profile?.education?.post_graduation && 
-                            <><div class='row'>
-                                <p> <b>Post Graduation:</b> {profile?.education?.post_graduation},{profile?.education?.post_graduation_college},{profile?.education?.post_graduation_stream} </p>
+                          profile?.education?.post_graduation && <>
+                            <div class='row'>
+                              <p> <b>Post Graduation : </b>{profile?.education?.post_graduation}, {profile?.education?.post_graduation_college}, {profile?.education?.post_graduation_stream} </p>
                             </div>
                         
                             </>
@@ -137,21 +136,18 @@ console.log('testProfiles',profile)
                         <Link to={`user-occupation/${profile.id}/edit`}  class="edit_icon"><i class="far fa-edit"></i></Link>
 
                             <div class='row'>
-                                <p> <b>Company :</b> {profile?.occupation?.company} </p>
-                                <p> <b>Salary :</b> {profile?.occupation?.salary} </p>
+                                <p> <b>Company :</b> {profile?.occupation?.company},  {profile?.occupation?.city} </p>
                             </div>
                             <div class='row'>
-                                <p> <b>City :</b> {profile?.occupation?.city} </p>
+                                <p> <b>Designation:</b> {profile?.occupation?.designation } year </p>
                             </div>
-
-                        
                             <div class='row'>
-                                <p> <b>Designation:</b> {profile?.occupation?.designation } </p>
+                            <p> <b>Salary :</b> {profile?.occupation?.salary} lakh </p>
+                            </div>
+                            <div class='row'>
                                 <p> <b>Located Abroad :</b> {profile?.occupation?.located_abroad?.getString()}</p>
                             </div>
-                            <div class='row'>
-                                <p> <b>Employed In  :</b>{profile?.occupation?.employed_in}</p>
-                            </div>
+                            
                           
                               </div>
                         </div>
@@ -159,10 +155,7 @@ console.log('testProfiles',profile)
                 <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                     <div class="user_info_box user_lct" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="info_text">
-                            <Link to={`user-document/${profile.id}/edit`}  class="edit_icon"><i class="far fa-edit"></i></Link>
-                            <p> <b>ID prof :</b> {profile?.document?.id_type} </p>
-                            <p> <b>ID Number :</b> {profile?.document?.id_number} </p>
-
+                        <h4> <b> </b> { profile.place_of_birth }</h4>  
                         </div>
                     </div>
                 </div>
@@ -175,45 +168,15 @@ console.log('testProfiles',profile)
       <div class=" container">
         <h3> <i class="fas fa-home"></i> Family Detail </h3>
         <div class="family_info">
+
           <Link to={`user-Parents/${profile.id}/edit`} class="edit_icon"><i class="far fa-edit"></i></Link>
-          <div class="parent_info">
-            <h5 class="fmly_info_heading">Mother's Information</h5>
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="detail_parent" data-aos="fade-down-right" data-aos-duration="1000">
-                  <ul class="list-unstyled">
-                    <li>
-                        <b>Mother Name :</b>
-                        <span>{profile?.mother?.name}</span>
-                    </li>
-                    
-                    <li>
-                        <b>Profession :</b>
-                        <span>{profile?.mother?.profession}</span>
-                    </li>
-                    
-                    <li>
-                        <b>Passed away:</b>
-                        <span>{profile?.father?.passed_away?.getString()}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="about_parent" data-aos="fade-down-left" data-aos-duration="1000">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="parent_info">
             <h5 class="fmly_info_heading">Father's Information</h5>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="detail_parent" data-aos="fade-right" data-aos-duration="1000">
                   <ul class="list-unstyled">
+          
                     <li>
                         <b>Father Name :</b>
                         <span>{profile?.father?.name}</span>
@@ -240,18 +203,56 @@ console.log('testProfiles',profile)
                   </ul>
                 </div>
               </div>
+              
+              {
+                
+                  profile?.father?.extra_detail  &&
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="about_parent" data-aos="fade-down-left" data-aos-duration="1000">
+                      <p><span>{profile?.father?.extra_detail}</span></p>
+                    </div>
+                  </div>
+              }
+            </div>
+          </div>
+         
+          <div class="parent_info">
+            <h5 class="fmly_info_heading">Mother's Information</h5>
+            <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="about_parent" data-aos="fade-left" data-aos-duration="1000">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                <div class="detail_parent" data-aos="fade-down-right" data-aos-duration="1000">
+                  <ul class="list-unstyled">
+                    <li>
+                        <b>Mother Name :</b>
+                        <span>{profile?.mother?.name}</span>
+                    </li>
+                    
+                    <li>
+                        <b>Profession :</b>
+                        <span>{profile?.mother?.profession}</span>
+                    </li>
+                    
+                    <li>
+                        <b>Passed away:</b>
+                        <span>{profile?.mother?.passed_away?.getString()}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
+              {
+                  profile?.mother?.extra_detail  &&
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="about_parent" data-aos="fade-down-left" data-aos-duration="1000">
+                      <p><span>{profile?.mother?.extra_detail}</span></p>
+                    </div>
+                  </div>
+              }
+              
             </div>
           </div>
           <div class="parent_info">
             <h5 class="fmly_info_heading">Siblings Information: </h5>
-            <Link to='/siblings'>+Add</Link>
+            <Link to='/siblings'><br/>+Add</Link>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="detail_parent">
