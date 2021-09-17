@@ -6,9 +6,9 @@ import userImg from 'assets/images/user.png'
 
 import axiosInstance from '../../axiosInstance'
 
-const Sibling = ({ item }) => {
+const Sibling = ({ item,indexData }) => {
   return(
-    <div class="col-lg-4 col-md-4 col-sm-6 col-12 rgt_border">
+    <div class={`col-lg-4 col-md-4 col-sm-6 col-12 ${ indexData%3 !== 0 && 'rgt_border'} `}>
     <div class="detail_parent sibling_dtl" data-aos="zoom-in-right" data-aos-duration="1000">
       <p style={{ float: 'right'}}>
         <Link to={`/siblings/${ item.id }`} >
@@ -147,9 +147,7 @@ console.log('testProfiles',profile)
                             <div class='row'>
                                 <p> <b>Located Abroad :</b> {profile?.occupation?.located_abroad?.getString()}</p>
                             </div>
-                            
-                          
-                              </div>
+                            </div>
                         </div>
                     </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-12">
@@ -261,8 +259,8 @@ console.log('testProfiles',profile)
 
 
               { (profile?.siblings || []).map((item,index) => {
-                return( <Sibling key={ index } item={ item } />)
-              })}
+                return( <Sibling key={ index }indexData={ index+1 } item={ item } />)
+            })}
       
             </div>
           </div>
