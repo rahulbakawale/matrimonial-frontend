@@ -3,11 +3,13 @@ import { withRouter, Link } from 'react-router-dom';
 import logoImg from 'assets/images/logo.png'
 
 
-const Header = () => {
+const Header = (props) => {
+
+    const path = props.location.pathname
 
     return(
         <>
-            <nav class="navbar navbar_menu navbar-expand-lg fixed-top nav_white" id="sticky">
+            <nav class={`navbar navbar_menu navbar-expand-lg fixed-top ${ path !== '/notification' && 'nav_white' } `} id="sticky">
                 <div class="container">
                     <a class="logo" href="#">
                     <img src={ logoImg } class="img-fluid" />
@@ -29,7 +31,7 @@ const Header = () => {
                             <li class="menu_link">
                                 <a class="nav-link hvr-grow" href="javascript:;">Contact Us</a>
                             </li>
-                            <li class="dropdown ntf_btn">
+                            {/* <li class="dropdown ntf_btn">
                                 <a class="nav-link ntf_bell" href="javascript:;" id="ntf_bell" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell"></i>
                                 </a>
                                 <div class="dropdown-menu ntf_box" aria-labelledby="ntf_bell">
@@ -39,7 +41,7 @@ const Header = () => {
                                     </div>
                                     
                                 </div>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

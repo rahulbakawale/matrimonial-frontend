@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link} from 'react-router-dom';
 import userImg from 'assets/images/user.png'
+import Header from 'components/shared/header'
+
 
 
 import axiosInstance from '../../axiosInstance'
@@ -24,14 +26,19 @@ const Notification = (props) => {
 console.log("ntest",notifications)
 return(
 <>
+<Header /> 
+
 <section class="page_banner">
+
 <div class="container">
 <div class="pgbanner_text">
-<h1>Favourite Members</h1>
+  
+<h1>Notification Page</h1>
 <div aria-label="breadcrumb">
 <ol class="breadcrumb">
+
 <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
-<li class="breadcrumb-item active" aria-current="page">Notification</li>
+<Link to={`/notification`} class="breadcrumb-item active"><i className="breadcrumb-item" ><a href="#">Notification</a></i></Link> 
 </ol>
 </div>
 </div>
