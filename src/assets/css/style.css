@@ -9,6 +9,28 @@ body {
   background-color: #fff;
 }
 
+
+.switch_btn h6{
+  display: inline-block;
+  float: right;
+  width: -webkit-fill-available;
+}
+
+.user_info_form .form-group {
+  width:inherit
+}
+
+.owl-stage{
+  display: inline-flex;
+  margin-top: -25px
+}
+
+
+.user_info_form{
+  /* width: fit-content; */
+  width: 800px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -988,7 +1010,7 @@ button.navbar-toggler.menu-toggle {
 
 /*ProfileMember Favourite Member list start here*/
 .fav_slider {
-  padding-top: 10px;
+  padding: 1px;
   background: rgb(255 255 255 / 50%);
   background-image: url('/src/assets/images/bg-image.jpg');
   background-repeat: no-repeat;
@@ -998,6 +1020,7 @@ button.navbar-toggler.menu-toggle {
 
 .owl-item {
   width: 150px !important;
+  padding: 5px;
 }
 
 .fav_list {
@@ -1092,13 +1115,13 @@ button.navbar-toggler.menu-toggle {
 
 .flip-box-back {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   width: 100%;
-
+/* 
   -ms-transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); */
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -1878,7 +1901,7 @@ body.modal-open {
 
 /*user detail start here*/
 .user_detail {
-  /*margin-top: 40px;*/
+  margin-top: 6px !important;
   position: relative;
   z-index: 9;
 }

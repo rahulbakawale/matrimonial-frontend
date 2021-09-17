@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import logoImg from 'assets/images/logo.png'
+import logoImg from 'assets/images/logo.png'
 import axiosInstance from '../../axiosInstance'
 
 
@@ -35,11 +35,11 @@ const UserSetting = (props) => {
         <>
             <section className="form_section">
                 <div className="form_header">
-                    {/* <div className="container">
+                    <div className="container">
                         <a class="logo" href="#">  
                         <img src={logoImg} className="img-fluid" alt=""  />
                         </a>
-                    </div> */}
+                    </div>
                 </div>
                 <div className="container">
                     <div className="row">
@@ -59,16 +59,9 @@ const UserSetting = (props) => {
                                         </select>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-9 col-sm-9 col-12">
-                                            <div className="form-group switch_btn">
-                                                <h6>View Profile Notification</h6>
-                                                <label className="switch">
-                                                <input type="checkbox" name='view_profile_notification' onChange={ handleRadio }  />
-                                                <span className="slider round"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-9 col-sm-9 col-12">
+
+                                   
+                                     <div className="col-md-12 col-sm-12 col-12">
                                             <div className="form-group switch_btn">
                                                 <h6>Interested Profile Notification</h6>
                                                 <label className="switch">
@@ -77,14 +70,23 @@ const UserSetting = (props) => {
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-9 col-sm-9 col-12">
+                                        <div className="col-md-12 col-sm-12 col-12">
                                         <div className="form-group switch_btn">
                                             <h6>Marked as favourite notification</h6>
                                             <label className="switch">
                                             <input type="checkbox" name='marked_as_favourite_notification' onChange={ handleRadio }  />
                                             <span className="slider round"></span>
                                             </label>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 col-sm-12 col-12">
+                                            <div className="form-group switch_btn">
+                                                <h6>View Profile Notification</h6>
+                                                <label className="switch">
+                                                <input type="checkbox" name='view_profile_notification' onChange={ handleRadio }  />
+                                                <span className="slider round"></span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <button type="submit" className="btn log_reg_btn">Submit</button>
@@ -99,3 +101,5 @@ const UserSetting = (props) => {
 }
 
 export default withRouter(UserSetting)
+
+
