@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
-import userImg from 'assets/images/user.png'
-
-
+import userImg from 'assets/images/user.png';
 import axiosInstance from '../../axiosInstance'
+import Header from 'components/shared/header'
+
 
 const Sibling = ({ item,indexData }) => {
   return(
@@ -68,9 +67,10 @@ console.log('testProfiles',profile)
     <div class="user_profile">
         <div class="container">
             <div class="row">
+            <Header />
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-2">
                     <div class="profile_content">
-                    <Link to={ `user-profile/${ profile.id }/edit`}  className="edit_img"><i className="far fa-edit" ></i></Link>
+                    <Link to={ `user-profile/${ profile.id }/edit`}  className="edit_img" ><i className="far fa-edit" >Edit</i></Link>
 
                         <div class="profile_img" data-aos="zoom-out-right">
                             <img src={userImg} className="img-fluid" alt=""  />
@@ -106,7 +106,7 @@ console.log('testProfiles',profile)
                           profile?.education?.highest_qualification &&
                         
                            <div class='row'>
-                             <p><b> Highest Qualification : </b>{profile?.education?.highest_qualification}</p>
+                             <p><b> Qualification : </b>{profile?.education?.highest_qualification}</p>
                             </div>
                         }
                         

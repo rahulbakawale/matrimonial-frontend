@@ -9,7 +9,7 @@ const Header = (props) => {
 
     return(
         <>
-            <nav class={`navbar navbar_menu navbar-expand-lg fixed-top ${ path !== '/notification' && 'nav_white' },${ path !== '/favorite-profile' && 'nav_white' } `} id="sticky">
+            <nav class={`navbar navbar_menu navbar-expand-lg fixed-top ${ (path !== '/notification' && path !== '/favorite-profile') && 'nav_white' }`} id="sticky">
                 <div class="container">
                     <a class="logo" href="#">
                     <img src={ logoImg } class="img-fluid" />
