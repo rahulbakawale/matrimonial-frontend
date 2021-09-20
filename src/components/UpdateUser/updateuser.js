@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
-//import logoImg from 'assets/images/logo.png'
+import logoImg from 'assets/images/logo.png'
 import { toast } from 'react-toastify';
 
 import { getCompleteStep } from 'components/utils/helpers'
@@ -47,9 +47,9 @@ const UpdateUser = (props) => {
         <section class="form_section login_form">
             <div class="form_header">
               <div class="container">
-                  {/* <a class="form_logo" href="#">
-                  <img src={logoImg} classNam//e="img-fluid" alt=""  />
-                  </a> */}
+                <a class="form_logo" href="#">
+                  <img src={logoImg} className="img-fluid" alt=""  />
+                </a>
               </div>
             </div>
           <div class="container">
