@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
 import { currentUser } from '../utils/helpers'
-// import logoImg from 'assets/images/logo.png'
+import logoImg from 'assets/images/logo.png'
 // import { getCompleteStep } from 'components/utils/helpers'
 
 const VerifyMobile = (props) => {
@@ -18,21 +18,21 @@ const VerifyMobile = (props) => {
     }
 
      useEffect(() => {
-   //   async function onLoad() {
-   //     try {
-   //      const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
-   //      if(response.data.mobile_verified){
-   //         if(!currentUser().name){
-   //           props.history.push('/updateUser')
-   //         }
-   //         props.history.push('/home')   
-   //      }        
-   //     } catch (e) {
-   //       alert(e);
-   //     }
-   //   }
-   //   onLoad()
-   },[])
+         //   async function onLoad() {
+         //     try {
+         //      const response = await axiosInstance.get('/profiles/completed_steps',{},{timeout: 5000})
+         //      if(response.data.mobile_verified){
+         //         if(!currentUser().name){
+         //           props.history.push('/updateUser')
+         //         }
+         //         props.history.push('/home')   
+         //      }        
+         //     } catch (e) {
+         //       alert(e);
+         //     }
+         //   }
+         //   onLoad()
+      },[])
   
       
    
@@ -65,9 +65,9 @@ const VerifyMobile = (props) => {
       <section class="form_section login_form">
          <div class="form_header">
             <div class="container">
-               {/* <a class="form_logo" href="#">
+               <a class="form_logo" href="#">
                <img src={logoImg} className="img-fluid" alt=""  />
-               </a> */}
+               </a>
             </div>
          </div>
          <div class="container">
