@@ -156,14 +156,7 @@ return(
                                             <li class="list-inline-item"><b>Manglik </b></li>
                                             <li class="list-inline-item"><span>{favorite?.profile?.manglik?.getString()}</span></li>
                                         </ul>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><b>Id Type </b></li>
-                                            <li class="list-inline-item"><span>{favorite?.profile?.document?.id_type}</span></li>
-                                        </ul>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><b>Id number </b></li>
-                                            <li class="list-inline-item"><span>{favorite?.profile?.document?.id_number}</span></li>
-                                        </ul>
+                                       
 
 
 

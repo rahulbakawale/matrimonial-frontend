@@ -8,7 +8,9 @@ body {
   overflow-x: hidden;
   background-color: #fff;
 }
-
+.main-section{ 
+  margin-bottom: 100px;
+}
 .container{
   width: inherit !important;
 }

@@ -21,7 +21,7 @@ import PartnerPreference from 'components/PartnerPreferences/PartnerPreference';
 import CompleteStep from 'components/CompleteStep/CompleteStep'
 import Footer from 'components/shared/footer'
 
- import Header from 'components/shared/header'
+//  import Header from 'components/shared/header'
 
 //import Login from './components/login/login';
 //import signup from './components/signup/signup';
@@ -40,9 +40,9 @@ import Footer from 'components/shared/footer'
 
     return(
       <Router>
-        <Header /> 
+        {/* <Header />  */}
 
-        <div>
+        <div className='main-section'>
         <Route exact='true' component={LandingPage} path="/" /> 
 
             <Switch>
@@ -55,7 +55,7 @@ import Footer from 'components/shared/footer'
               </Route> */}
               {/* <Route  component={Login} path="/login" /> */}
               {/* <Route path='/signup' component={signup}  /> */}
-              <Route exact='true' component={LandingPage} path="/" />
+              {/* <Route exact='true' component={LandingPage} path="/" /> */}
               <Route  component={Sibling} path="/siblings"  />
               <Route  component={Sibling} path="/siblings/:id/edit"  />
 
