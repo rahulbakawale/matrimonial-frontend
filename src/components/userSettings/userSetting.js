@@ -58,9 +58,10 @@ const UserSetting = (props) => {
                                             }
                                         </select>
                                     </div>
-                                    <div className="row">
 
-                                   
+                                    { (values.image_visibility === 'all_users' || values.image_visibility === 'show_interest_on_your_profile') &&
+                                    <div className="row">   
+
                                      <div className="col-md-12 col-sm-12 col-12">
                                             <div className="form-group switch_btn">
                                                 <h6>Interested Profile Notification</h6>
@@ -70,16 +71,16 @@ const UserSetting = (props) => {
                                                 </label>
                                             </div>
                                         </div>
-                                        <div className="col-md-12 col-sm-12 col-12">
-                                        <div className="form-group switch_btn">
-                                            <h6>Marked as favourite notification</h6>
-                                            <label className="switch">
-                                            <input type="checkbox" name='marked_as_favourite_notification' onChange={ handleRadio }  />
-                                            <span className="slider round"></span>
-                                            </label>
+                                        { (values.image_visibility === 'all_users')  && <><div className="col-md-12 col-sm-12 col-12">
+                                            <div className="form-group switch_btn">
+                                                <h6>Marked as favourite notification</h6>
+                                                <label className="switch">
+                                                <input type="checkbox" name='marked_as_favourite_notification' onChange={ handleRadio }  />
+                                                <span className="slider round"></span>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-12 col-sm-12 col-12">
+                                        <div className="col-md-12 col-sm-12 col-12">
                                             <div className="form-group switch_btn">
                                                 <h6>View Profile Notification</h6>
                                                 <label className="switch">
@@ -87,8 +88,12 @@ const UserSetting = (props) => {
                                                 <span className="slider round"></span>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div></>}
+
+                                         
                                     </div>
+}
+                                        
                                     <button type="submit" className="btn log_reg_btn">Submit</button>
                                 </form>
                             </div>
