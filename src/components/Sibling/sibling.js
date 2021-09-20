@@ -79,7 +79,7 @@ const Sibling = (props) => {
                       handleSubmit(event)}>
                       <div className="form-group">
                         <input type="text" name='name' value={ values.name } onChange={handleChange} classNameName="form-control" required />
-                        <label for="mtrprofession">Name</label>
+                        <label for="mtrprofession"> Sibling Name</label>
                       </div>
                       <div className="row">
                         <div className="col-6 col-md-6 col-sm-6 col-12">
