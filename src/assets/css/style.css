@@ -20,9 +20,14 @@ body {
   float: right;
   width: -webkit-fill-available;
 }
+/* change Qualification page PG desig */
 
 .user_info_form .form-group {
-  width:inherit
+  width:inherit;
+  margin-top: 25px;
+}
+.user_info_form select{
+  margin-top: 20px;
 }
 
 .owl-stage{
@@ -1511,6 +1516,7 @@ textarea {
   position: relative;
   margin-bottom: 40px;
 }
+/* change button size and border with color */
 .slider.round {
   border-radius: 34px;
   border: 1px solid rgb(209, 223, 22);
@@ -1530,6 +1536,7 @@ option {
 input ~ label{
   width: auto !important;
 }
+
 
 input {
   line-height: 30px;
@@ -1553,6 +1560,7 @@ input:invalid,
 textarea:invalid,
 select:invalid {
   outline: 0;
+  margin-top: 2px;
 }
 .tab-content{
   margin-top: 30px

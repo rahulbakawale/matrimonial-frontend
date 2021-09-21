@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance';
 import { completeStep } from 'components/utils/helpers';
-// import logoImg from 'assets/images/logo.png'
+import logoImg from 'assets/images/logo.png'
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik } from 'formik';
 
@@ -14,39 +14,33 @@ import { Formik } from 'formik';
 const QualiFications = (props) => {
     const id =  props?.match?.params?.id
     const [ education, setEducation ] = useState({})
-
-
     useEffect(() => {
       async function onLoad(){
          const response = await axiosInstance.get(`/profiles/${ id }`,{timeout: 5000}) 
          setEducation(response.data.education)
       }
       onLoad()
-  
     },[])
-
-    
-  
-     const handleSubmit = (values) => { 
+    const handleSubmit = (values) => { 
         axiosInstance.put(`/profiles/${id}/educations/`,values).then((response) =>{ 
         getCompleteStep(response.headers)
-
-      //   props.history.push('/occupations')
-         props.history.push('/user-profiles')
+            props.history.push('/occupations')
+            props.history.push(`/user-profiles/{id}`);
+            //  props. history.push("/user-profiles/:id", { id });
+            // props.history.push('/user-profiles')
         }).catch((error) =>{
         toast.error(error?.response?.data?.errors[0])
         })
       }
-
-      console.log(QualiFications)
-     return(
+    console.log(QualiFications)
+    return(
       <>
       <section className="form_section">
             <div className="form_header">
                 <div className="container">
-                    {/* <a className="logo" href="#">
+                    <a className="logo" href="#">
                     <img src={ logoImg } className="img-fluid" alt=""  />
-                    </a>             */}
+                    </a>            
                 </div>
             </div>
             <Formik
@@ -86,6 +80,7 @@ const QualiFications = (props) => {
                            <form onSubmit={ handleSubmit }>
 
                               <div className="form-group">
+                              <div class="select2-results__option">
                                  <select onChange={handleChange} name='highest_qualification' value={ values. highest_qualification} class="operator form-control" required>
                                     <option value selected={true } disabled={ true }> Highest Qualification </option>
                                     {
@@ -94,6 +89,7 @@ const QualiFications = (props) => {
                                     )
                                     }
                                  </select>
+                              </div>
                               </div>
                               { (values.highest_qualification === 'graduation' || values.highest_qualification === 'MPhil' || values.highest_qualification === 'PhD' || values.highest_qualification === 'post-graduation') && 
                               <div className="form-group">
@@ -141,19 +137,17 @@ const QualiFications = (props) => {
                                  </div>
                               </div>
                               }
-
                               <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Save'}</button>
-    
                            </form>
                         </div>
-                     </div>
-                  </div>
-               </div>
-                    )}}
-                </Formik>
-            </section>
-            </>
-        )
-    }     
+                    </div>
+                </div>
+            </div>
+            )}}
+        </Formik>
+    </section>
+    </>
+)
+}     
 
 export default withRouter(QualiFications)
