@@ -80,9 +80,9 @@ const VerifyMobile = (props) => {
                   <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked" />
                </div>
             </div>
-            <div class="register-info-box">
-               <h2>User Profile</h2>
-            </div>
+            {/* <div class="register-info-box">
+               <center ><h2>User Profile</h2></center>
+            </div> */}
             <div class="white-panel user_info_form">
                <div class="login-show">
                   <h2>OTP</h2>
