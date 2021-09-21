@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import axiosInstance from '../../axiosInstance'
-import { getCompleteStep } from 'components/utils/helpers'
-import { Formik,Field } from 'formik';
-
-
+import axiosInstance from '../../axiosInstance';
+import { getCompleteStep } from 'components/utils/helpers';
+import { Formik,Field } from 'formik'
 
 
 const MotherInfo = (props) => {
@@ -15,116 +13,119 @@ const MotherInfo = (props) => {
     const id = mother.id
     const [ values,setValues] = useState({contact_person: false ,mother: true ,passed_away: false})
 
-    const handleChange = (event) =>{
-      setValues({
-        ...values,
-        [event.target.name]: event.target.value,
-      });
-    }
 
-        
-    
+    // If not using Form formik  so Use @all code    
+    // const handleChange = (event) =>{
+    //   setValues({
+    //     ...values,
+    //     [event.target.name]: event.target.value,
+    //   });
+    // }
 
-    const handleRadio = (event) => {
-        setValues({
-          ...values,
-          [event.target.name]: event.target.checked
-        })
-      }
+    // const handleRadio = (event) => {
+    //     setValues({
+    //       ...values,
+    //       [event.target.name]: event.target.checked
+    //     })
+    //   }
 
-    const handleSubmit = (values) => { 
-        
+    const handleSubmit = (values) => {   
       // event.preventDefault()
       axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
         getCompleteStep()
-        props.history.push('/user-profiles')
+        // props.history.push('/user-profiles')
+        props.history.push('/')
+        props.history.push(`/user-profiles/{id}`);
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
         })
     }
-    console.log('mohert',MotherInfo)   
-
-    return(
-      <>
-          <Formik
-            enableReinitialize
-            initialValues={mother}
-            validate={values =>
-            {
-            }}
-            onSubmit={(values) => {
-            handleSubmit(values)
-            }}
-            >
-            {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
-            }) => {
-              return(
-              <form onSubmit={(event) =>handleSubmit(event)}>
-                <div className="row">
-                  <div className="col-6 col-md-6 col-sm-6 col-12">
-                      <div class="form-group">
-                          <input type="text" name='name' value={ values.name } onChange={handleChange} classNameName="form-control" required />
-                          <label for="mtrprofession">Mother Name</label>
-                      </div>   
-                    </div>
-                  <div className="col-6 col-md-6 col-sm-6 col-12">
-                      <div className="form-group">
-                        <input type="text" name='profession' value={ values.profession } onChange={handleChange} classNameName="form-control" required />
-                        <label for="mtrprofession">Profession</label>
-                      </div>
-                  </div>
-                  <div className="col-6 col-md-6 col-sm-6 col-12">
-                        <div className="form-group">
-                          <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
-                          <label for="mtrothdtl">Siblings</label>
-                        </div>
-                    </div>
-                </div>
-                    <div className="form-group">
-                    <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
-                    <label for="mtrothdtl">Contact Number</label>
-                    </div>
-
-                <div className="form-group">
-                  <input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
-                  <label for="mtrothdtl">Other Details</label>
-                </div>
-                <div className="row">
-                <div class="col-md-3 col-sm-3 col-12">
-                  <div className="form-group switch_btn">
-                      <h6>Contact Number</h6>
-                      <label className="switch">
-                          <Field type="checkbox" name="contact_number" />
-                          <span className="slider round"></span>
-                      </label>
-                  </div>
-              </div>
-              <div class="col-md-3 col-sm-3 col-12">
-                  <div className="form-group switch_btn">
-                      <h6>Passed Away</h6>
-                      <label className="switch">
-                          <Field type="checkbox" name="passed_away" />
-                          <span className="slider round"></span>
-                      </label>
-                  </div>
-              </div>
-              </div>
-
-               
-                <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
-            </form>
-                )}}
-          </Formik>
-          
-</>
-);
-};
-
-export default withRouter(MotherInfo)
+	console.log('mohert',MotherInfo)   
+	return(
+	<>
+	<Formik
+	  enableReinitialize
+	  initialValues={mother}
+	  validate={values =>
+	  {
+	  }}
+	  onSubmit={(values) => {
+	  handleSubmit(values)
+	  }}
+	  >
+	  {({
+	  values,
+	  errors,
+	  touched,
+	  handleChange,
+	  handleSubmit,
+	  isSubmitting,
+	  /* and other goodies */
+	  }) => {
+	  return(
+	  <form onSubmit={(event) =>
+		handleSubmit(event)}>
+		<div className="row">
+		  <div className="col-6 col-md-6 col-sm-6 col-12">
+			<div class="form-group">
+			  <input type="text" name='name' value={ values.name } onChange={handleChange} classNameName="form-control" required />
+			  <label for="mtrprofession">Mother Name</label>
+			</div>
+		  </div>
+		  <div className="col-6 col-md-6 col-sm-6 col-12">
+			<div className="form-group">
+			  <input type="text" name='profession' value={ values.profession } onChange={handleChange} classNameName="form-control" required />
+			  <label for="mtrprofession">Profession</label>
+			</div>
+		  </div>
+		</div>
+		<div className="row">
+		  {/* 
+		  <div className="col-6 col-md-6 col-sm-6 col-12">
+			<div className="form-group">
+			  <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
+			  <label for="mtrothdtl">Siblings</label>
+			</div>
+		  </div>
+		  */}
+		  <div className="col-6 col-md-6 col-sm-6 col-12">
+			<div className="form-group">
+			  <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
+			  <label for="mtrothdtl">Contact Number</label>
+			</div>
+		  </div>
+		  <div className="col-6 col-md-6 col-sm-6 col-12">
+			<div className="form-group">
+			  <input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
+			  <label for="mtrothdtl">Other Details</label>
+			</div>
+		  </div>
+		</div>
+		<div className="row">
+		  <div className="col-md-12 col-sm-12 col-12">
+			<div className="form-group switch_btn">
+			  <h6>Contact Person</h6>
+			  <label className="switch">
+				<Field type="checkbox" name="contact_number" />
+				<span className="slider round"></span>
+			  </label>
+			</div>
+		  </div>
+		  <div className="col-md-12 col-sm-12 col-12">
+			<div className="form-group switch_btn">
+			  <h6>Passed Away</h6>
+			  <label className="switch">
+				<Field type="checkbox" name="passed_away" />
+				<span className="slider round"></span>
+			  </label>
+			</div>
+		  </div>
+		</div>
+		<button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
+	  </form>
+	  )}}
+	</Formik>
+	</>
+	);
+	};
+	export default withRouter(MotherInfo)

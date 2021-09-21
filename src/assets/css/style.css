@@ -8,9 +8,9 @@ body {
   overflow-x: hidden;
   background-color: #fff;
 }
-.main-section{ 
-  margin-bottom: 100px;
-}
+/* .main-section{ 
+  /* margin-bottom: 45px; */
+
 .container{
   width: inherit !important;
 }
@@ -1029,7 +1029,7 @@ button.navbar-toggler.menu-toggle {
 }
 
 .fav_list {
-  /*margin-top: 10px;*/
+  margin-top: 10px;
   /*margin-bottom: 30px;*/
   display: inline-block;
   width: 100%;
@@ -1511,15 +1511,24 @@ textarea {
   position: relative;
   margin-bottom: 40px;
 }
-
+.slider.round {
+  border-radius: 34px;
+  border: 1px solid rgb(209, 223, 22);
+}
 label {
   position: absolute;
-  top: 6px;
   left: 8px;
   width: 100%;
   color: #d3d3d3;
   transition: 0.2s all;
   cursor: text;
+}
+option {
+  color: #35322e !important;
+}
+
+input ~ label{
+  width: auto !important;
 }
 
 input {
@@ -1544,6 +1553,9 @@ input:invalid,
 textarea:invalid,
 select:invalid {
   outline: 0;
+}
+.tab-content{
+  margin-top: 30px
 }
 
 input:focus,
@@ -1626,7 +1638,7 @@ select:valid ~ label,
   background: #000;
   color: #fff;
   
-  position: fixed;
+  position: relative;
   width: 100%;
   bottom: 0;
 }
@@ -1639,6 +1651,7 @@ select:valid ~ label,
   background-image: url('/src/assets/images/background-shapes.png');
   background-repeat: no-repeat;
   background-size: cover;
+  /* background-color: orange; */
 }
 
 .modal.fade .modal-dialog {
@@ -1693,7 +1706,7 @@ body.modal-open {
 
 .query_form label {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100%;
   color: #d3d3d3;
