@@ -60,7 +60,7 @@ import React from 'react';
             <img src={rosepetalImg} />
           </div>
           <div className="about-section">
-            <div className="about_imgbg"></div>
+            <div className="doli-gif.gif"></div>
             <div className="container">
               <div className="heading">
                 <h3>About Us</h3>
