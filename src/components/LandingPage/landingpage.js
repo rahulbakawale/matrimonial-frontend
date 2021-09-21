@@ -1,5 +1,8 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
    import Login from '../login/login';
+   import Query from '../query/query';
    import Signup from '../signup/signup';
    import logoImg from 'assets/images/logo.png'
    import bannerImg from 'assets/images/banner.jpg';
@@ -184,31 +187,24 @@ import React from 'react';
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-12">
                 <div className="query_link">
-                  <a href="javascript:;" className="modalinit" data-modal="queryModal">Click Here</a>
+                {/* <li className="menu_link menu_btn">
+                  <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">Click Here</a>
+                </li> */}
+                <li className="menu_link menu_btn">
+                  <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">Click Here</a>
+                </li>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* <section className="footer_section">
-          <div className="container">
-            <ul className="list-inline">
-              <li className="list-inline-item foot_menu">
-                <a href="javascript:;">Home</a> |
-                <a href="javascript:;">About Us</a> |
-                <a href="javascript:;">FAQ</a> |
-                <a href="javascript:;">Contact Us</a> |
-                <a href="javascript:;">Privacy Policy</a>
-              </li>
-              <li className="list-inline-item copy_right">Copyright <i className="far fa-copyright"></i> <a href="javascript:;">Kliftox Technology Pvt. ltd.</a> </li>
-            </ul>
-          </div> */}
-          <Login />
-          <Signup />
-        {/* </section> */}
+        <Query />
+        <Login />
+        <Signup />
+      
       </>
     );
   };
 
+export default withRouter(LandingPage)
      
- export default LandingPage
