@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom';
 import logoImg from 'assets/images/logo.png'
+import NotificationDropDown from './notification-dropdown';
 
 
 const Header = (props) => {
@@ -31,17 +32,9 @@ const Header = (props) => {
                             <li class="menu_link">
                                 <a class="nav-link hvr-grow" href="javascript:;">Contact Us</a>
                             </li>
-                            {/* <li class="dropdown ntf_btn">
-                                <a class="nav-link ntf_bell" href="javascript:;" id="ntf_bell" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell"></i>
-                                </a>
-                                <div class="dropdown-menu ntf_box" aria-labelledby="ntf_bell">
-                                    <div class="ntf_heading">
-                                        <h5>Notification</h5>
-                                        <Link to={"/notification"}><i class="fas fa-cog"></i></Link>
-                                    </div>
-                                    
-                                </div>
-                            </li> */}
+                            <li class="dropdown ntf_btn">
+                                 <NotificationDropDown />       
+                            </li>
                         </ul>
                     </div>
                 </div>
