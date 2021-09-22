@@ -54,20 +54,20 @@ const UpdateUser = (props) => {
             </div>
           <div class="container">
             <div class="login-reg-panel">
-                <div class="login-info-box" style={{ display: 'block !important'}}>
-                  <h2></h2>
+                <div class="login-info-box" style={{ display: 'block !important'}}><br/><br/><br/>
+                  <h1>OTP Verifyed</h1>
                   <p></p>
                   <div class="logreg_form">
                   </div>
                 </div>
-                {/* <div class="register-info-box" style={{display: 'none'}}>
+                <div class="register-info-box" style={{display: 'none'}}>
                   <h2>Don't have an account?</h2>
                   <p>Lorem ipsum dolor sit amet</p>
                   <div class="logreg_form">
                     <label id="label-login" for="log-login-show">Register</label>
                     <input type="radio" name="active-log-panel" id="log-login-show" />
                   </div>
-                 </div> */}
+                 </div>
                  <div class="white-panel user_info_form right-log">
                     <div class="login-show">
                     <h2>Update User profile</h2>
