@@ -62,7 +62,7 @@ const Query = (props) => {
                         <textarea type="text" name='message' onChange={handleChange} className="form-control" textarea />
                         <label for="name">Message</label>
                       </div>
-                      <span className="login_txt">
+                      <span className="query">
                       <button type="submit" className="btn query_btn">Submit</button>
                       </span>
                     </form>

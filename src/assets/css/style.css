@@ -1645,14 +1645,27 @@ select:valid ~ label,
   flex-flow: wrap;
 } */
 /* Footer work */
+.notification-list-style li {
+  border-bottom: 1px solid #ccc;
+    padding: 6px 5px 5px 5px;
 
+}
 
+.notification-list-style li img {
+  border-radius: 50%;
+  padding: 3px;
+}
+.footer-relative{ 
+  position: relative;
+}
+.footer-absolute{ 
+  position: absolute;
+}
 .footer_section {
   font-size: 14px;
   background: #000;
   color: #fff;
-  
-  position: relative;
+  bottom: 0;
   width: 100%;
   bottom: 0;
 }
@@ -1824,8 +1837,13 @@ body.modal-open {
     display: inline-flex;
     color: black;
     margin-top: revert;
-    margin-left: 35px;
+    margin-left: 30px;
 }
+.query {
+
+    margin-left: 100px;
+}
+
 
 .login_txt a {
 
