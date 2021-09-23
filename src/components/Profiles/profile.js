@@ -6,7 +6,7 @@ import axiosInstance from '../../axiosInstance';
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
 import logoImg from 'assets/images/logo.png'
-// import TimePicker from 'react-times';
+import TimePicker from 'react-times';
 import 'react-times/css/material/default.css';
 
 
@@ -92,7 +92,7 @@ const Profile = (props) => {
         </div>
         <Formik
           enableReinitialize
-          initialValues={ profile }
+          initialValues={ {profile, age: '18', caste:'Thakur', religion:'Hindu', weight:'40'}}
           validate={values =>
           {
           }}
@@ -118,6 +118,18 @@ const Profile = (props) => {
               <div class="user_info_form profile_form">
                 <h3>Profile Detail</h3>
                 <form onSubmit={ handleSubmit }>
+                <div className="col-md-12 col-sm-12 col-12">
+                      <input type="time" name='time' value={ values.time } onChange={handleChange} classNameName="form-control"  />
+                      <label for="mtrprofession">Time</label>
+                    <TimePicker
+                        theme='material'
+                        time={ values.time }
+                        onTimeChange={(value) => {
+                          const time = `${value.hour}:${value.minute}`
+                          setFieldValue('time',time)
+                        }}
+                      />`   
+                    </div>
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
@@ -140,8 +152,6 @@ const Profile = (props) => {
                       </div>
                     </div>
                     <div className="col-md-6 col-sm-6 col-9">
- 
-
                       <div class="form-group age_rgp">
                         <label for="age">Age</label>
                         <div class="age_inc_dec">
@@ -166,15 +176,13 @@ const Profile = (props) => {
                       </div>
                       </div>
                     </div>
-
                   <div className="row">
-
                   <div className="col-md-6 col-sm-6 col-9">
                       <div class="form-group">
                         <select onChange={handleChange} name='height' value={ values.height } class="operator form-control user_relation" required >
                           <option value selected={true } disabled={ true } >Select Height</option>
                           {
-                          ["3'5","3'6","3'7","3'8","3'9","3'10","3'11","4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=> 
+                          ["4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=> 
                           <option key={ index } value={ item } >{ item }</option>
                           )
                           }
@@ -188,15 +196,40 @@ const Profile = (props) => {
                         <label for="mtrprofession">Height</label>
                       </div>
                     </div> */}
-                    <div class="col-md-6 col-sm-6 col-9">
+                    {/* <div class="col-md-6 col-sm-6 col-9">
                       <div className="form-group">
                         <input type="number" name='weight' value={ values.weight } onChange={handleChange} classNameName="form-control" required />
                         <label for="mtrprofession">Weight</label>
                       </div>
-                    </div>
-                  </div>
-                  <div className="row">
+                    </div> */}
+
                     <div className="col-md-6 col-sm-6 col-9">
+                      <div class="form-group age_rgp">
+                        <label for="weight">Weight</label>
+                        <div class="age_inc_dec">
+                          <input type="button" value="-" data-weight={ values.weight } onClick={ (event,formValues) => {
+                              const weight = parseInt(event.target.dataset.weight) - 1
+                              if(weight >= 40){
+                                setFieldValue('weight',weight)
+                              }
+
+                          } } class="decrease" />
+                          <input type="number" name='weight' 
+                            min='40kg'
+                            max='140kg'
+                            value={ values.weight } onChange={handleChange} classNameName="form-control" required />
+
+                          <input type="button" value="+" data-weight={ values.weight } onClick={ (event,formValues) => {
+                              const weight = parseInt(event.target.dataset.weight) + 1
+                              if(weight <= 140 ){
+                                setFieldValue('weight',weight)
+                              } } } class="increase" />
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  <div className="row">
+                    {/* <div className="col-md-6 col-sm-6 col-9">
                       <div class="form-group">
                         <select onChange={handleChange} name='caste' value={ values.caste } class="operator form-control user_relation" required >
                           <option value selected={true } disabled={ true } >Your Cast</option>
@@ -206,6 +239,12 @@ const Profile = (props) => {
                           )
                           }
                         </select>
+                      </div>
+                    </div> */}
+                    <div className="col-md-6 col-sm-6 col-9">
+                      <div className="form-group">
+                        <input type="text" name='caste'  value={ values.caste } onChange={handleChange} classNameName="form-control" required />
+                        <label for="mtrprofession">caste</label>
                       </div>
                     </div>
                     <div className="col-md-6 col-sm-6 col-9">
@@ -223,6 +262,12 @@ const Profile = (props) => {
                       </div>
                     </div>
                     <div className="col-md-6 col-sm-6 col-9">
+                      <div className="form-group">
+                        <input type="text" name='religion' value={ values.religion } onChange={handleChange} classNameName="form-control" required />
+                        <label for="mtrprofession">Religion</label>
+                      </div>
+                    </div>
+                    {/* <div className="col-md-6 col-sm-6 col-9">
                       <div class="form-group">
                         <select onChange={handleChange} name='religion' value={ values.religion } class="operator form-control user_relation" required >
                           <option value selected={true } disabled={ true } >Your Religion</option>
@@ -233,7 +278,7 @@ const Profile = (props) => {
                           }
                         </select>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div class="row">
                     <div class="col-md-6 col-sm-6 col-9">
@@ -341,9 +386,11 @@ const Profile = (props) => {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* <div class="col-md-6 col-sm-6 col-9">
+
+                   {/* <div class="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
+                      <input type="time" name='time' value={ values.time } onChange={handleChange} classNameName="form-control"  />
+                      <label for="mtrprofession">Time</label>
                     <TimePicker
                         theme='material'
                         time={ values.time }
@@ -352,11 +399,10 @@ const Profile = (props) => {
                           setFieldValue('time',time)
                         }}
                       />`
-                      <input type="time" name='time' value={ values.time } onChange={handleChange} classNameName="form-control"  />
-                      <label for="mtrprofession">Time</label>
+                      
                     </div>
-                  </div> */}
-                 
+                  </div>  */}
+                
                   <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
                 </form>
               </div>
