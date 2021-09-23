@@ -33,9 +33,11 @@ const MotherInfo = (props) => {
       // event.preventDefault()
       axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
         getCompleteStep()
-        // props.history.push('/user-profiles')
-        props.history.push('/')
-        props.history.push(`/user-profiles/{id}`);
+        if(idProps){
+			props.history.push(`/user-profiles/${idProps}`)
+		  }else{
+			props.history.push('/profiles')
+		  }
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
         })
@@ -80,14 +82,14 @@ const MotherInfo = (props) => {
 		  </div>
 		</div>
 		<div className="row">
-		  {/* 
+		  
 		  <div className="col-6 col-md-6 col-sm-6 col-12">
 			<div className="form-group">
 			  <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
 			  <label for="mtrothdtl">Siblings</label>
 			</div>
 		  </div>
-		  */}
+		 
 		  <div className="col-6 col-md-6 col-sm-6 col-12">
 			<div className="form-group">
 			  <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
@@ -121,7 +123,7 @@ const MotherInfo = (props) => {
 			</div>
 		  </div>
 		</div>
-		<button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
+		<button type="submit" className="btn log_reg_btn">{ idProps ? 'Update' : 'Submit'}</button>
 	  </form>
 	  )}}
 	</Formik>

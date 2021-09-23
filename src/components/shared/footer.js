@@ -1,11 +1,14 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = (props) => {
+
     
+
+
 return(
         <>
-            <section className="footer_section">
+            <section className={`footer_section` } >
                 <div className="container">
                 <ul className="list-inline">
                     <li className="list-inline-item foot_menu">
