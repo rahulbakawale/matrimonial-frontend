@@ -143,7 +143,7 @@ const FatherInfo = (props) => {
                 <div className="form-group switch_btn">
                   <h6>Contact Person</h6>
                   <label className="switch">
-                    <Field type="checkbox" name="contact_number" />
+                    <Field type="checkbox" name="contact_person" />
                     <span className="slider round"></span>
                   </label>
                 </div>
