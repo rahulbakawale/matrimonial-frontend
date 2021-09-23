@@ -39,7 +39,12 @@ const DocumentInfo = (props) => {
         axiosInstance.put(`profiles/${id}/documents`,values).then(async(response) =>{ 
             debugger
             const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
-            console.log(result)
+            if(id){
+                props.history.push(`/user-profiles/${id}`)
+              }else{
+                props.history.push('/user-profiles')
+              }            
+              console.log(result)
             debugger
           }).catch((error) =>{
             toast.error(error?.response?.data?.errors)

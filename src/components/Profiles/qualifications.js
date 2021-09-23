@@ -7,12 +7,9 @@ import logoImg from 'assets/images/logo.png'
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik } from 'formik';
 
-
-
-
-
 const QualiFications = (props) => {
-    const id =  props?.match?.params?.id
+   const id = completeStep()?.profile?.id && props?.match?.params?.id
+   //  const id =  props?.match?.params?.id
     const [ education, setEducation ] = useState({})
     useEffect(() => {
       async function onLoad(){
@@ -24,10 +21,12 @@ const QualiFications = (props) => {
     const handleSubmit = (values) => { 
         axiosInstance.put(`/profiles/${id}/educations/`,values).then((response) =>{ 
         getCompleteStep(response.headers)
-            props.history.push('/occupations')
-            props.history.push(`/user-profiles/{id}`);
-            //  props. history.push("/user-profiles/:id", { id });
-            // props.history.push('/user-profiles')
+        debugger
+         if(id){
+              props.history.push(`/user-profiles/${id}`)
+            }else{
+              props.history.push('/occupations')
+          }
         }).catch((error) =>{
         toast.error(error?.response?.data?.errors[0])
         })

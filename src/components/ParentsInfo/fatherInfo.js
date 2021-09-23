@@ -11,7 +11,7 @@ const FatherInfo = (props) => {
   const  idProps  = props?.match?.params?.id
   const { father , setActiveTab } = props
   const id = father.id
-  const [ values,setValues] = useState({contact_person: false,father: true, passed_away: false})
+  const [ values,setValues] = useState({contact_person: false, father: true, passed_away: false})
 
     // If not using Form formik  so Use @all code    
 

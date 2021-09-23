@@ -82,27 +82,23 @@ const MotherInfo = (props) => {
 		  </div>
 		</div>
 		<div className="row">
-		  
-		  <div className="col-6 col-md-6 col-sm-6 col-12">
-			<div className="form-group">
-			  <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
-			  <label for="mtrothdtl">Siblings</label>
-			</div>
-		  </div>
-		 
-		  <div className="col-6 col-md-6 col-sm-6 col-12">
-			<div className="form-group">
-			  <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
-			  <label for="mtrothdtl">Contact Number</label>
-			</div>
-		  </div>
-		  <div className="col-6 col-md-6 col-sm-6 col-12">
-			<div className="form-group">
-			  <input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
-			  <label for="mtrothdtl">Other Details</label>
-			</div>
-		  </div>
-		</div>
+              <div className="col-6 col-md-6 col-sm-6 col-12">
+                <div className="form-group">
+                  <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
+                  <label for="mtrothdtl">Siblings</label>
+                </div>
+              </div>
+              <div className="col-6 col-md-6 col-sm-6 col-12">
+                <div className="form-group">
+                  <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
+                  <label for="mtrothdtl">Contact Number</label>
+                </div>
+              </div>
+            </div>
+            <div className="form-group">
+              <input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
+              <label for="mtrothdtl">Other Details</label>
+            </div>
 		<div className="row">
 		  <div className="col-md-12 col-sm-12 col-12">
 			<div className="form-group switch_btn">

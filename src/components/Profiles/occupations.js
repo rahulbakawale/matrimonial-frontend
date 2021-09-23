@@ -39,8 +39,11 @@ const OccupaTions = (props) => {
     const handleSubmit = (values) => {  
     axiosInstance.put(`profiles/${id}/occupations`,values).then((response) =>{ 
         getCompleteStep(response.headers)
-        props.history.push('/documents')
-        props.history.push(`/user-profiles/{id}`);
+        if(id){
+          props.history.push(`/user-profiles/${id}`)
+        }else{
+          props.history.push('/documents')
+        }
         }).catch((error) =>{
         toast.error(error?.response?.data?.errors[0])
         })
@@ -110,7 +113,15 @@ const OccupaTions = (props) => {
                             </select>
                           </div>
                         </div>
-                        <div className="col-md-6 col-sm-6 col-9">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <input type="number" name='salary' value={ values.salary } onChange={handleChange} classNameName="form-control" required />
+                            <label for="mtrprofession">Salary</label>
+                          </div>
+                        </div>
+                        
+                        </div>
+                        {/* <div className="col-md-6 col-sm-6 col-9">
                           <div class="form-group">
                             <select onChange={handleChange} name='designation' value={ values.designation } class="operator form-control user_relation" required >
                               <option value selected={true } disabled={ true } >Your Designation</option>
@@ -121,13 +132,12 @@ const OccupaTions = (props) => {
                               }
                             </select>
                           </div>
-                        </div>
-                      </div>
+                        </div> */}  
                       <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <input type="number" name='salary' value={ values.salary } onChange={handleChange} classNameName="form-control" required />
-                            <label for="mtrprofession">Salary</label>
+                      <div className="col-md-6 col-sm-6 col-9">
+                          <div className="form-group">
+                            <input type="text" name='designation'  value={ values.designation } onChange={handleChange} classNameName="form-control" required />
+                            <label for="mtrprofession">Designation</label>
                           </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-12">

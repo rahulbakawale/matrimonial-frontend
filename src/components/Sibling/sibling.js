@@ -38,7 +38,6 @@ const Sibling = (props) => {
               }else{
                 props.history.push('/')
               }
-
             }).catch((error) =>{
                 toast.error(error?.response?.data?.errors[0])
             })
@@ -61,7 +60,17 @@ const Sibling = (props) => {
                   <h2 class="form_heading">Siblings Details</h2>
                   <Formik
                   enableReinitialize
-                  initialValues={ {sibling, age: '18'} }
+                  initialValues={{sibling, age:'18'} }
+
+                  // initialValues={{
+                  //   sibling: {
+                  //     sibling: 'sibling',
+                  //   },
+                  // }}
+                  // initialValues={{
+                  //   age: ['18'], sibling: ['sibling']
+                  // }}
+
                   validate={values =>
                   {
                   }}
