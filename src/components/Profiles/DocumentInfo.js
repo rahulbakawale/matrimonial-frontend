@@ -10,7 +10,11 @@ import { Formik } from 'formik';
 
 
 const DocumentInfo = (props) => {
-  const id = completeStep()?.profile?.id || props?.match?.params?.id
+//   const id = completeStep()?.profile?.id || props?.match?.params?.id
+const id = completeStep()?.profile?.id
+const checkId=  props?.match?.params?.id
+
+
   const [ document, setDocument ] = useState({})
 
   const [ fileData , setFileData ] = useState(null)
@@ -37,16 +41,15 @@ const DocumentInfo = (props) => {
         const formData = new FormData();
         formData.append('image', fileData);
         axiosInstance.put(`profiles/${id}/documents`,values).then(async(response) =>{ 
-            debugger
+            
             const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
-            if(id){
-                props.history.push(`/user-profiles/${id}`)
+            if(checkId){
+                props.history.push(`/user-profiles/${checkId}`)
               }else{
                 props.history.push('/user-profiles')
               }            
               console.log(result)
-            debugger
-          }).catch((error) =>{
+             }).catch((error) =>{
             toast.error(error?.response?.data?.errors)
           })
       }
@@ -116,7 +119,7 @@ const DocumentInfo = (props) => {
                                             </label>
                                         </div>
                                   }
-                                  <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
+                                  <button type="submit" className="btn log_reg_btn">{ checkId ? 'Update' : 'Submit'}</button>
                               </form>
                           </div>
                       </div>

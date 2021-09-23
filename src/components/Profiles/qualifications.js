@@ -8,11 +8,13 @@ import { getCompleteStep } from 'components/utils/helpers';
 import { Formik } from 'formik';
 
 const QualiFications = (props) => {
-   const id = completeStep()?.profile?.id && props?.match?.params?.id
-   //  const id =  props?.match?.params?.id
+   
+   const id = completeStep()?.profile?.id
+   const checkId=  props?.match?.params?.id
     const [ education, setEducation ] = useState({})
     useEffect(() => {
       async function onLoad(){
+         
          const response = await axiosInstance.get(`/profiles/${ id }`,{timeout: 5000}) 
          setEducation(response.data.education)
       }
@@ -20,10 +22,11 @@ const QualiFications = (props) => {
     },[])
     const handleSubmit = (values) => { 
         axiosInstance.put(`/profiles/${id}/educations/`,values).then((response) =>{ 
+           
         getCompleteStep(response.headers)
-        debugger
-         if(id){
-              props.history.push(`/user-profiles/${id}`)
+        
+         if(checkId){
+              props.history.push(`/user-profiles/${checkId}`)
             }else{
               props.history.push('/occupations')
           }
@@ -136,7 +139,7 @@ const QualiFications = (props) => {
                                  </div>
                               </div>
                               }
-                              <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Save'}</button>
+                              <button type="submit" className="btn log_reg_btn">{ checkId ? 'Update' : 'Save'}</button>
                            </form>
                         </div>
                     </div>

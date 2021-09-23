@@ -9,7 +9,11 @@ import { Formik,Field } from 'formik';
 
 
 const OccupaTions = (props) => {
-  const id = completeStep()?.profile?.id && props?.match?.params?.id
+  // const id = completeStep()?.profile?.id && props?.match?.params?.id
+  const id = completeStep()?.profile?.id 
+  const checkId=  props?.match?.params?.id
+
+
   const [ occupation, setOccupation ] = useState({})
   useEffect(() => {
     async function onLoad(){
@@ -37,10 +41,12 @@ const OccupaTions = (props) => {
     //   }
     
     const handleSubmit = (values) => {  
+      
     axiosInstance.put(`profiles/${id}/occupations`,values).then((response) =>{ 
+      
         getCompleteStep(response.headers)
-        if(id){
-          props.history.push(`/user-profiles/${id}`)
+        if(checkId){
+          props.history.push(`/user-profiles/${checkId}`)
         }else{
           props.history.push('/documents')
         }
@@ -164,7 +170,7 @@ const OccupaTions = (props) => {
                           </label>
                         </div>
                       </div>
-                      <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
+                      <button type="submit" className="btn log_reg_btn">{ checkId ? 'Update' : 'Submit'}</button>
                     </form>
                   </div>
                 </div>
