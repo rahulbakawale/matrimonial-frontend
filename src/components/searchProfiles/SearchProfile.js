@@ -18,7 +18,7 @@ const SearchProfile = (props) => {
           const response = await axiosInstance.get(`/search`,{timeout: 5000})
           setsearch(response.data)
           setSearchResult(response.data.results)
-     
+          
         } catch(e) {
           alert(e);
         }
