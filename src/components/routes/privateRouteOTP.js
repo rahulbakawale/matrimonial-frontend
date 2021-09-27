@@ -4,13 +4,13 @@ import { isLogin } from '../utils/helpers';
 
 
 const PrivateRouteOTP = ({component: Component, ...rest}) => {
-    return (
-        <Route {...rest} render={props => (
-            isLogin() ?
-                <Component {...props} />
-            : <Redirect to="/" />
-        )} />
-    );
+  return (
+    <Route {...rest} render={props => (
+      isLogin() ?
+      <Component {...props} />
+      : <Redirect to="/" />
+    )} />
+  );
 };
 
 export default PrivateRouteOTP;

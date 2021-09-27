@@ -1,16 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-
- const Home = (props) => {
+const Home = (props) => {
   const handleClick = () =>{
     localStorage.clear();
     props.history.push('/')
-
-
-  }
+    }
     return(
-      <button type="submit" className="btn query_btn" onClick={handleClick}>Logout</button>
-    );
-  };
+    <button type="submit" className="btn query_btn" onClick={handleClick}>Logout</button>
+  );
+};
      
- export default Home 
+export default Home 
