@@ -4,12 +4,13 @@ import { toast } from 'react-toastify';
 import logoImg from 'assets/images/logo.png';
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
-import axiosInstance from '../../axiosInstance'
-import Select from 'react-select';
+import axiosInstance from '../../axiosInstance';
+import _ from 'lodash';
+import Select from 'react-select'
 
 const Sibling = (props) => {
   const id = props?.location?.pathname?.match(/\d+/) && props?.location?.pathname?.match(/\d+/)[0]
-  const [ sibling, setSibling ] = useState({married: false})
+  const [ sibling, setSibling ] = useState({married: false, age: '18'})
     useEffect(() => { 
       async function getSibling() {
       const result = await axiosInstance.get(`/siblings/${id }`)
@@ -38,6 +39,7 @@ const Sibling = (props) => {
     })
   }      
 }
+debugger
 return(
     <>
       <section class="form_section">
@@ -55,7 +57,8 @@ return(
                 <h2 class="form_heading">Siblings Details</h2>
                 <Formik
                 enableReinitialize
-                initialValues={{sibling, age:'18'} }
+                initialValues={sibling}
+                // initialValues={!_.isEmpty(sibling) ? sibling : { age: '18'} }
                 validate={values =>
                 {
                 }}
