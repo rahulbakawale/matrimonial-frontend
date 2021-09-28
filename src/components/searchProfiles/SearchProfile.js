@@ -8,6 +8,7 @@ import Header from 'components/shared/header';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import _ from 'lodash'
+
 const SearchProfile = (props) => {
   const [ search, setsearch ] = useState({})
   const [ searchResult, setSearchResult ] = useState([])
