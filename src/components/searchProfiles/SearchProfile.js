@@ -1,10 +1,10 @@
 import React, { useRef, useState,useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import userImg from 'assets/images/user.png'
-import weddingImg from 'assets/images/wedding_knot.png'
+import userImg from 'assets/images/user.png';
+import weddingImg from 'assets/images/wedding_knot.png';
 import { getCompleteStep } from 'components/utils/helpers';
-import axiosInstance from '../../axiosInstance'
-import Header from 'components/shared/header'
+import axiosInstance from '../../axiosInstance';
+import Header from 'components/shared/header';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import _ from 'lodash'
@@ -29,12 +29,13 @@ const SearchProfile = (props) => {
   },[])
   const getFavorites = async() => {
     try {
-        const response = await axiosInstance.get(`/favorites`,{timeout: 5000}) 
-        const data = _.concat(response.data.results, response.data.results)
-        setFavorites(data)
-          
+      const response = await axiosInstance.get(`/favorites`,{timeout: 5000}) 
+        setFavorites(response.data.results) 
+        // show duplicate value 
+        // const data = _.concat(response.data.results, response.data.results)
+        // setFavorites(data)   
       } catch(e) {
-        alert(e);
+      alert(e);
     }
   }
   useEffect(() => {
@@ -47,24 +48,24 @@ const SearchProfile = (props) => {
       if(!item.favourite){
         axiosInstance.post(`/profiles/${ id }/favorites`).then((response) => {
         }).then((result) => {
-            setSearchResult((prevState) => {
-                prevState.filter((item) => item.id === id)[0].favourite = true
-                return([
-                  ...prevState
-                ])
-            })
+          setSearchResult((prevState) => {
+            prevState.filter((item) => item.id === id)[0].favourite = true
+            return([
+              ...prevState
+            ])
+          })
           getFavorites()
         });
         }else{
         axiosInstance.delete(`/profiles/${ id }/favorites`).then((response) => {
         }).then((result) => {
-            setSearchResult((prevState) => {
-                prevState.filter((item) => item.id === id)[0].favourite = false
-                return([
-                  ...prevState
-                ])
-            })
-            getFavorites()
+          setSearchResult((prevState) => {
+            prevState.filter((item) => item.id === id)[0].favourite = false
+            return([
+              ...prevState
+            ])
+          })
+          getFavorites()
           });
         }  
       }
