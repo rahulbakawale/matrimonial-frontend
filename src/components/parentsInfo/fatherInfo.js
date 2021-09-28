@@ -59,8 +59,10 @@ const FatherInfo = (props) => {
         handleChange,
         handleSubmit,
         isSubmitting,
+        setFieldValue
         /* and other goodies */
         }) => {
+        const formValues = values
         return(
         <form onSubmit={(event) => handleSubmit(event)}>
           <div className="row">
@@ -78,12 +80,34 @@ const FatherInfo = (props) => {
             </div>
           </div>
           <div className="row">
-            <div className="col-6 col-md-6 col-sm-6 col-12">
+            {/* <div className="col-6 col-md-6 col-sm-6 col-12">
               <div className="form-group">
                 <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
                 <label for="mtrothdtl">Siblings</label>
               </div>
-            </div>
+            </div> */}
+            <div className="col-md-6 col-sm-6 col-9">
+              <div class="form-group age_rgp">
+                <label for="siblings">Siblings</label>
+                <div class="age_inc_dec">
+                  <input type="button" value="-" data-siblings={ values.siblings } onClick={ (event,formValues) => {
+                      const siblings = parseInt(event.target.dataset.siblings) - 1
+                    if(siblings >= 0){
+                      setFieldValue('siblings',siblings)
+                    }
+                  } } class="decrease" />
+                  <input type="number" name='siblings' 
+                    min='0'
+                    max='10'
+                    value={ values.siblings } onChange={handleChange} classNameName="form-control" required />
+                  <input type="button" value="+" data-siblings={ values.siblings } onClick={ (event,formValues) => {
+                    const siblings = parseInt(event.target.dataset.siblings) + 1
+                    if(siblings <= 10 ){
+                      setFieldValue('siblings',siblings)
+                    } } } class="increase" />
+                </div>
+              </div>
+            </div>     
             <div className="col-6 col-md-6 col-sm-6 col-12">
               <div className="form-group">
                 <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
