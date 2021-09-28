@@ -37,3 +37,16 @@ export const getCompleteStep = async(headersData) => {
 export const completeStep = () => {
    return localStorage.getItem('completeStep') && JSON.parse(localStorage.completeStep)
 }
+
+export const convertToCm = ( value ) => {
+    const val = parseFloat(value.replace("'",'.'))
+    return val/0.032808
+
+}
+
+export const convertToFeet = ( value ) => {
+    var realFeet = ((value*0.393700) / 12);
+    var feet = realFeet.toFixed(1).toString()
+    return feet.replace('.',"'")
+
+}

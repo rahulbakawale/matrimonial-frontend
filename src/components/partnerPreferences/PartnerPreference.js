@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Formik,Field } from 'formik';
 import axiosInstance from '../../axiosInstance';
+import { getCompleteStep, convertToCm, convertToFeet } from 'components/utils/helpers';
 import logoImg from 'assets/images/logo.png'
 
 const PartnerPreference = (props) => {
@@ -22,11 +23,20 @@ const PartnerPreference = (props) => {
   }
 
   const handleSubmit = (values) => {   
+    //call salary value Rs
+    values['min_salary'] = values.min_salary.replace(/,/g,'')
+    values['max_salary']= values.max_salary.replace(/,/g,'')
     //pass value for handleSubmit and with help of Formik
     axiosInstance.put('/partner_preferences',values).then((response) =>{  
+      const obj = response.data
+      obj['to_height'] = convertToFeet(obj.to_height)
+      values['to_height'] = convertToCm(values.to_height)
+      obj['from_height'] = convertToFeet(obj.from_height)
+      values['from_height'] = convertToCm(values.from_height)
+    getCompleteStep(response.headers)
     props.history.push('/search-profile')
    }).catch((error) =>{
-    toast.error(error?.response?.data?.errors[0])
+    toast.error(error?.response?.data?.errors)
   })
 }
   console.log(PartnerPreference)    
@@ -118,7 +128,8 @@ const PartnerPreference = (props) => {
                   <select onChange={handleChange} name='to_height' value={ values.to_height } class="operator form-control user_relation" required >
                     <option value selected={true } disabled={ true } >To Height</option>
                     {
-                    ["4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=> 
+                    //["5","6","7"].map((item,index)=>
+                    ["4","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5"].map((item,index)=> 
                     <option key={ index } value={ item } >{ item }</option>
                     )
                     }
@@ -130,7 +141,9 @@ const PartnerPreference = (props) => {
                   <select onChange={handleChange} name='from_height' value={ values.from_height } class="operator form-control user_relation" required >
                     <option value selected={true } disabled={ true } >From Height</option>
                     {
-                    ["4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=> 
+                     ["5","6","7"].map((item,index)=>
+                    // ["4ft' 0in","4ft '1in","4ft '2in","4ft '3in","4ft '4in","4ft' 5in","4ft' 6in","4ft '7in","4ft' 8in","4ft '9in","4ft' 10in","4ft' 11in","5ft' 0in","5ft' 1in","5ft' 2in","5ft' 3in","5ft' 4in","5fit' 5in","5fit' 6in","5fit' 7in","5fit' 8in","5fit' 9in","6fit' 0in","6fit' 1in","6fit' 2in","6fit' 3in","6fit' 4in","6fit' 5in",].map((item,index)=> 
+                    // ["4'0","1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=>  
                     <option key={ index } value={ item } >{ item }</option>
                     )
                     }
@@ -138,8 +151,8 @@ const PartnerPreference = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div class="col-md-6 col-sm-6 col-9">
+             {/* <div className="row">
+                 <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
                     <input type="number" name='min_salary' value={ values.min_salary } onChange={handleChange} classNameName="form-control" required />
                     <label for="mtrprofession">Min Salary</label>
@@ -151,7 +164,32 @@ const PartnerPreference = (props) => {
                     <label for="mtrprofession">Max Salary</label>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              <div className="row">
+                <div class="col-md-6 col-sm-6 col-9">
+                  <div className="form-group">
+                    <input type="text" name='min_salary' value={ values.min_salary } onChange={(event) => {
+                        var vl = event.target.value
+                        vl = vl.replace(/,/g,'')
+                        const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
+                        setFieldValue('min_salary',val)
+                      }} classNameName="form-control" required />
+                    <label for="mtrprofession"> Min Salary (Annual in Rupees) </label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-9">
+                  <div className="form-group">
+                    <input type="text" name='max_salary' value={ values.max_salary } onChange={(event) => {
+                        var vl = event.target.value
+                        vl = vl.replace(/,/g,'')
+                        const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
+                        debugger
+                        setFieldValue('max_salary',val)
+                      }} classNameName="form-control" required />
+                    <label for="mtrprofession"> Max Salary (Annual in Rupees) </label>
+                  </div>
+                </div>
+              </div> 
               <div className="row">
                 <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
@@ -159,7 +197,7 @@ const PartnerPreference = (props) => {
                     <label for="mtrprofession"> Your Religion</label>
                   </div>
                 </div>
-                <div class="col-md-6 col-sm-6 col-9">
+                  <div class="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
                       <input type="text" name='caste' value={ values.caste } onChange={handleChange} classNameName="form-control" required />
                       <label for="mtrprofession"> Caste</label>
