@@ -128,7 +128,7 @@ return(
                 <p> <b>Designation:</b> {profile?.occupation?.designation } </p>
               </div>
               <div class='row'>
-                <p> <b>Salary :</b> {profile?.occupation?.salary} lakh </p>
+                <p> <b>Salary :</b> {profile?.occupation?.salary} </p>
               </div>
               <div class='row'>
                 <p> <b>Located Abroad :</b> {profile?.occupation?.located_abroad?.getString()}</p>

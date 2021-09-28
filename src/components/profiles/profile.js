@@ -6,6 +6,7 @@ import { completeStep, convertToCm, convertToFeet } from 'components/utils/helpe
 import axiosInstance from '../../axiosInstance';
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
+import _ from 'lodash'
 import TimePicker from 'react-times';
 import 'react-times/css/material/default.css'
 // import { getCompleteStep, truncateString } from 'components/utils/helpers'
@@ -93,7 +94,7 @@ const Profile = (props) => {
       <Formik
         enableReinitialize
         // initialValues={profile}
-        initialValues={profile || { age: '18', caste:'Thakur', religion:'Hindu', weight:'40'} }
+        initialValues={!_.isEmpty(profile) ? profile :  { age: '18', caste:'Thakur', religion:'Hindu', weight:'40'} }
         validate={values =>
         {
         }}
@@ -131,7 +132,7 @@ const Profile = (props) => {
                   }}
                 />`   
               </div>
-                <div class="row">
+              <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
                     <input type="text" name='name' value={ values.name } onChange={handleChange} classNameName="form-control" required />
@@ -145,7 +146,7 @@ const Profile = (props) => {
                   </div>
                 </div>
               </div>
-                <div className="row">
+              <div className="row">
                 <div class="col-md-6 col-sm-6 col-9">
                   <div class="form-group">
                     <input type="date" name='dob' value={ values.dob } onChange={handleChange} classNameName="form-control" required />
@@ -175,41 +176,41 @@ const Profile = (props) => {
                   </div>
                 </div>
               </div>
-                <div className="row">
+              <div className="row">
                 <div className="col-md-6 col-sm-6 col-9">
-                    <div class="form-group">
-                      <select onChange={handleChange} name='height' value={ values.height } class="operator form-control user_relation" required >
-                        <option value selected={true } disabled={ true } >Select Height</option>
-                        {
-                        ["4ft' 0in","4ft '1in","4ft '2in","4ft '3in","4ft '4in","4ft' 5in","4ft' 6in","4ft '7in","4ft' 8in","4ft '9in","4ft' 10in","4ft' 11in","5ft' 0in","5ft' 1in","5ft' 2in","5ft' 3in","5ft' 4in","5fit' 5in","5fit' 6in","5fit' 7in","5fit' 8in","5fit' 9in","6fit' 0in","6fit' 1in","6fit' 2in","6fit' 3in","6fit' 4in","6fit' 5in",].map((item,index)=> 
-                        <option key={ index } value={ item } >{ item }</option>
-                        )
-                        }
-                      </select>
-                    </div>
+                  <div class="form-group">
+                    <select onChange={handleChange} name='height' value={ values.height } class="operator form-control user_relation" required >
+                      <option value selected={true } disabled={ true } >Select Height</option>
+                      {
+                      ["4ft' 0in","4ft '1in","4ft '2in","4ft '3in","4ft '4in","4ft' 5in","4ft' 6in","4ft '7in","4ft' 8in","4ft '9in","4ft' 10in","4ft' 11in","5ft' 0in","5ft' 1in","5ft' 2in","5ft' 3in","5ft' 4in","5fit' 5in","5fit' 6in","5fit' 7in","5fit' 8in","5fit' 9in","6fit' 0in","6fit' 1in","6fit' 2in","6fit' 3in","6fit' 4in","6fit' 5in",].map((item,index)=> 
+                      <option key={ index } value={ item } >{ item }</option>
+                      )
+                      }
+                    </select>
                   </div>
-                  <div className="col-md-6 col-sm-6 col-9">
-                    <div class="form-group age_rgp">
-                      <label for="weight">Weight</label>
-                        <div class="age_inc_dec">
-                          <input type="button" value="-" data-weight={ values.weight } onClick={ (event,formValues) => {
-                            const weight = parseInt(event.target.dataset.weight) - 1
-                            if(weight >= 40){
-                              setFieldValue('weight',weight)
-                            } } } class="decrease" />
-                          <input type="number" name='weight' 
-                          min='40kg'
-                          max='140kg'
-                          value={ values.weight } onChange={handleChange} classNameName="form-control" required />
-                          <input type="button" value="+" data-weight={ values.weight } onClick={ (event,formValues) => {
-                            const weight = parseInt(event.target.dataset.weight) + 1
-                            if(weight <= 140 ){
-                              setFieldValue('weight',weight)
-                            } } } class="increase" />
-                        </div>
+                </div>
+                <div className="col-md-6 col-sm-6 col-9">
+                  <div class="form-group age_rgp">
+                    <label for="weight">Weight</label>
+                      <div class="age_inc_dec">
+                        <input type="button" value="-" data-weight={ values.weight } onClick={ (event,formValues) => {
+                          const weight = parseInt(event.target.dataset.weight) - 1
+                          if(weight >= 40){
+                            setFieldValue('weight',weight)
+                          } } } class="decrease" />
+                        <input type="number" name='weight' 
+                        min='40kg'
+                        max='140kg'
+                        value={ values.weight } onChange={handleChange} classNameName="form-control" required />
+                        <input type="button" value="+" data-weight={ values.weight } onClick={ (event,formValues) => {
+                          const weight = parseInt(event.target.dataset.weight) + 1
+                          if(weight <= 140 ){
+                            setFieldValue('weight',weight)
+                          } } } class="increase" />
                       </div>
                     </div>
                   </div>
+                </div>
                 <div className="row">
                   <div className="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
