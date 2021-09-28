@@ -77,6 +77,7 @@ const OccupaTions = (props) => {
         handleChange,
         handleSubmit,
         isSubmitting,
+        setFieldValue
         /* and other goodies */
         }) => {
         return(
@@ -114,12 +115,24 @@ const OccupaTions = (props) => {
                         </select>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    {/* <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
                         <input type="number" name='salary' value={ values.salary } onChange={handleChange} classNameName="form-control" required />
                         <label for="mtrprofession">Salary</label>
                       </div>
-                    </div> 
+                    </div>  */}
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <input type="text" name='salary' value={ values.salary } onChange={(event) => {
+                          var vl = event.target.value
+                          vl = vl.replace(/,/g,'')
+                          const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
+                          debugger
+                          setFieldValue('salary',val)
+                        }} classNameName="form-control" required />
+                         <label for="mtrprofession">Salary (Annual in Rupees) </label>
+                      </div>
+                    </div>
                   </div>
                   <div class="row">
                   <div className="col-md-6 col-sm-6 col-9">
