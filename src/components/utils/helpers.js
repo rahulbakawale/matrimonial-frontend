@@ -18,6 +18,7 @@ export const currentProfile= () => {
 export const truncateString = (length,value) => {
     return value.substring(0, length) + '...';
 }
+
 export const getCompleteStep = async(headersData) => {
     let res;
     if(headersData){

@@ -80,13 +80,13 @@ const FatherInfo = (props) => {
             </div>
           </div>
           <div className="row">
-            {/* <div className="col-6 col-md-6 col-sm-6 col-12">
+            <div className="col-6 col-md-6 col-sm-6 col-12">
               <div className="form-group">
                 <input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
                 <label for="mtrothdtl">Siblings</label>
               </div>
-            </div> */}
-            <div className="col-md-6 col-sm-6 col-9">
+            </div>
+            {/* <div className="col-md-6 col-sm-6 col-9">
               <div class="form-group age_rgp">
                 <label for="siblings">Siblings</label>
                 <div class="age_inc_dec">
@@ -107,7 +107,7 @@ const FatherInfo = (props) => {
                     } } } class="increase" />
                 </div>
               </div>
-            </div>     
+            </div>      */}
             <div className="col-6 col-md-6 col-sm-6 col-12">
               <div className="form-group">
                 <input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />

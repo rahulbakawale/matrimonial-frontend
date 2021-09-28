@@ -22,7 +22,8 @@ const OccupaTions = (props) => {
 
     },[])
 
-    const handleSubmit = (values) => {     
+    const handleSubmit = (values) => {  
+      values['salary'] = values.salary.replace(/,/g,'')
       axiosInstance.put(`profiles/${id}/occupations`,values).then((response) =>{ 
         getCompleteStep(response.headers)
         if(checkId){
