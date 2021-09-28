@@ -15,9 +15,10 @@ const Profile = (props) => {
   const [ profile, setProfile ] = useState({})
   const [ values,setValues] = useState({  manglik: false, divorced: false, disable: false})
     useEffect(() => {
-      getCompleteStep()
+      // getCompleteStep()
       async function onLoad() {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
+          getCompleteStep(response.headers)
           const obj = response.data
           obj['height'] = convertToFeet(obj.height)
           setProfile(obj)
@@ -43,6 +44,7 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
 
   axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
+    debugger
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))

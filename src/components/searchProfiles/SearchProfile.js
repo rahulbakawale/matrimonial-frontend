@@ -2,6 +2,7 @@ import React, { useRef, useState,useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import userImg from 'assets/images/user.png'
 import weddingImg from 'assets/images/wedding_knot.png'
+import { getCompleteStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance'
 import Header from 'components/shared/header'
 import Carousel from 'react-multi-carousel';
@@ -16,9 +17,10 @@ const SearchProfile = (props) => {
       async function onLoad() {
         try {
           const response = await axiosInstance.get(`/search`,{timeout: 5000})
+          getCompleteStep(response.headers)
           setsearch(response.data)
           setSearchResult(response.data.results)
-          
+
         } catch(e) {
           alert(e);
         }

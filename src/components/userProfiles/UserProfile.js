@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import userImg from 'assets/images/user.png';
+import { getCompleteStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance'
 import Header from 'components/shared/header'
 
@@ -44,7 +45,8 @@ const UserProfile = (props) => {
     useEffect(() => {
       async function onLoad() {
         try {
-        const response = await axiosInstance.get(`/profiles`,{timeout: 5000})  
+        const response = await axiosInstance.get(`/profiles`,{timeout: 5000})
+          getCompleteStep(response.headers)  
           setProfile(response.data[ 0 ])
         } catch(e) {
           alert(e);

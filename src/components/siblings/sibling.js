@@ -31,7 +31,7 @@ const Sibling = (props) => {
       if(id){
         props.history.push(`/user-profiles/${id}`)
       }else{
-        props.history.push('/')
+        props.history.push('/user-profiles')
       }
     }).catch((error) =>{
       toast.error(error?.response?.data?.errors[0])
@@ -80,7 +80,7 @@ return(
                   <input type="text" name='name' value={ values.name } onChange={handleChange} classNameName="form-control" required />
                   <label for="mtrprofession"> Sibling Name</label>
                 </div>
-                  <div className="col-6 col-md-6 col-sm-6 col-12">
+                  {/* <div className="col-6 col-md-6 col-sm-6 col-12">
                     <div class="select2-results__option">
                         <Select
                           className="basic-single"
@@ -95,9 +95,9 @@ return(
                           options={[{label: 'Doctor',value: 'Doctor'},{label: 'Engineer',value: 'Engineer'},{label: 'Advocate',value: 'Advocate'},{label: 'Student',value: 'Student'},{label: 'Banker',value: 'Banker'},{label: 'Other',value: 'Other'},]}
                         />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="row">
-                    {/* <div className="col-6 col-md-6 col-sm-6 col-12">
+                    <div className="col-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
                         <select onChange={handleChange} name='profession' value={ values.profession } class="operator form-control user_relation" required >
                           <option value selected={true } disabled={ true } >Profession</option>
@@ -108,7 +108,7 @@ return(
                           }
                         </select>
                       </div>
-                    </div> */}
+                    </div> 
                     <div className="col-md-6 col-sm-6 col-9">
                       <div class="form-group age_rgp">
                         <label for="age">Age</label>

@@ -27,6 +27,7 @@ const DocumentInfo = (props) => {
       formData.append('image', fileData);
       axiosInstance.put(`profiles/${id}/documents`,values).then(async(response) =>{ 
       getCompleteStep(response.headers)
+      // debugger
       const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
       if(checkId){
           props.history.push(`/user-profiles/${checkId}`)
@@ -35,7 +36,7 @@ const DocumentInfo = (props) => {
         }            
         console.log(result)
       }).catch((error) =>{
-        toast.error(error?.response?.data?.errors[0])
+        toast.error(error?.response?.data?.errors)
     })
   } 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../axiosInstance'
-// import { getCompleteStep } from 'components/utils/helpers'
+import { getCompleteStep } from 'components/utils/helpers'
 
 const Query = (props) => {
   const [ values,setValues] = useState({})
@@ -20,7 +20,7 @@ const Query = (props) => {
       response.data['uid'] = response.headers['uid']
       response.data['client'] = response.headers["client"]
       localStorage.setItem('user',JSON.stringify(response.data))
-      //   getCompleteStep(response.headers)
+      getCompleteStep(response.headers)
       window.location.href = ('/')
     }).catch((error) => {
       toast.error(error?.response?.data?.errors)

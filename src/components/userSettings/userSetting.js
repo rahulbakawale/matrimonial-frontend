@@ -2,6 +2,8 @@ import React, { useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import logoImg from 'assets/images/logo.png';
 import { toast } from 'react-toastify';
+import { getCompleteStep } from 'components/utils/helpers';
+
 import axiosInstance from '../../axiosInstance'
 
 const UserSetting = (props) => {
@@ -21,6 +23,7 @@ const UserSetting = (props) => {
     const handleSubmit = (event) => {   
       event.preventDefault()
       axiosInstance.put('/settings',values).then((response) =>{ 
+        getCompleteStep(response.headers)
         props.history.push('/user-profiles')
       }).catch((error) =>{
         toast.error(error?.response?.data?.errors[0])

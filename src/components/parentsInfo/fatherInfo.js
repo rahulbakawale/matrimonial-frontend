@@ -13,7 +13,7 @@ const FatherInfo = (props) => {
    
   const handleSubmit = (values) => {      
     axiosInstance.put(`/parents/${id}`,values).then((response) =>{  
-      getCompleteStep()
+      getCompleteStep(response.headers)
       setActiveTab('mother')
       }).catch((error) =>{
       toast.error(error?.response?.data?.errors[0])
