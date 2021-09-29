@@ -6,7 +6,7 @@ import { completeStep, convertToCm, convertToFeet } from 'components/utils/helpe
 import axiosInstance from '../../axiosInstance';
 import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
-import _ from 'lodash'
+import _ from 'lodash';
 import TimePicker from 'react-times';
 import 'react-times/css/material/default.css'
 // import { getCompleteStep, truncateString } from 'components/utils/helpers'
@@ -45,7 +45,6 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
 
   axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
-    debugger
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
@@ -94,7 +93,7 @@ const Profile = (props) => {
       <Formik
         enableReinitialize
         // initialValues={profile}
-        initialValues={!_.isEmpty(profile) ? profile :  { age: '18', caste:'Thakur', religion:'Hindu', weight:'40'} }
+        initialValues={!_.isEmpty(profile) ? profile :  { age: '18', caste:'Thakur', religion:'Hindu', weight:'40',sub_caste:'Raghuwanshi'} }
         validate={values =>
         {
         }}

@@ -7,13 +7,13 @@ import logoImg from 'assets/images/logo.png';
 import { getCompleteStep } from 'components/utils/helpers'
 
 const VerifyMobile = (props) => {
-    const [ values,setValues] = useState({})
-    const handleChange = (event) =>{
-      setValues({
-        ...values,
-        [event.target.name]: event.target.value,
-      });
-    }
+  const [ values,setValues] = useState({})
+  const handleChange = (event) =>{
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  }
 
   // useEffect(() => {
   //   async function onLoad() {
@@ -56,37 +56,37 @@ const VerifyMobile = (props) => {
   <>
     <section class="form_section login_form">
       <div class="form_header">
-        <div class="container">
-          <a class="form_logo" href="#">
-          <img src={logoImg} className="img-fluid" alt=""  />
-          </a>
-        </div>
-      </div>
-      <div class="container">
-        <div class="login-reg-panel">
-          <div class="login-info-box" style={{ display: 'none'}}>
-            <h2>Have an account?</h2>
-            <p>Lorem ipsum dolor sit amet</p>
-          <div class="logreg_form">
-            <label id="label-register" for="log-reg-show">Login</label>
-            <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked" />
+          <div class="container">
+            <a class="form_logo" href="#">
+            <img src={logoImg} className="img-fluid" alt=""  />
+            </a>
           </div>
         </div>
-        <div class="register-info-box"><br/><br/><br/>
-          <center ><h1>User Profile</h1></center>
-        </div>
-        <div class="white-panel user_info_form">
-          <div class="login-show">
-            <h2>OTP</h2>
-            <form onSubmit={(event) =>
+        <div class="container">
+          <div class="login-reg-panel">
+          <div class="login-info-box" style={{ display: 'none'}}>
+              <h2>Have an account?</h2>
+              <p>Lorem ipsum dolor sit amet</p>
+            <div class="logreg_form">
+              <label id="label-register" for="log-reg-show">Login</label>
+              <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked" />
+            </div>
+         </div>
+          <div class="register-info-box"><br/><br/><br/>
+            <center ><h1>User Profile</h1></center>
+          </div>
+          <div class="white-panel user_info_form">
+            <div class="login-show">
+              <h2>OTP</h2>
+              <form onSubmit={(event) =>
                 handleSubmit(event)}>
                 <div class="form-group">
                   <input type="text" name='otp' placeolder='Enter OTP' onChange={handleChange} required /> 
                 </div>
                 <button type="submit" className="btn log_reg_btn">Submit</button>
                 <a href="#" onClick={generateOtp} >Resend</a>
-            </form>
-          </div>
+              </form>
+            </div>
           <div class="white-panel user_info_form">
             <div class="register-show">
               <h2>USER PROFILE</h2>
@@ -96,8 +96,8 @@ const VerifyMobile = (props) => {
       </div>
     </div>
   </section>
-  </>
-  )
+</>
+)
 }
 
 export default withRouter(VerifyMobile)

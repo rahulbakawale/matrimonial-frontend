@@ -128,7 +128,6 @@ const OccupaTions = (props) => {
                           var vl = event.target.value
                           vl = vl.replace(/,/g,'')
                           const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
-                          debugger
                           setFieldValue('salary',val)
                         }} classNameName="form-control" required />
                          <label for="mtrprofession">Salary (Annual in Rupees) </label>
@@ -136,7 +135,7 @@ const OccupaTions = (props) => {
                     </div>
                   </div>
                   <div class="row">
-                  <div className="col-md-6 col-sm-6 col-9">
+                    <div className="col-md-6 col-sm-6 col-9">
                       <div className="form-group">
                         <input type="text" name='designation'  value={ values.designation } onChange={handleChange} classNameName="form-control" required />
                         <label for="mtrprofession">Designation</label>

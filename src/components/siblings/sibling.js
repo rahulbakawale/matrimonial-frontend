@@ -39,8 +39,7 @@ const Sibling = (props) => {
     })
   }      
 }
-debugger
-return(
+  return(
     <>
       <section class="form_section">
         <div className="form_header">
