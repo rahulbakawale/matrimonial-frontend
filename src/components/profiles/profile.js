@@ -19,7 +19,6 @@ const Profile = (props) => {
       // getCompleteStep()
       async function onLoad() {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
-          getCompleteStep(response.headers)
           const obj = response.data
           obj['height'] = convertToFeet(obj.height)
           setProfile(obj)
@@ -33,6 +32,8 @@ const Profile = (props) => {
   const createProfile = (values) =>{
     values['height'] = convertToCm(values.height)
     axiosInstance.post(`/profiles`,values).then((response) =>{ 
+      getCompleteStep(response.headers)
+
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
@@ -45,6 +46,8 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
 
   axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
+    getCompleteStep(response.headers)
+
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
