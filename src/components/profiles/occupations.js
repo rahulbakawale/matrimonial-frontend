@@ -16,15 +16,17 @@ const OccupaTions = (props) => {
     useEffect(() => {
       async function onLoad(){
         const response = await axiosInstance.get(`/profiles/${ id }`,{timeout: 5000}) 
-        setOccupation(response.data.occupation)
+        const occupationData = { ...response.data.occupation }
+        occupationData['salary'] =  occupationData.salary &&  parseInt(occupationData.salary)?.toLocaleString('hi')
+        setOccupation(occupationData)
       }
       onLoad()
 
     },[])
 
     const handleSubmit = (values) => {  
-      values['salary'] = values.salary.replace(/,/g,'')
-      // values['salary'] = values.salary && parseInt(values.salary)?.toLocaleString('hi') 
+      // values['salary'] = values.salary.replace(/,/g,'')
+      values['salary'] = values.salary && parseInt(values.salary.replace(/,/g,''))
 
       axiosInstance.put(`profiles/${id}/occupations`,values).then((response) =>{ 
         getCompleteStep(response.headers)
