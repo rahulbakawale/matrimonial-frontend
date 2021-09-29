@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import userImg from 'assets/images/user.png';
-import { getCompleteStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance'
 import Header from 'components/shared/header'
 
@@ -46,7 +45,6 @@ const UserProfile = (props) => {
       async function onLoad() {
         try {
         const response = await axiosInstance.get(`/profiles`,{timeout: 5000})
-          getCompleteStep(response.headers)  
           setProfile(response.data[ 0 ])
         } catch(e) {
           alert(e);
@@ -128,7 +126,7 @@ return(
                 <p> <b>Designation:</b> {profile?.occupation?.designation } </p>
               </div>
               <div class='row'>
-                <p> <b>Salary :</b> {profile?.occupation?.salary} </p>
+                <p> <b>Salary :</b> Rs.{profile?.occupation?.salary && parseInt(profile?.occupation?.salary)?.toLocaleString('hi')} P/A </p>
               </div>
               <div class='row'>
                 <p> <b>Located Abroad :</b> {profile?.occupation?.located_abroad?.getString()}</p>
