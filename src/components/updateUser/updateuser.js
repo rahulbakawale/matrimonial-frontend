@@ -45,7 +45,7 @@ const UpdateUser = (props) => {
       <div class="container">
         <div class="login-reg-panel">
           <div class="login-info-box" style={{ display: 'block !important'}}><br/><br/><br/>
-          <h1>OTP Verifyed</h1>
+          <h1>OTP Verified</h1>
           <div class="logreg_form">
         </div>
       </div>

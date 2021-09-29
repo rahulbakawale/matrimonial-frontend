@@ -83,20 +83,18 @@ const VerifyMobile = (props) => {
                 <div class="form-group">
                   <input type="text" name='otp' placeolder='Enter OTP' onChange={handleChange} required /> 
                 </div>
-                <button type="submit" className="btn log_reg_btn">Submit</button>
                 <a href="#" onClick={generateOtp} >Resend</a>
+                <button type="submit" className="btn log_reg_btn">Submit</button>
               </form>
             </div>
-          <div class="white-panel user_info_form">
             <div class="register-show">
               <h2>USER PROFILE</h2>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</>
+    </section>
+  </>
 )
 }
 

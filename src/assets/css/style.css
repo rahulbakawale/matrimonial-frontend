@@ -10,7 +10,11 @@ body {
 }
 /* .main-section{ 
   /* margin-bottom: 45px; */
-
+  
+/* fixed isuue parent page  */
+.tab-content{
+  margin-top: 22px;
+}
 .container{
   width: inherit !important;
 }
@@ -1818,7 +1822,7 @@ body.modal-open {
 
 .query_btn {
   display: block;
-  color: #fff !important;
+  color: #fd9003 !important;
   padding: 5px 35px;
   border-radius: 30px;
   margin: 15px auto;
