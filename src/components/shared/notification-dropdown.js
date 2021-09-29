@@ -1,5 +1,4 @@
 import React,{ useState, useEffect } from 'react';
-import { getCompleteStep } from 'components/utils/helpers';
 import { withRouter, Link} from 'react-router-dom';
 import userImg from 'assets/images/user.png';
 import axiosInstance from '../../axiosInstance'
@@ -11,7 +10,6 @@ const NotificationDropDown = () => {
     async function onLoad() {
       try {
         const response = await axiosInstance.get(`/notifications`,{timeout: 5000}) 
-        getCompleteStep(response.headers)
         setCount(response.data.results.length) 
         const notifications = response.data.results?.splice(0,6)
         setNotifications(notifications)

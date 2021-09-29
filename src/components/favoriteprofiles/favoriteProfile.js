@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import userImg from 'assets/images/user.png';
-import { getCompleteStep } from 'components/utils/helpers';
 import Header from 'components/shared/header';
 import axiosInstance from '../../axiosInstance'
 
@@ -23,7 +22,6 @@ const [ favorites, setfavorites ] = useState([])
 const handleUnFav = (event, item) =>{
   const { profile: { id } } = item
     axiosInstance.delete(`/profiles/${ id }/favorites`,{timeout: 10000}).then((response) => {
-      getCompleteStep(response.headers)
     }).then((result) => {
       setfavorites((prevState) => {
         const newState = prevState.filter((fav) => fav?.id !== item?.id)

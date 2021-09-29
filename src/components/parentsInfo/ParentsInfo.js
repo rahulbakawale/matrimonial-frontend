@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import MotherInfo from './motherInfo';
 import FatherInfo  from './fatherInfo';
 import logoImg from 'assets/images/logo.png';
-import { getCompleteStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance'
 
 
@@ -13,7 +12,6 @@ const ParentsInfo = () =>{
     useEffect(() => {
     async function fetchData() {
       const response =  await axiosInstance.get('/parents')
-      getCompleteStep(response.headers)
       const father = response.data.filter((item) => item.father)[0]
       const mother = response.data.filter((item) => item.mother)[0]
       setFather(father)

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, Link} from 'react-router-dom';
 import userImg from 'assets/images/user.png';
 import Header from 'components/shared/header';
-import { getCompleteStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance'
 
 const Notification = (props) => {
@@ -11,7 +10,6 @@ const Notification = (props) => {
       async function onLoad() {
         try {
           const response = await axiosInstance.get(`/notifications`,{timeout: 5000})
-          getCompleteStep(response.headers)  
           setNotifications(response.data.results)
         } catch(e) {
           alert(e);
