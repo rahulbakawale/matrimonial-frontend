@@ -30,7 +30,9 @@ const LandingPage = () => {
               <a className="nav-link hvr-grow" href="javascript:;">Home</a>
             </li>
             <li className="menu_link">
-              <a className="nav-link hvr-grow" href="javascript:;">About Us</a>
+              {/* <a className="nav-link hvr-grow" href="javascript:;">About Us</a> */}
+              <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a>
+
             </li>
             <li className="menu_link">
               <a className="nav-link hvr-grow" href="javascript:;">FAQ</a>

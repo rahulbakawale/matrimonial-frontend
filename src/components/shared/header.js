@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom';
-import logoImg from 'assets/images/logo.png'
+import logoImg from 'assets/images/logo.png';
+import Query from '../query/query';
 import NotificationDropDown from './notification-dropdown';
 
 const Header = (props) => {
@@ -21,7 +22,8 @@ const Header = (props) => {
                 <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
               </li>
               <li class="menu_link">
-                <a class="nav-link hvr-grow" href="javascript:;">About Us</a>
+                <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a>
+                {/* <a class="nav-link hvr-grow" href="javascript:;">About Us</a> */}
               </li>
               <li class="menu_link">
                 <a class="nav-link hvr-grow" href="javascript:;">FAQ</a>
@@ -33,6 +35,7 @@ const Header = (props) => {
                 <NotificationDropDown />       
               </li>
             </ul>
+            <Query/>
           </div>
         </div>
       </nav>
