@@ -40,7 +40,8 @@ export const completeStep = () => {
 }
 
 export const convertToCm = ( value ) => {
-    const val = parseFloat(value.replace("'",'.'))
+    const digits = value.match(/\d/g);
+    const val = parseFloat(`${digits[0]}.${digits[1]}`)
     return val/0.032808
 
 }
@@ -48,6 +49,6 @@ export const convertToCm = ( value ) => {
 export const convertToFeet = ( value ) => {
     var realFeet = ((value*0.393700) / 12);
     var feet = realFeet.toFixed(1).toString()
-    return feet.replace('.',"'")
-
+    var data =  feet.split('.')
+    return `${data[0] }ft' ${data[1]}in`
 }

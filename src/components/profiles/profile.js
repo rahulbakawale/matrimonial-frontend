@@ -33,7 +33,7 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
     axiosInstance.post(`/profiles`,values).then((response) =>{ 
       getCompleteStep(response.headers)
-
+      debugger
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
@@ -184,6 +184,7 @@ const Profile = (props) => {
                     <select onChange={handleChange} name='height' value={ values.height } class="operator form-control user_relation" required >
                       <option value selected={true } disabled={ true } >Select Height</option>
                       {
+                      //["4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=>  
                       ["4ft' 0in","4ft '1in","4ft '2in","4ft '3in","4ft '4in","4ft' 5in","4ft' 6in","4ft '7in","4ft' 8in","4ft '9in","4ft' 10in","4ft' 11in","5ft' 0in","5ft' 1in","5ft' 2in","5ft' 3in","5ft' 4in","5fit' 5in","5fit' 6in","5fit' 7in","5fit' 8in","5fit' 9in","6fit' 0in","6fit' 1in","6fit' 2in","6fit' 3in","6fit' 4in","6fit' 5in",].map((item,index)=> 
                       <option key={ index } value={ item } >{ item }</option>
                       )
