@@ -16,6 +16,16 @@ function openLoginModal(){
   $('#regs').modal('hide')
   $('#login').fadeIn('show')
 }
+function opneForgotPasswordModal(){
+  $('#login').modal('hide')
+  $('#pwd').fadeIn('show')
+}
+
+function opneResetPasswordModal() {
+  $('#pwd').modal('hide')
+  $('#reset').fadeIn('show')
+}
+
 
 $('.login-reg-panel input[type="radio"]').on('change', function () {
   if ($('#log-login-show').is(':checked')) {
