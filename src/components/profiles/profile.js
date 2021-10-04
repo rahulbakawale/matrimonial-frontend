@@ -325,6 +325,8 @@ const Profile = (props) => {
                       <label className="switch">
                         <Field type="checkbox" name="manglik" />
                         <span className="slider round"></span>
+                        <span class="absolute-no">NO</span>
+
                       </label>
                     </div>
                   </div>
@@ -334,6 +336,7 @@ const Profile = (props) => {
                       <label className="switch">
                         <Field type="checkbox" name="divorced" />
                         <span className="slider round"></span>
+                        <span class="absolute-no">NO</span>
                       </label>
                     </div>
                   </div>
@@ -343,6 +346,7 @@ const Profile = (props) => {
                       <label className="switch">
                         <Field type="checkbox" name="disable" />
                         <span className="slider round"></span>
+                        <span class="absolute-no">NO</span>
                       </label>
                     </div>
                   </div>
