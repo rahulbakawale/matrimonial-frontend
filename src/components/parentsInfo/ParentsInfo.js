@@ -36,8 +36,10 @@ const ParentsInfo = () =>{
           <div className="user_info_form">
             <h2 className="form_heading">Parents Info</h2>
               <div className="tile" id="tile-1">
-                <ul className="nav nav-tabs nav-justified" role="tablist">
-                  <li className="nav-item">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                  {/* <div class="slider"></div> */}
+                  {/* <div className="slider" style={ {left: '0px', width: '345px' }} ></div> */}
+                  <li class="nav-item">
                     <a className={`nav-link ${activeTab ==='father' && 'active'}`} onClick={() => setActiveTab('father') } id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
                     Father</a>
                   </li>
@@ -59,9 +61,10 @@ const ParentsInfo = () =>{
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </section>
-    </>
+  </>
+
   )
 }
 

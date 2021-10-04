@@ -10,6 +10,7 @@ body {
 }
 
 /* button YES NO CSS start */
+
 .ques {
   color: darkslateblue;
 }
@@ -44,7 +45,7 @@ body {
   width: 45px;
   left: 2px;
   bottom: 2px;
-  background-color: darkslategrey;
+  background-color: rgb(240, 71, 14);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
   -webkit-transition: .4s;
@@ -62,6 +63,7 @@ body {
   padding-left: 0;
   color: #fff;
   height: 100px;
+  width: 150px !important;
   border-radius: 100px;
   background-color: #ff6418;
   transform: translateX(-160px);
@@ -105,7 +107,73 @@ input:checked + .slider:before {
   line-height: 55px;
   cursor: pointer;
 }
-/*Close button  YES AND NO CSS */
+
+/*close button  YES AND NO CSS */
+
+/* parents-page css */
+.tile {
+  display: inline-block;
+  width: 100%;
+}
+
+#tile-1 .tab-pae {
+  padding: 15px;
+  height: 80px;
+}
+
+#tile-1 .nav-tabs {
+  position: relative;
+  border: none !important;
+  border-radius: 6px;
+}
+
+#tile-1 .nav-tabs li {
+  margin: 0px !important;
+}
+
+#tile-1 .nav-tabs li a {
+  position: relative;
+  margin: 0px 5px;
+  padding: 8px 0px !important;
+  font-size: 16px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border: none !important;
+  color: #eee;
+  background: rgba(0, 0, 0, .3) !important;
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+}
+
+#tile-1 .nav-tabs a:hover {
+  border: none;
+}
+
+/* #tile-1 .slider {
+  display: inline-block;
+  width: 30px;
+  height: 4px;
+  border-radius: 3px;
+  background-color: #fd9003;
+  position: absolute;
+  z-index: 1200;
+  bottom: 0;
+  transition: all .4s linear;
+
+} */
+
+#tile-1 .nav-tabs .active {
+  border-bottom: 2px solid #fd900f !important;
+  /* border: none !important; */
+  color: #fd9003 !important;
+}
+
+.user_info_form .tab-content {
+  display: inline-block;
+  width: 100%;
+  margin: 30px auto;
+}
+
+/* close css */
 
 /* .main-section{ 
   /* margin-bottom: 45px; */

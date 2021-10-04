@@ -317,6 +317,7 @@ const PartnerPreference = (props) => {
                     <label className="switch">
                       <Field type="checkbox" name="manglik" />
                       <span className="slider round"></span>
+                      <span class="absolute-no">NO</span>
                     </label>
                   </div>
                 </div>
@@ -326,6 +327,7 @@ const PartnerPreference = (props) => {
                     <label className="switch">
                       <Field type="checkbox" name="divorced" />
                       <span className="slider round"></span>
+                      <span class="absolute-no">NO</span>
                     </label>
                   </div>
                 </div>
@@ -335,6 +337,7 @@ const PartnerPreference = (props) => {
                     <label className="switch">
                       <Field type="checkbox" name='located_abroad'  />
                       <span className="slider round"></span>
+                      <span class="absolute-no">NO</span>
                     </label>
                   </div>
                 </div>
