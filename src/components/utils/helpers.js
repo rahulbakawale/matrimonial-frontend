@@ -35,6 +35,16 @@ export const getCompleteStep = async(headersData) => {
     localStorage.setItem('completeStep',JSON.stringify(res.data))
 }
 
+export const getFeetData = (startft,endft) => {
+    var arr = []
+    for(var i=startft; i<=endft; i++){
+        for(var j=0; j<=11; j++){
+            arr.push(`${i}ft' ${j}in`)
+        }
+    }
+    return arr
+}
+
 export const completeStep = () => {
    return localStorage.getItem('completeStep') && JSON.parse(localStorage.completeStep)
 }

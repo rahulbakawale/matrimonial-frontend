@@ -1,13 +1,33 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Formik,Field } from 'formik';
 import axiosInstance from '../../axiosInstance';
-import { getCompleteStep, convertToCm, convertToFeet } from 'components/utils/helpers';
+import { getCompleteStep, convertToCm, convertToFeet,getFeetData } from 'components/utils/helpers';
+import _ from 'lodash';
 import logoImg from 'assets/images/logo.png'
 
 const PartnerPreference = (props) => {
   const [ values,setValues] = useState({manglik: false, divorced: false, located_abroad:false})
+  const [ preference, setPreference ] = useState({})
+  useEffect(() => {
+    axiosInstance.get('/partner_preferences').then((response) =>{ 
+      const values = { ... response.data }
+      if(!_.isEmpty(values)){
+        values['to_height'] = convertToFeet(values.to_height)
+        values['from_height'] = convertToFeet(values.from_height)
+        values['max_salary'] = values.max_salary && parseInt(values.max_salary)?.toLocaleString('hi') 
+        values['min_salary'] = values.min_salary && parseInt(values.min_salary)?.toLocaleString('hi') 
+        values['family_status'] = values.family_status[0]
+        debugger
+        setPreference(values)
+      }
+     }).catch((error) =>{
+      toast.error(error?.response?.data?.errors)
+    })
+
+  },[])
+  
   const handleRadioChange = (event) => {
     setValues({
       ...values,
@@ -26,13 +46,11 @@ const PartnerPreference = (props) => {
     //call salary value Rs
     values['min_salary'] = values.min_salary.replace(/,/g,'')
     values['max_salary']= values.max_salary.replace(/,/g,'')
+    values['to_height'] = convertToCm(values.to_height)
+    values['from_height'] = convertToCm(values.from_height)
+
     //pass value for handleSubmit and with help of Formik
-    axiosInstance.put('/partner_preferences',values).then((response) =>{  
-      const obj = response.data
-      obj['to_height'] = convertToFeet(obj.to_height)
-      values['to_height'] = convertToCm(values.to_height)
-      obj['from_height'] = convertToFeet(obj.from_height)
-      values['from_height'] = convertToCm(values.from_height)
+    axiosInstance.put('/partner_preferences',values).then((response) =>{ 
     getCompleteStep(response.headers)
     props.history.push('/search-profile')
    }).catch((error) =>{
@@ -52,7 +70,7 @@ const PartnerPreference = (props) => {
       </div>
       <Formik
         enableReinitialize
-        initialValues={ {PartnerPreference, to_age: '18',from_age: '18', caste:'Thakur', religion:'Hindu', weight:'40'}}
+        initialValues={!_.isEmpty(preference) ? preference :  { to_age: '18',from_age: '18', caste:'thakur', religion:'hindu'} }
         validate={values =>
         {
         }}
@@ -122,35 +140,32 @@ const PartnerPreference = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="row">
-              <div className="col-md-6 col-sm-6 col-9">
-                <div class="form-group">
-                  <select onChange={handleChange} name='to_height' value={ values.to_height } class="operator form-control user_relation" required >
-                    <option value selected={true } disabled={ true } >To Height</option>
-                    {
-                    //["5","6","7"].map((item,index)=>
-                    ["4","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5"].map((item,index)=> 
-                    <option key={ index } value={ item } >{ item }</option>
-                    )
-                    }
-                  </select>
-                </div>
-              </div>
-              <div className="col-md-6 col-sm-6 col-9">
-                <div class="form-group">
-                  <select onChange={handleChange} name='from_height' value={ values.from_height } class="operator form-control user_relation" required >
-                    <option value selected={true } disabled={ true } >From Height</option>
-                    {
-                     ["5","6","7"].map((item,index)=>
-                    // ["4ft' 0in","4ft '1in","4ft '2in","4ft '3in","4ft '4in","4ft' 5in","4ft' 6in","4ft '7in","4ft' 8in","4ft '9in","4ft' 10in","4ft' 11in","5ft' 0in","5ft' 1in","5ft' 2in","5ft' 3in","5ft' 4in","5fit' 5in","5fit' 6in","5fit' 7in","5fit' 8in","5fit' 9in","6fit' 0in","6fit' 1in","6fit' 2in","6fit' 3in","6fit' 4in","6fit' 5in",].map((item,index)=> 
-                    // ["4'0","1","4'2","4'3","4'4","4'5","4'6","4'7","4'8",,"4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","6'0","6'1","6'2","6'3","6'4","6'5",].map((item,index)=>  
-                    <option key={ index } value={ item } >{ item }</option>
-                    )
-                    }
-                  </select>
+            <div className="row">
+            <div className="col-md-6 col-sm-6 col-9">
+                  <div class="form-group">
+                    <select onChange={handleChange} name='to_height' value={ values.to_height } class="operator form-control user_relation" required >
+                      <option value selected={true } disabled={ true } >Select Height</option>
+                      {
+                      getFeetData(4,6).map((item,index)=> 
+                      <option key={ index } value={ item } >{ item }</option>
+                      )
+                      }
+                    </select>
                   </div>
                 </div>
-              </div>
+                <div className="col-md-6 col-sm-6 col-9">
+                  <div class="form-group">
+                    <select onChange={handleChange} name='from_height' value={ values.from_height } class="operator form-control user_relation" required >
+                      <option value selected={true } disabled={ true } >Select Height</option>
+                      {
+                      getFeetData(4,6).map((item,index)=> 
+                      <option key={ index } value={ item } >{ item }</option>
+                      )
+                      }
+                    </select>
+                  </div>
+                </div>
+            </div>
              {/* <div className="row">
                  <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
