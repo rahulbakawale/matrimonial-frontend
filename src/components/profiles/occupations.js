@@ -166,6 +166,7 @@ const OccupaTions = (props) => {
                       <label className="switch">
                         <Field type="checkbox" name="located_abroad" />
                         <span className="slider round"></span>
+                        <span class="absolute-no">NO</span>
                       </label>
                     </div>
                   </div>

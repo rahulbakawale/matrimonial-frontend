@@ -326,7 +326,6 @@ const Profile = (props) => {
                         <Field type="checkbox" name="manglik" />
                         <span className="slider round"></span>
                         <span class="absolute-no">NO</span>
-
                       </label>
                     </div>
                   </div>

@@ -64,6 +64,7 @@ const UserSetting = (props) => {
                           <label className="switch">
                             <input type="checkbox" name='interested_profile_notification' onChange={ handleRadio }  />
                             <span className="slider round"></span>
+                            <span class="absolute-no">NO</span>
                           </label>
                         </div>
                       </div>
@@ -74,6 +75,7 @@ const UserSetting = (props) => {
                           <label className="switch">
                             <input type="checkbox" name='marked_as_favourite_notification' onChange={ handleRadio }  />
                             <span className="slider round"></span>
+                            <span class="absolute-no">NO</span>
                           </label>
                         </div>
                       </div>
@@ -83,6 +85,7 @@ const UserSetting = (props) => {
                           <label className="switch">
                             <input type="checkbox" name='view_profile_notification' onChange={ handleRadio }  />
                             <span className="slider round"></span>
+                            <span class="absolute-no">NO</span>
                           </label>
                         </div>
                       </div>

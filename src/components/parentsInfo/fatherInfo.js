@@ -64,6 +64,7 @@ const FatherInfo = (props) => {
         }) => {
         const formValues = values
         return(
+          
         <form onSubmit={(event) => handleSubmit(event)}>
           <div className="row">
             <div className="col-6 col-md-6 col-sm-6 col-12">
@@ -162,6 +163,7 @@ const FatherInfo = (props) => {
                 <label className="switch">
                   <Field type="checkbox" name="contact_person" />
                   <span className="slider round"></span>
+                  <span class="absolute-no">NO</span>
                 </label>
               </div>
             </div>
@@ -171,6 +173,7 @@ const FatherInfo = (props) => {
                 <label className="switch">
                   <Field type="checkbox" name="passed_away" />
                   <span className="slider round"></span>
+                  <span class="absolute-no">NO</span>
                 </label>
               </div>
             </div>

@@ -160,6 +160,7 @@ const Sibling = (props) => {
                     <label className="switch">
                       <Field type="checkbox" name="married" />
                       <span className="slider round"></span>
+                      <span class="absolute-no">NO</span>
                     </label>
                   </div>
                   <button type="submit" className="btn log_reg_btn">{ id ? 'Update' : 'Submit'}</button>
