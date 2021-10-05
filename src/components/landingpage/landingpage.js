@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Login from '../login/login';
 import Query from '../query/query';
+// import Feedback from '../feedbacks/feedback';
 import Signup from '../signup/signup';
 import logoImg from 'assets/images/logo.png';
 import bannerImg from 'assets/images/banner.jpg';
@@ -35,6 +36,8 @@ const LandingPage = () => {
 
             </li>
             <li className="menu_link">
+            {/* <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="feedback">Feedback</a> */}
+
               <a className="nav-link hvr-grow" href="javascript:;">FAQ</a>
             </li>
             <li className="menu_link">
@@ -191,6 +194,7 @@ const LandingPage = () => {
         </div>
       </div>
     </section>
+    {/* <Feedback /> */}
     <Query />
     <Login />
     <Signup />
