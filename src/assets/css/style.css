@@ -9,6 +9,20 @@ body {
   background-color: #fff;
 }
 
+/* redio button css */
+/* .radio-group label > input[type="checkbox"]:checked {
+  background: orange;
+  height: 33px;
+  padding-left: 24px;
+  border-radius: 69px;
+  border: 1px solid;
+} */
+/* close */
+
+.forgot{
+  color: #ff7e01 !important;
+}
+
 /* button YES NO CSS start */
 
 .ques {
@@ -66,7 +80,7 @@ body {
   height: 100px;
   width: 150px !important;
   /* border-radius: 100px; */
-  background-color:orange;
+  background-color:#fd900f;
   /* background-color: #ff6418; */
   transform: translateX(-160px);
   transition: all 0.4s ease-in-out; 
@@ -1702,7 +1716,9 @@ textarea {
 .slider.round {
   border-radius: 34px;
   border: 1px solid rgb(190, 169, 48);
+  /* margin-right: -12px; */
 }
+
 label {
   position: absolute;
   left: 8px;
@@ -1909,7 +1925,7 @@ body.modal-open {
   top: 0px;
   left: 0;
   width: 100%;
-  color: #d3d3d3;
+  color: black;
   transition: 0.2s all;
   cursor: text;
 }
@@ -1950,8 +1966,14 @@ body.modal-open {
 .query_form textarea:valid ~ label {
   font-size: 14px;
   top: -20px;
-  color: #555;
+  color: black;
 }
+
+
+.modal{
+  margin-left: 67px !important;
+
+} 
 
 .query_modal .modal-title {
   text-align: center;
@@ -1978,7 +2000,7 @@ body.modal-open {
 }
 
 .modal-header .close span {
-  position: absolute;
+  /* position: absolute;
   top: -2px;
   left: 2px;
   font-size: 30px;
@@ -1986,6 +2008,14 @@ body.modal-open {
   font-weight: normal;
   width: 40px;
   height: 40px;
+  opacity: 1; */
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  font-size: 36px;
+  line-height: 51px;
+  font-weight: normal;
+  width: 40px;
   opacity: 1;
 }
 
@@ -2027,7 +2057,7 @@ body.modal-open {
 
 .login_txt a {
 
-  color: #ff9000 !important;
+  color: #ff7e01 !important;
     line-height: 0.5;
     padding: 7px;
 }
