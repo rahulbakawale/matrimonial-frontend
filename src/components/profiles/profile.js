@@ -35,6 +35,7 @@ const Profile = (props) => {
     axiosInstance.post(`/profiles`,values).then((response) =>{ 
       // getCompleteStep(response.headers)
     const obj = completeStep()
+    debugger
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
     props.history.push('/qualifications')
@@ -48,10 +49,9 @@ const Profile = (props) => {
     // getCompleteStep(response.headers)
     
     const obj = completeStep()
+    debugger
     obj['profile'] = response.data
-    
     localStorage.setItem('completeStep',JSON.stringify(obj))
-    
     props.history.push('/user-profiles')
       }).catch((error) =>{
       toast.error(error?.response?.data?.errors[0])
@@ -86,6 +86,7 @@ const Profile = (props) => {
       
   return(
   <>
+
     <section className="form_section">
       <div className="form_header">
         <div className="container">
@@ -97,7 +98,7 @@ const Profile = (props) => {
       <Formik
         enableReinitialize
         // initialValues={profile}
-        initialValues={!_.isEmpty(profile) ? profile :  { age: '18', caste:'Thakur', religion:'Hindu', weight:'40',sub_caste:'Raghuwanshi'} }
+        initialValues={!_.isEmpty(profile) ? profile :  { age: '18', caste:'thakur', religion:'hindu', weight:'40',sub_caste:'raghuwanshi'} }
         validate={values =>
         {
         }}
@@ -117,6 +118,8 @@ const Profile = (props) => {
         }) => {
 
           const formValues = values
+          debugger
+
         return(
         <div class="row">
           <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 col-12">
