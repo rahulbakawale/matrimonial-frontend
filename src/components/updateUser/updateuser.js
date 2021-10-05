@@ -85,6 +85,7 @@ const UpdateUser = (props) => {
               <label class="switch">
               <input type="checkbox" name='can_contact_you' onChange={ handleRadio } required />
               <span class="slider round"></span>
+              <span class="absolute-no">NO</span>
               </label>
             </div>
             <button type="submit" class="btn log_reg_btn">Update</button>

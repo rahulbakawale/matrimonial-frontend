@@ -65,7 +65,8 @@ body {
   height: 100px;
   width: 150px !important;
   border-radius: 100px;
-  background-color: #ff6418;
+  background-color:orange;
+  /* background-color: #ff6418; */
   transform: translateX(-160px);
   transition: all 0.4s ease-in-out; 
 }
@@ -1989,13 +1990,18 @@ body.modal-open {
 
 .query_btn {
   display: block;
-  color: #fd9003 !important;
+  color:white;
   padding: 5px 35px;
   border-radius: 30px;
   margin: 15px auto;
-  /*background: linear-gradient(45deg, rgba(255, 111, 0, 1) 0%, rgba(255, 144, 0, 1) 52%);*/
-  background: linear-gradient(35deg, rgb(53 156 205) 0%, rgb(60 197 205) 52%);
+  background: linear-gradient(
+45deg
+, #eee 0%, #eee 52%);
+  background: linear-gradient(
+35deg
+, #ffc107 0%, #ff9306 52%);
   transition: .5s all ease-in-out;
+
 }
 
 .query_btn:hover {
