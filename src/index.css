@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.react-multi-carousel-track li {
+  width: 230px !important
+}
+.react-multi-carousel-track li .item{
+  width: 200px
+}

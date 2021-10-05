@@ -5,6 +5,16 @@
   display: inline-block;
 }
 
+/* redio button css */
+.radio-group label > input[type="checkbox"]:checked {
+  background: orange;
+  height: 33px;
+  padding-left: 24px;
+  border-radius: 69px;
+  border: 1px solid;
+}
+/* close */
+
 .form_logo img {
   width: 200px;
 }
