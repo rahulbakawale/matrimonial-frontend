@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logoImg from 'assets/images/logo.png';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { completeStep, convertToCm, convertToFeet, getFeetData } from 'components/utils/helpers';
+import { completeStep, convertToCm, convertToFeet, getFeetData, getTimeFromString } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 // import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
@@ -21,7 +21,7 @@ const Profile = (props) => {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
           const obj = response.data
           obj['height'] = convertToFeet(obj.height)
-          obj['time'] = new Date(obj.time).getHours()+':'+new Date(obj.time).getMinutes()
+          obj['time'] = getTimeFromString(obj.time)
           setProfile(obj)
         }).catch((error) =>{
           toast.error(error?.response?.data?.errors[0])
@@ -34,7 +34,6 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
     axiosInstance.post(`/profiles`,values).then((response) =>{ 
       // getCompleteStep(response.headers)
-      debugger
     const obj = completeStep()
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
@@ -47,10 +46,12 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
   axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
     // getCompleteStep(response.headers)
-
+    
     const obj = completeStep()
     obj['profile'] = response.data
+    
     localStorage.setItem('completeStep',JSON.stringify(obj))
+    
     props.history.push('/user-profiles')
       }).catch((error) =>{
       toast.error(error?.response?.data?.errors[0])
@@ -69,7 +70,7 @@ const Profile = (props) => {
     //    });
     //  }
     //  const handleRadio = (event) => {
-    //    //   debugger
+    //    //   
     //      setValues({
     //        ...values,
     //        [event.target.name]: event.target.checked
@@ -258,7 +259,7 @@ const Profile = (props) => {
                 </div>
                 <div className="form-group">
                   <div className="row">
-                    <div className="col-md-3 col-sm-3 col-12">
+                  <div className="col-md-3 col-sm-3 col-12">
                       <h6>Gender</h6>
                     </div>
                     <div className="col-md-9 col-sm-9 col-12">

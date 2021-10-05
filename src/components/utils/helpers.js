@@ -35,6 +35,13 @@ export const getCompleteStep = async(headersData) => {
     localStorage.setItem('completeStep',JSON.stringify(res.data))
 }
 
+export const getTimeFromString = (strTime) => {
+    const time = strTime && strTime.split('T')[1]
+    const splitTime = time?.split(',')
+    return splitTime &&  `${splitTime[0]}:${splitTime[1]}`
+
+}
+
 export const getFeetData = (startft,endft) => {
     var arr = []
     for(var i=startft; i<=endft; i++){
