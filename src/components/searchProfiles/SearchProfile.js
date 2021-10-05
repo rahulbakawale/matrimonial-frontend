@@ -106,7 +106,7 @@ return(
               <div aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <Header />
-                    <li className="breadcrumb-item"><a href="#">Home</a></li>
+                  <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
                     <li className="breadcrumb-item active" aria-current="page">Member</li>
                 </ol>
               </div>
@@ -210,8 +210,8 @@ return(
                     <img src={ userImg } alt="" class="img-fluid" />
                     <div class="inner color-white user_name">
                       <li>
-                        <h5>User Name</h5>
                         <li><span>{item?.profile?.Name}</span></li>
+                        <h5>{item?.profile?.name}</h5>
                       </li>
                     </div>
                   </div>
@@ -219,11 +219,11 @@ return(
                       <img src={ userImg } alt="" class="img-fluid" />
                       <div class="inner color-white user_detail">
                       <ul class="list-unstyled">
-                      <ul className="list-unstyled">
-                      <ul class="list-inline">
-                        <li class="list-inline-item"><span>{item?.profile?.name}<br/>{item?.profile?.gender}</span></li>
-                      </ul>
-                      </ul>
+                        <ul className="list-unstyled">
+                          <ul class="list-inline">
+                            <li class="list-inline-item"><span><h2>{item?.profile?.name}</h2><h4>{item?.profile?.occupation?.company}</h4></span></li>
+                          </ul>
+                        </ul>
                         <Link to={"/favorite-profile"}class="view_link">View Profile</Link>
                       </ul>
                     </div>

@@ -24,7 +24,7 @@ const Login = (props) => {
         getCompleteStep(response.headers)
         window.location.href = '/verifyMobile'
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors)
     })
   }
   return(
@@ -49,8 +49,8 @@ const Login = (props) => {
                   <input type="password" name='password' onChange={handleChange} className="form-control" required />
                   <label for="password">Password</label>
                 </div>
-                <span className="password">
-                  <a className="password" href="javascript:;" data-toggle="modal" data-modal="pwd" onClick={() => window.opneForgotPasswordModal() } >Forgot password?</a>
+                <span className="forgot">
+                  <a className="forgot" href="javascript:;" data-toggle="modal" data-modal="pwd" onClick={() => window.opneForgotPasswordModal() } >Forgot password?</a>
                 </span>
                 <button type="submit" className="btn query_btn">Login</button>
                 <span className="login_txt">New Member to Zodiacs?

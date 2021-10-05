@@ -27,7 +27,7 @@ const Notification = (props) => {
           <h1>Notification Page</h1>
           <div aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
+              <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
               <Link to={`/notification`} class="breadcrumb-item active">
               <i className="breadcrumb-item" ><a href="#">Notification</a></i></Link> 
             </ol>

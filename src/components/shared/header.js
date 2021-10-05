@@ -19,7 +19,7 @@ const Header = (props) => {
           <div class="collapse navbar-collapse" id="mobile_nav">
             <ul class="navbar-nav menubar ml-auto">
               <li class="menu_link active">
-                <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
+                <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
               </li>
               <li class="menu_link">
                 <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a>

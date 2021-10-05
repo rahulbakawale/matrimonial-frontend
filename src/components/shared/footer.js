@@ -1,5 +1,7 @@
-import React from 'react'
-import { withRouter, Link } from 'react-router-dom';
+import React from 'react';
+import Query from '../query/query';
+
+import { withRouter, Link } from 'react-router-dom'
 
 const Footer = (props) => {
   return(
@@ -8,8 +10,9 @@ const Footer = (props) => {
         <div className="container">
           <ul className="list-inline">
             <li className="list-inline-item foot_menu">
-            <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
-            <a href="javascript:;">About Us</a> 
+            <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
+            <a href="javascript:;">About Us</a>
+            {/* <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a> */}
             <a href="javascript:;">FAQ</a> 
             <a href="javascript:;">Contact Us</a> 
             <a href="javascript:;">Privacy Policy</a>
@@ -18,7 +21,9 @@ const Footer = (props) => {
           </ul>
         </div>
       </section>
+      <Query/>
     </>
+    
   )
 }
 

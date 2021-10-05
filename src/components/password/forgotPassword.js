@@ -28,9 +28,10 @@ const ForgotPassword = (props) => {
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Forgot Password</h5>
+            <h6 className="modal-title">Forgot Password</h6>
             <button type="button" className="close align-self-end closemodal">
-              <span aria-hidden="true">&times;</span>
+              {/* <span aria-hidden="true">&times;</span> */}
+              <span aria-hidden="true">×</span>
             </button>
           </div>
           <div className="modal-body mx-0 d-flex flex-column">
