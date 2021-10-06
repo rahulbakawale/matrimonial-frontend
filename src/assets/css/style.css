@@ -19,6 +19,12 @@ body {
 } */
 /* close */
 
+
+.modal-password-title{
+    color: white;
+    margin-left: 57px;
+}
+
 .slider.update.round{
   margin-right: -12px !important;
 }
