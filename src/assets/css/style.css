@@ -19,6 +19,10 @@ body {
 } */
 /* close */
 
+.slider-update-round{
+  margin-right: -12px !important;
+}
+
 .forgot{
   color: #ff7e01 !important;
 }
@@ -195,9 +199,7 @@ input:checked + .slider:before {
   /* margin-bottom: 45px; */
   
 /* fixed isuue parent page  */
-.tab-content{
-  margin-top: 22px;
-}
+
 .container{
   width: inherit !important;
 }
