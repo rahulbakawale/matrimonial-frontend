@@ -88,7 +88,7 @@ return(
                   </div>
                   <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                     <div class="tab-content">
-                      <div class="tab-pane fade in show active" id={`favourite${index}`} role="tabpanel">
+                      <div class="tab-pane fade fav in show active" id={`favourite${index}`} role="tabpanel">
                         <div class="user_detail">
                           <ul class="list-inline">
                             <li class="list-inline-item"><b>Name </b></li>

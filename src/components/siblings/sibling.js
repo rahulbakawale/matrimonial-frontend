@@ -32,7 +32,7 @@ const Sibling = (props) => {
       if(id){
         props.history.push(`/user-profiles/${id}`)
       }else{
-        props.history.push('/user-profiles')
+        props.history.push('/partner-preference')
       }
     }).catch((error) =>{
       toast.error(error?.response?.data?.errors[0])

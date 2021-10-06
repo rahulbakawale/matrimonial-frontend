@@ -20,7 +20,7 @@ const MotherInfo = (props) => {
 		if(idProps){
 			props.history.push(`/user-profiles/${idProps}`)
 		}else{
-			props.history.push('/profiles')
+			props.history.push('/siblings')
 		}
 		}).catch((error) =>{
 		toast.error(error?.response?.data?.errors[0])
