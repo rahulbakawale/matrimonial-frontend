@@ -169,15 +169,6 @@ return(
           <h2>Favourite Members</h2>
         </div>
         <div className="owl-nav">
-          <button type="button" onClick={ () => {
-            favRef.prev()
-          }}  role="presentation" className="owl-prev">
-            <span aria-label="Previous">‹</span></button>
-          <button onClick={ () => {
-            favRef.next()
-          }}  type="button" role="presentation" className="owl-next">
-            <span aria-label="Next">›</span>
-          </button> 
         </div>
         <Carousel
           additionalTransfrom={0}
@@ -235,6 +226,10 @@ return(
           })}
         </Carousel >
       </section>
+      {/* <a id="btntotop" className="show" onClick={ () => window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      }) } ></a> */}
     </>
   )
 }
