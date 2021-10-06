@@ -21,6 +21,7 @@ const PartnerPreference = (props) => {
         values['family_status'] = values.family_status[0]
         values['to_age'] = values.to_age || 18
         values['from_age'] = values.from_age || 18
+        debugger
         setPreference(values)
       }
      }).catch((error) =>{
@@ -49,13 +50,12 @@ const PartnerPreference = (props) => {
     values['max_salary']= values.max_salary.replace(/,/g,'')
     values['to_height'] = convertToCm(values.to_height)
     values['from_height'] = convertToCm(values.from_height)
-
     //pass value for handleSubmit and with help of Formik
     axiosInstance.put('/partner_preferences',values).then((response) =>{ 
     getCompleteStep(response.headers)
     props.history.push('/profiles')
    }).catch((error) =>{
-    toast.error(error?.response?.data?.errors)
+    toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
   })
 }
   console.log(PartnerPreference)    

@@ -18,7 +18,7 @@ const ForgotPassword = (props) => {
     axiosInstance.post('/auth/forgot',values).then(async(response) =>{
         window.opneResetPasswordModal()
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0] )
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   
@@ -28,7 +28,7 @@ const ForgotPassword = (props) => {
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h6 className="modal-title">Forgot Password</h6>
+            <h6 className="modal-password-title">Forgot Password</h6>
             <button type="button" className="close align-self-end closemodal">
               {/* <span aria-hidden="true">&times;</span> */}
               <span aria-hidden="true">×</span>
