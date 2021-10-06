@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { completeStep, convertToCm, convertToFeet, getFeetData, getTimeFromString } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
-// import { getCompleteStep } from 'components/utils/helpers';
+import { getCompleteStep } from 'components/utils/helpers';
 import { Formik,Field } from 'formik';
 import _ from 'lodash';
 import TimePicker from 'react-times';
@@ -16,7 +16,7 @@ const Profile = (props) => {
   const [ profile, setProfile ] = useState({})
   const [ values,setValues] = useState({  manglik: false, divorced: false, disable: false})
   useEffect(() => {
-      // getCompleteStep()
+    getCompleteStep()
       async function onLoad() {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
           const obj = response.data
@@ -33,7 +33,7 @@ const Profile = (props) => {
   const createProfile = (values) =>{
     values['height'] = convertToCm(values.height)
     axiosInstance.post(`/profiles`,values).then((response) =>{ 
-      // getCompleteStep(response.headers)
+      getCompleteStep(response.headers)
     const obj = completeStep()
     debugger
     obj['profile'] = response.data
@@ -46,7 +46,7 @@ const Profile = (props) => {
   const updateProfile = (values) => {
     values['height'] = convertToCm(values.height)
   axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
-    // getCompleteStep(response.headers)
+     getCompleteStep(response.headers)
     
     const obj = completeStep()
     debugger

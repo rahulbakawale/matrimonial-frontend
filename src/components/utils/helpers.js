@@ -67,5 +67,5 @@ export const convertToFeet = ( value ) => {
     var realFeet = ((value*0.393700) / 12);
     var feet = realFeet.toFixed(1).toString()
     var data =  feet.split('.')
-    return `${data[0] }ft' ${data[1]}in`
+    return value === null ? "4ft' 0in" : `${data[0] }ft' ${data[1]}in`
 }
