@@ -19,7 +19,8 @@ const PartnerPreference = (props) => {
         values['max_salary'] = values.max_salary && parseInt(values.max_salary)?.toLocaleString('hi') 
         values['min_salary'] = values.min_salary && parseInt(values.min_salary)?.toLocaleString('hi') 
         values['family_status'] = values.family_status[0]
-        debugger
+        values['to_age'] = values.to_age || 18
+        values['from_age'] = values.from_age || 18
         setPreference(values)
       }
      }).catch((error) =>{
@@ -52,7 +53,7 @@ const PartnerPreference = (props) => {
     //pass value for handleSubmit and with help of Formik
     axiosInstance.put('/partner_preferences',values).then((response) =>{ 
     getCompleteStep(response.headers)
-    props.history.push('/search-profile')
+    props.history.push('/profiles')
    }).catch((error) =>{
     toast.error(error?.response?.data?.errors)
   })
@@ -198,7 +199,7 @@ const PartnerPreference = (props) => {
                         var vl = event.target.value
                         vl = vl.replace(/,/g,'')
                         const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
-                        debugger
+                        
                         setFieldValue('max_salary',val)
                       }} classNameName="form-control" required />
                     <label for="mtrprofession"> Max Salary (Annual in Rupees) </label>
