@@ -29,44 +29,45 @@ const UpdateUser = (props) => {
       //localStorage.setItem('user',JSON.stringify(response.data))
       props.history.push('/parents-info')
       }).catch((error) => {
-        toast.error(error?.response?.data?.errors[0])
+        toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
+
     }) 
   }
   return(
   <>
-    <section class="form_section login_form">
-      <div class="form_header">
-        <div class="container">
-          <a class="form_logo" href="#">
+    <section className="form_section login_form">
+      <div className="form_header">
+        <div className="container">
+          <a className="form_logo" href="#">
           <img src={logoImg} className="img-fluid" alt=""  />
           </a>
         </div>
       </div>
-      <div class="container">
-        <div class="login-reg-panel">
-          <div class="login-info-box" style={{ display: 'block !important'}}><br/><br/><br/>
+      <div className="container">
+        <div className="login-reg-panel">
+          <div className="login-info-box" style={{ display: 'block !important'}}><br/><br/><br/>
           <h1>OTP Verified</h1>
-          <div class="logreg_form">
+          <div className="logreg_form">
         </div>
       </div>
-      <div class="register-info-box" style={{display: 'none'}}>
+      <div className="register-info-box" style={{display: 'none'}}>
         <h2>Don't have an account?</h2>
         <p>Lorem ipsum dolor sit amet</p>
-        <div class="logreg_form">
+        <div className="logreg_form">
           <label id="label-login" for="log-login-show">Register</label>
           <input type="radio" name="active-log-panel" id="log-login-show" />
         </div>
       </div>
-      <div class="white-panel user_info_form right-log">
-        <div class="login-show">
+      <div className="white-panel user_info_form right-log">
+        <div className="login-show">
           <h2>Update User profile</h2>
           <form onSubmit={(event) =>
             handleSubmit(event)} >
-            <div class="form-group">
-              <input type="text" name='name' placeHolder='Profile Name' onChange={handleChange} class="form-control" required />
+            <div className="form-group">
+              <input type="text" name='name' placeHolder='Profile Name' onChange={handleChange} className="form-control" required />
             </div>
-            <div class="form-group">
-              <select onChange={handleChange} name='your_relation' class="operator form-control user_relation" required >
+            <div className="form-group">
+              <select onChange={handleChange} name='your_relation' className="operator form-control user_relation" required >
                 <option value selected={true } disabled={ true } >Your Relation</option>
                 {
                 ["myself", "father", "mother", "brother", "sister", "cousine", "relative", "friend", "other"].map((item,index)=> 
@@ -76,19 +77,20 @@ const UpdateUser = (props) => {
               </select>
             </div>
             { values.your_relation === 'other' && 
-              <div class="form-group">
-                <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} class="form-control" required />
+              <div className="form-group">
+                <input type="text" name='other_relation' placeholder='Other Relation' onChange={handleChange} className="form-control" required />
               </div>
             }
-            <div class="form-group switch_btn">
+            <div className="form-group switch_btn">
               <h6>Can Contact You</h6>
-              <label class="switch">
+              <label className="switch">
                 <input type="checkbox" name='can_contact_you' onChange={ handleRadio } required />
-                <span class="slider round"></span>
-                <span class="absolute-no">NO</span>
+                <span className="slider updatte round"></span>
+                <span className=""></span>
+                <span className="absolute-no">NO</span>
               </label>
             </div>
-            <button type="submit" class="btn log_reg_btn">Update</button>
+            <button type="submit" className="btn log_reg_btn">Update</button>
           </form>
         </div>
       </div>

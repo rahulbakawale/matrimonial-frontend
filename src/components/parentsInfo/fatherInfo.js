@@ -16,7 +16,7 @@ const FatherInfo = (props) => {
       getCompleteStep(response.headers)
       setActiveTab('mother')
       }).catch((error) =>{
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   console.log('FATHER',FatherInfo)   

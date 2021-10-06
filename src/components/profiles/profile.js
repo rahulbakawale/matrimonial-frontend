@@ -24,7 +24,7 @@ const Profile = (props) => {
           obj['time'] = getTimeFromString(obj.time)
           setProfile(obj)
         }).catch((error) =>{
-          toast.error(error?.response?.data?.errors[0])
+          toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
         })
       }
       id && onLoad()
@@ -40,7 +40,7 @@ const Profile = (props) => {
     localStorage.setItem('completeStep',JSON.stringify(obj))
     props.history.push('/qualifications')
       }).catch((error) =>{
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   const updateProfile = (values) => {
@@ -54,7 +54,7 @@ const Profile = (props) => {
     localStorage.setItem('completeStep',JSON.stringify(obj))
     props.history.push('/user-profiles')
       }).catch((error) =>{
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   const handleSubmit = (values) => {   

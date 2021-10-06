@@ -25,7 +25,7 @@ const Sibling = (props) => {
         props.history.push('/')
         props.history.push(`/user-profiles/{id}`);
       }).catch((error) =>{
-        toast.error(error?.response?.data?.errors[0])
+        toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
       })
     }else{
     axiosInstance.post('/siblings',values).then((response) =>{ 

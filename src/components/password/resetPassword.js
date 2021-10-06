@@ -29,7 +29,7 @@ const ResetPassword = (props) => {
         // localStorage.setItem('user',JSON.stringify(response.data))
         window.location.href = '/'
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   return(

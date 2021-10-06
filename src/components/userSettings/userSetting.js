@@ -26,7 +26,7 @@ const UserSetting = (props) => {
         getCompleteStep(response.headers)
         props.history.push('/user-profiles')
       }).catch((error) =>{
-        toast.error(error?.response?.data?.errors[0])
+        toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     });
   }
 

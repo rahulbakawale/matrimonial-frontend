@@ -18,7 +18,7 @@ const ForgotPassword = (props) => {
     axiosInstance.post('/auth/forgot',values).then(async(response) =>{
         window.opneResetPasswordModal()
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0] )
     })
   }
   

@@ -16,7 +16,7 @@ const CompleteStep = (props) => {
     event.preventDefault()
     axiosInstance.put(`/completed_steps`,values).then((response) =>{ 
       }).catch((error) =>{
-        toast.error(error?.response?.data?.errors[0])
+        toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
   return(

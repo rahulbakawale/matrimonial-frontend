@@ -23,7 +23,7 @@ const MotherInfo = (props) => {
 			props.history.push('/siblings')
 		}
 		}).catch((error) =>{
-		toast.error(error?.response?.data?.errors[0])
+		toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
 		})
 	}
 	console.log('mohert',MotherInfo) 

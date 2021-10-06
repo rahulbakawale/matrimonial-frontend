@@ -36,7 +36,7 @@ const DocumentInfo = (props) => {
         }            
         console.log(result)
       }).catch((error) =>{
-        toast.error(error?.response?.data?.errors)
+        toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   } 
 
