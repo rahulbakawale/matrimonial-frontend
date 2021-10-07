@@ -11,7 +11,8 @@ export const currentUser = () => {
 }
 
 export const currentProfile= () => {
-    return localStorage.profile && JSON.parse(localStorage.profile)
+    return localStorage.profile && JSON.parse(localStorage.profile) ||
+    localStorage.completeStep && JSON.parse(localStorage.completeStep)?.profile
 
 }
 
