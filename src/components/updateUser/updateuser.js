@@ -24,8 +24,8 @@ const UpdateUser = (props) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    axiosInstance.put('/users',values).then((response) =>{   
-      getCompleteStep(response.headers)
+    axiosInstance.put('/users',values).then(async(response) =>{   
+      await getCompleteStep(response.headers)
       //localStorage.setItem('user',JSON.stringify(response.data))
       props.history.push('/parents-info')
       }).catch((error) => {
@@ -35,7 +35,7 @@ const UpdateUser = (props) => {
   }
   return(
   <>
-    <section className="form_section login_form">
+    <section className="form_section login_form update-user">
       <div className="form_header">
         <div className="container">
           <a className="form_logo" href="#">
@@ -85,7 +85,7 @@ const UpdateUser = (props) => {
               <h6>Can Contact You</h6>
               <label className="switch">
                 <input type="checkbox" name='can_contact_you' onChange={ handleRadio } required />
-                <span className="slider updatte round"></span>
+                <span className="slider update-user-slider round"></span>
                 <span className=""></span>
                 <span className="absolute-no">NO</span>
               </label>

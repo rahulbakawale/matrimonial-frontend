@@ -20,12 +20,17 @@ body {
 /* close */
 
 
+a {
+  color: #fd900f;
+  text-decoration: none;
+  background-color: transparent;
+}
 .modal-password-title{
     color: white;
     margin-left: 57px;
 }
 
-.slider.update.round{
+.update-user .update-user-slider{
   margin-right: -12px !important;
 }
 
