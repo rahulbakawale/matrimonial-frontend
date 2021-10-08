@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Formik,Field } from 'formik';
 import axiosInstance from '../../axiosInstance';
-import { getCompleteStep, convertToCm, convertToFeet,getFeetData } from 'components/utils/helpers';
+import { getCompleteStep, convertToCm, convertToFeet,getFeetData, handleAmount} from 'components/utils/helpers';
 import _ from 'lodash';
 import logoImg from 'assets/images/logo.png'
 
@@ -182,7 +182,7 @@ const PartnerPreference = (props) => {
                 </div>
               </div> */}
               <div className="row">
-                <div class="col-md-6 col-sm-6 col-9">
+                {/* <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
                     <input type="text" name='min_salary' value={ values.min_salary } onChange={(event) => {
                         var vl = event.target.value
@@ -192,8 +192,24 @@ const PartnerPreference = (props) => {
                       }} classNameName="form-control" required />
                     <label for="mtrprofession"> Min Salary (Annual in Rupees) </label>
                   </div>
+                </div> */}
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <input type="text" name='min_salary' value={ values.min_salary } onChange={(event) => {
+                      handleAmount(event.target.value, setFieldValue, 'min_salary')
+                    }} classNameName="form-control" required />
+                      <label for="mtrprofession"> Min Salary (Annual in Rupees) </label>
+                  </div>
                 </div>
-                <div class="col-md-6 col-sm-6 col-9">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <input type="text" name='max_salary' value={ values.max_salary } onChange={(event) => {
+                      handleAmount(event.target.value, setFieldValue, 'max_salary')
+                    }} classNameName="form-control" required />
+                      <label for="mtrprofession"> Max Salary (Annual in Rupees) </label>
+                  </div>
+                </div>
+                {/* <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
                     <input type="text" name='max_salary' value={ values.max_salary } onChange={(event) => {
                         var vl = event.target.value
@@ -203,8 +219,8 @@ const PartnerPreference = (props) => {
                         setFieldValue('max_salary',val)
                       }} classNameName="form-control" required />
                     <label for="mtrprofession"> Max Salary (Annual in Rupees) </label>
-                  </div>
-                </div>
+                  </div>  
+                </div> */}
               </div> 
               <div className="row">
                 <div class="col-md-6 col-sm-6 col-9">

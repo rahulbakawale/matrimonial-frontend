@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getCompleteStep } from 'components/utils/helpers';
+import { getCompleteStep, handleAmount } from 'components/utils/helpers';
 import { completeStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png';
@@ -28,8 +28,8 @@ const OccupaTions = (props) => {
       // values['salary'] = values.salary.replace(/,/g,'')
       values['salary'] = values.salary && parseInt(values.salary.replace(/,/g,''))
 
-      axiosInstance.put(`profiles/${id}/occupations`,values).then((response) =>{ 
-        getCompleteStep(response.headers)
+      axiosInstance.put(`profiles/${id}/occupations`,values).then(async(response) =>{ 
+        await getCompleteStep(response.headers)
         if(checkId){
           props.history.push(`/user-profiles/${checkId}`)
         }else{
@@ -39,7 +39,6 @@ const OccupaTions = (props) => {
         toast.error(error?.response?.data?.errors &&  error?.response?.data?.errors[0])
         })
       }
-    console.log(OccupaTions)   
     // Use HandleChange & handleRadio if your not using form farmik
     //   const [ values,setValues] = useState({})
     //     const handleChange = (event) =>{
@@ -129,10 +128,8 @@ const OccupaTions = (props) => {
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
                         <input type="text" name='salary' value={ values.salary } onChange={(event) => {
-                          var vl = event.target.value
-                          vl = vl.replace(/,/g,'')
-                          const val = vl ?  parseInt(vl)?.toLocaleString('hi') : ''
-                          setFieldValue('salary',val)
+                         handleAmount(event.target.value, setFieldValue, 'salary')
+                        
                         }} classNameName="form-control" required />
                          <label for="mtrprofession">Salary (Annual in Rupees) </label>
                       </div>

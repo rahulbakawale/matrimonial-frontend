@@ -20,6 +20,16 @@ export const truncateString = (length,value) => {
     return value.substring(0, length) + '...';
 }
 
+export const handleAmount = ( value, setFieldValue, name ) => {
+    var vl = value
+    vl = vl.replace(/,/g,'')
+    const parseValue = parseInt(vl) || 0 
+    if(parseValue <= 10000000){
+      const val = vl ?  parseValue?.toLocaleString('hi') : ''
+      setFieldValue(name,val)
+    }
+}
+
 export const getCompleteStep = async(headersData) => {
     let res;
     if(headersData){
