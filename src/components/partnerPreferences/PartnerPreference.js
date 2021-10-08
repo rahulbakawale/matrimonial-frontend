@@ -21,7 +21,6 @@ const PartnerPreference = (props) => {
         values['family_status'] = values.family_status[0]
         values['to_age'] = values.to_age || 18
         values['from_age'] = values.from_age || 18
-        debugger
         setPreference(values)
       }
      }).catch((error) =>{

@@ -15,7 +15,6 @@ const Signup = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
       axiosInstance.post('/auth',values).then(async(response) =>{
-        debugger
         response.data['access-token'] = response.headers['access-token']
         response.data['uid'] = response.headers['uid']
         response.data['client'] = response.headers["client"]

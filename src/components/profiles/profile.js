@@ -46,9 +46,7 @@ const Profile = (props) => {
     values['height'] = convertToCm(values.height)
   axiosInstance.put(`/profiles/${ id }`,values).then(async(response) =>{ 
      await getCompleteStep(response.headers)
-    
     const obj = completeStep()
-    debugger
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
     props.history.push('/user-profiles')
@@ -116,9 +114,7 @@ const Profile = (props) => {
         /* and other goodies */
         }) => {
 
-          const formValues = values
-          debugger
-
+        const formValues = values
         return(
         <div class="row">
           <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 col-12">
