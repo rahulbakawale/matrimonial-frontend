@@ -30,8 +30,8 @@ const ForgotPassword = (props) => {
           <div className="modal-header">
             <h6 className="modal-password-title">Forgot Password</h6>
             <button type="button" className="close align-self-end closemodal">
-              {/* <span aria-hidden="true">&times;</span> */}
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">&times;</span>
+              {/* <span aria-hidden="true">×</span> */}
             </button>
           </div>
           <div className="modal-body mx-0 d-flex flex-column">

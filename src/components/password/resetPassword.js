@@ -37,7 +37,7 @@ const ResetPassword = (props) => {
     {/* <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document"> */}
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Forgot Password</h5>
+            <h5 className="modal-title">Reset Password </h5>
             <button type="button" className="close align-self-end closemodal">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -53,7 +53,7 @@ const ResetPassword = (props) => {
                   <input type="password" name='password' onChange={handleChange} className="form-control" required />
                   <label for="password">Password</label>
                 </div>
-                <a href="#" onClick={ resendPassword } >Resend password</a>
+                <a href="resend" onClick={ resendPassword } >Resend password ?</a>
                 <button type="submit" className="btn query_btn">Submit</button> 
               </form>
             </div>

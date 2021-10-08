@@ -9,9 +9,7 @@ const Sibling = ({ item,indexData }) => {
   <div class={`col-lg-4 col-md-4 col-sm-6 col-12 ${ indexData%3 !== 0 && 'rgt_border'} `}>
     <div class="detail_parent sibling_dtl" data-aos="zoom-in-right" data-aos-duration="1000">
       <p style={{ float: 'right'}}>
-        <Link to={`/siblings/${ item.id }`} >
-          <i className='far fa-edit'/>
-        </Link>
+        <Link to={`/siblings/${item.is}`} class="edit_icon"><i class="far fa-edit"></i></Link>
       </p>
       <ul class="list-unstyled">
         <li>
