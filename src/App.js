@@ -20,6 +20,7 @@ import Notification from 'components/notification/notifications';
 import SearchProfile from 'components/searchProfiles/SearchProfile';
 import FavoriteProfile from 'components/favoriteprofiles/favoriteProfile';
 import CompleteStep from 'components/CompleteStep/CompleteStep';
+import PrivateRouteOTP from 'components/routes/privateRouteOTP';
 import Footer from 'components/shared/footer'
 //import Header from 'components/shared/header'
 //import Login from './components/login/login';
@@ -32,7 +33,6 @@ import Footer from 'components/shared/footer'
     Route,
 
   } from "react-router-dom";
-import PrivateRouteOTP from 'components/routes/privateRouteOTP';
 
 const app = (props) => {
   return(
@@ -51,9 +51,10 @@ const app = (props) => {
           <Route  component={Login} path="/login" /> 
           <Route path='/signup' component={signup}  /> 
           <Route exact='true' component={LandingPage} path="/" /> */}
-          <PrivateRoute component={Home} path="/home"  />
+          <Route component={Home} path="/home"  />
+          {/* <PrivateRoutSteps component={VerifyMobile} path="/verifyMobile"  /> */}
           <PrivateRouteOTP restricted={true} component={VerifyMobile} path="/verifyMobile" />
-          <Route component={UpdateUser} path="/updateUser"  />
+          <PrivateRoutSteps component={UpdateUser} path="/updateUser"  />
           <PrivateRoutSteps component={ParentsInfo} path="/parents-info" />
           <PrivateRoute component={ ParentsInfo } path="/user-Parents/:id/edit" />
           <PrivateRoutSteps component={Profile} path="/profiles"  />
@@ -69,7 +70,7 @@ const app = (props) => {
           <PrivateRoutSteps component={Sibling} path="/siblings"  />
           <PrivateRoute component={Sibling} path="/siblings/:id/edit"  />
           <PrivateRoute component={UserSetting} path="/user-setting" />
-          <PrivateRoutSteps component={PartnerPreference} path="/partner-preference" /> 
+          <Route component={PartnerPreference} path="/partner-preference" /> 
           <PrivateRoute component={Notification} path="/notification" />
           <PrivateRoute component={SearchProfile} path="/search-profile" />
           <PrivateRoute component={FavoriteProfile} path="/favorite-profile" />
