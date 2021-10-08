@@ -4,12 +4,19 @@ import { completeStep, isLogin, currentProfile} from '../utils/helpers';
 import { AppRoutes } from 'constants/routes';
 const PrivateRoute = ({component: Component, ...rest}) => {
   const renderRoutes = (props) => {
-  const pathname = props.location.pathname
   const compStep = completeStep()
   const mobileVerified = compStep?.mobile_verified
+    const validate = () => {
+        return compStep?.father_page && compStep?.mother_page && compStep?.partner_preference &&
+        compStep?.profile && compStep?.siblings_page
+    }
     if(isLogin()){
       if(mobileVerified){
-        return (pathname === AppRoutes.QUALIFICATIONS && currentProfile() ) ? <Component {...props} /> : <Redirect to={AppRoutes.PROFILES} />
+        if(validate()){
+          return <Component {...props} />
+        }else{
+          return <Redirect to='/parents-info' />
+        }
       }else{
         return<Redirect to="/verifyMobile" />
       }

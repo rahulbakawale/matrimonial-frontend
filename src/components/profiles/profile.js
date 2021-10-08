@@ -16,7 +16,7 @@ const Profile = (props) => {
   const [ profile, setProfile ] = useState({})
   const [ values,setValues] = useState({  manglik: false, divorced: false, disable: false})
   useEffect(() => {
-    getCompleteStep()
+  getCompleteStep()
       async function onLoad() {
         axiosInstance.get(`/profiles/${id}`,{},{timeout: 5000}).then((response) =>{
           const obj = response.data
