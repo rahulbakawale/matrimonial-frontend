@@ -20,8 +20,8 @@ const Sibling = (props) => {
     },[])
   const handleSubmit = (values) => {
     if(id){
-      axiosInstance.put(`/siblings/${ id }`,values).then((response) =>{ 
-        getCompleteStep(response.headers)
+      axiosInstance.put(`/siblings/${ id }`,values).then(async(response) =>{ 
+        await getCompleteStep(response.headers)
         props.history.push('/')
         props.history.push(`/user-profiles/{id}`);
       }).catch((error) =>{

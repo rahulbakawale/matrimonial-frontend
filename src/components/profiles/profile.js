@@ -32,10 +32,9 @@ const Profile = (props) => {
 
   const createProfile = (values) =>{
     values['height'] = convertToCm(values.height)
-    axiosInstance.post(`/profiles`,values).then((response) =>{ 
-      getCompleteStep(response.headers)
+    axiosInstance.post(`/profiles`,values).then(async(response) =>{ 
+      await getCompleteStep(response.headers)
     const obj = completeStep()
-    debugger
     obj['profile'] = response.data
     localStorage.setItem('completeStep',JSON.stringify(obj))
     props.history.push('/qualifications')
@@ -45,8 +44,8 @@ const Profile = (props) => {
   }
   const updateProfile = (values) => {
     values['height'] = convertToCm(values.height)
-  axiosInstance.put(`/profiles/${ id }`,values).then((response) =>{ 
-     getCompleteStep(response.headers)
+  axiosInstance.put(`/profiles/${ id }`,values).then(async(response) =>{ 
+     await getCompleteStep(response.headers)
     
     const obj = completeStep()
     debugger

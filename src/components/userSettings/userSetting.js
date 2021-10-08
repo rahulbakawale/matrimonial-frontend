@@ -22,8 +22,8 @@ const UserSetting = (props) => {
     }
     const handleSubmit = (event) => {   
       event.preventDefault()
-      axiosInstance.put('/settings',values).then((response) =>{ 
-        getCompleteStep(response.headers)
+      axiosInstance.put('/settings',values).then(async(response) =>{ 
+        await getCompleteStep(response.headers)
         props.history.push('/user-profiles')
       }).catch((error) =>{
         toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])

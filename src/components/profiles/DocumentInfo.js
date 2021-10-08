@@ -26,9 +26,10 @@ const DocumentInfo = (props) => {
     const formData = new FormData();
       formData.append('image', fileData);
       axiosInstance.put(`profiles/${id}/documents`,values).then(async(response) =>{ 
-      getCompleteStep(response.headers)
+      
       // debugger
       const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
+      await getCompleteStep(response.headers)
       if(checkId){
           props.history.push(`/user-profiles/${checkId}`)
         }else{

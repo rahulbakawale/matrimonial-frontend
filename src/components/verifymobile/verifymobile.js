@@ -34,8 +34,8 @@ const VerifyMobile = (props) => {
   
   const handleSubmit = (event) => {
     event.preventDefault()
-    axiosInstance.put('/mobiles/verify',values).then((response) =>{
-      getCompleteStep(response.headers)
+    axiosInstance.put('/mobiles/verify',values).then(async(response) =>{
+      await getCompleteStep(response.headers)
       if(!currentUser().name ){
         props.history.push('/updateUser')
       }else{

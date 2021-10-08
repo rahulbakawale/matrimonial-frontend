@@ -51,8 +51,8 @@ const PartnerPreference = (props) => {
     values['to_height'] = convertToCm(values.to_height)
     values['from_height'] = convertToCm(values.from_height)
     //pass value for handleSubmit and with help of Formik
-    axiosInstance.put('/partner_preferences',values).then((response) =>{ 
-    getCompleteStep(response.headers)
+    axiosInstance.put('/partner_preferences',values).then(async(response) =>{ 
+    await getCompleteStep(response.headers)
     props.history.push('/profiles')
    }).catch((error) =>{
     toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])

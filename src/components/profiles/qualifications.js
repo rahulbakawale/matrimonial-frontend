@@ -21,8 +21,8 @@ const QualiFications = (props) => {
   },[])
 
   const handleSubmit = (values) => { 
-    axiosInstance.put(`/profiles/${id}/educations/`,values).then((response) =>{     
-    getCompleteStep(response.headers)
+    axiosInstance.put(`/profiles/${id}/educations/`,values).then(async(response) =>{     
+    await getCompleteStep(response.headers)
     if(checkId){
       props.history.push(`/user-profiles/${checkId}`)
     }else{

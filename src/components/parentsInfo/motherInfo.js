@@ -15,8 +15,8 @@ const MotherInfo = (props) => {
 
 	const handleSubmit = (values) => {   
 	// event.preventDefault()
-	axiosInstance.put(`/parents/${ id }`,values).then((response) =>{ 
-		getCompleteStep(response.headers)
+	axiosInstance.put(`/parents/${ id }`,values).then(async(response) =>{ 
+		await getCompleteStep(response.headers)
 		if(idProps){
 			props.history.push(`/user-profiles/${idProps}`)
 		}else{

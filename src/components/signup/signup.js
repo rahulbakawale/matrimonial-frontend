@@ -14,12 +14,13 @@ const Signup = (props) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-      axiosInstance.post('/auth',values).then((response) =>{
+      axiosInstance.post('/auth',values).then(async(response) =>{
+        debugger
         response.data['access-token'] = response.headers['access-token']
         response.data['uid'] = response.headers['uid']
         response.data['client'] = response.headers["client"]
         localStorage.setItem('user',JSON.stringify(response.data))
-        getCompleteStep(response.headers)
+        await getCompleteStep(response.headers)
         window.location.href = '/verifyMobile' 
       }).catch((error) =>{
         toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
