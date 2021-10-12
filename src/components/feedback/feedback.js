@@ -40,7 +40,7 @@ const Feedback = (props) => {
             <div className="query_form">
               <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="form-group">
-                  <input type="text" name='content' onChange={handleChange} className="form-control" required />
+                  <input type="text" name='content' onChange={handleChange} className="form-control" textarea />
                   <label for="name">Content</label>
                 </div>   
                 <span className="query">

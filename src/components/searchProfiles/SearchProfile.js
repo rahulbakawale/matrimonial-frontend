@@ -6,7 +6,7 @@ import axiosInstance from '../../axiosInstance';
 import Header from 'components/shared/header';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import _ from 'lodash'
+// import _ from 'lodash'
 
 const SearchProfile = (props) => {
   const [ search, setsearch ] = useState({})
@@ -16,6 +16,7 @@ const SearchProfile = (props) => {
     useEffect(() => {
       async function onLoad() {
         try {
+          debugger
           const response = await axiosInstance.get(`/search`,{timeout: 5000})
           setsearch(response.data)
           setSearchResult(response.data.results)
@@ -45,6 +46,7 @@ const SearchProfile = (props) => {
   const handleFav = (event, item) =>{
     const { id } = item
       if(!item.favourite){
+        debugger
         axiosInstance.post(`/profiles/${ id }/favorites`).then((response) => {
         }).then((result) => {
           setSearchResult((prevState) => {

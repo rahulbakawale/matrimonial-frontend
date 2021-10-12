@@ -24,7 +24,7 @@ const PartnerPreference = (props) => {
         setPreference(values)
       }
      }).catch((error) =>{
-      toast.error(error?.response?.data?.errors)
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
 
   },[])
