@@ -68,9 +68,11 @@ const app = (props) => {
           <PrivateRoute component={ OccupaTions } path="/user-occupation/:id/edit" />
           <PrivateRoute component={ DocumentInfo } path="/user-document/:id/edit" />
           <PrivateRoutSteps component={Sibling} path="/siblings"  />
+          <PrivateRoute component={Sibling} path="/add-siblings"  />
+
           <PrivateRoute component={Sibling} path="/siblings/:id/edit"  />
           <PrivateRoute component={UserSetting} path="/user-setting" />
-          <Route component={PartnerPreference} path="/partner-preference" /> 
+          <PrivateRoutSteps  component={PartnerPreference} path="/partner-preference" /> 
           <PrivateRoute component={Notification} path="/notification" />
           <PrivateRoute component={SearchProfile} path="/search-profile" />
           <PrivateRoute component={FavoriteProfile} path="/favorite-profile" />
