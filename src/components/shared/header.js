@@ -38,7 +38,7 @@ const Header = (props) => {
               <li className="dropdown ntf_btn">
                 <NotificationDropDown />       
               </li>
-              <li className="menu_link">
+              <li className="logout_menu_link">
                 <button type="submit" className="btn query_btn_denger" onClick={handleClick}>Logout</button>
               </li>
             </ul>
