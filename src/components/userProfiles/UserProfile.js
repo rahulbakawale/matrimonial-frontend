@@ -9,7 +9,7 @@ const Sibling = ({ item,indexData }) => {
   <div class={`col-lg-4 col-md-4 col-sm-6 col-12 ${ indexData%3 !== 0 && 'rgt_border'} `}>
     <div class="detail_parent sibling_dtl" data-aos="zoom-in-right" data-aos-duration="1000">
       <p style={{ float: 'right'}}>
-        <Link to={`/siblings/${item.is}`} class="edit_icon"><i class="far fa-edit"></i></Link>
+        <Link to={`/siblings/${item.id}`} class="edit_icon"><i class="far fa-edit"></i></Link>
       </p>
       <ul class="list-unstyled">
         <li>
@@ -18,7 +18,7 @@ const Sibling = ({ item,indexData }) => {
         </li>
         <li> 
           <b>Age :</b>
-          <span>{item?.age}</span>
+          <span>{item?.age} year</span>
         </li>
         <li>
           <b>Gender :</b>
@@ -70,7 +70,7 @@ return(
                     <h3>User Name</h3>
                       <p> <b>Name :</b> { profile.name } </p>
                       <p> <b>Gender :</b> { profile.gender } </p>
-                      <p> <b>Age :</b> { profile.age } </p>
+                      <p> <b>Age :</b> { profile.age } year</p>
                       <p> <b>Caste :</b> { profile.caste }</p>  
                       <p> <b>Complexion :</b> { profile.complexion }</p>
                       <p> <b>Disable :</b> { profile.disable?.getString() } </p>
@@ -83,7 +83,7 @@ return(
       </div>
     </div>
   </div>
-<div class="user_detail">
+  <div class="user_detail">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-4 col-12">
@@ -99,14 +99,14 @@ return(
             {
               profile?.education?.graduation && <>
                 <div class='row'>
-                  <p> <b>Graduation  : </b>{profile?.education?.graduation}, {profile?.education?.graduation_college}, {profile?.education?.graduation_stream} </p>
+                  <p><b> Graduation  : </b>{profile?.education?.graduation}, {profile?.education?.graduation_college}, {profile?.education?.graduation_stream} </p>
                 </div>
               </>
             }
             {
               profile?.education?.post_graduation && <>
                 <div class='row'>
-                  <p> <b>Post Graduation : </b>{profile?.education?.post_graduation}, {profile?.education?.post_graduation_college}, {profile?.education?.post_graduation_stream} </p>
+                  <p><b> Post Graduation : </b>{profile?.education?.post_graduation}, {profile?.education?.post_graduation_college}, {profile?.education?.post_graduation_stream} </p>
                 </div>
               </>
             }
@@ -139,52 +139,52 @@ return(
             </div>
           </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
-<div class="user_family">
+  <div class="user_family">
   <div class=" container">
     <h3> <i class="fas fa-home"></i> Family Detail </h3>
-  <div class="family_info">
+    <div class="family_info">
       <Link to={`user-Parents/${profile.id}/edit`} class="edit_icon"><i class="far fa-edit"></i></Link>
       <div class="parent_info">
         <h5 class="fmly_info_heading">Father's Information</h5>
         <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="detail_parent" data-aos="fade-right" data-aos-duration="1000">
+              <ul class="list-unstyled">
+                <li>
+                  <b>Father Name :</b>
+                  <span>{profile?.father?.name}</span>
+                </li>
+                <li>
+                  <b>Family Status :</b>
+                  <span>{profile?.father?.family_status}</span>
+                </li>
+                <li>
+                  <b>Profession :</b>
+                  <span>{profile?.father?.profession}</span>
+                </li>
+                <li>
+                  <b>Siblings:</b>
+                  <span>{profile?.father?.siblings}</span>
+                </li>
+                <li>
+                  <b>Passed away:</b>
+                  <span>{profile?.father?.passed_away?.getString()}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {
+            profile?.father?.extra_detail  &&
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-              <div class="detail_parent" data-aos="fade-right" data-aos-duration="1000">
-                <ul class="list-unstyled">
-                  <li>
-                    <b>Father Name :</b>
-                    <span>{profile?.father?.name}</span>
-                  </li>
-                  <li>
-                    <b>Family Status :</b>
-                    <span>{profile?.father?.family_status}</span>
-                  </li>
-                  <li>
-                    <b>Profession :</b>
-                    <span>{profile?.father?.profession}</span>
-                  </li>
-                  <li>
-                    <b>Siblings:</b>
-                    <span>{profile?.father?.siblings}</span>
-                  </li>
-                  <li>
-                      <b>Passed away:</b>
-                      <span>{profile?.father?.passed_away?.getString()}</span>
-                  </li>
-                </ul>
+              <div class="about_parent" data-aos="fade-down-left" data-aos-duration="1000">
+                <p><span>{profile?.father?.extra_detail}</span></p>
               </div>
             </div>
-            {
-              profile?.father?.extra_detail  &&
-              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="about_parent" data-aos="fade-down-left" data-aos-duration="1000">
-                  <p><span>{profile?.father?.extra_detail}</span></p>
-                </div>
-              </div>
-            }
-          </div>
+          }
+        </div>
       </div>
       <div class="parent_info">
         <h5 class="fmly_info_heading">Mother's Information</h5>
@@ -217,21 +217,21 @@ return(
             }
           </div>
         </div>
-      <div class="parent_info">
-      <h5 class="fmly_info_heading">Siblings Information: </h5>
-      <Link to='/siblings'><br/>+Add</Link>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="detail_parent">
+        <div class="parent_info">
+          <h5 class="fmly_info_heading">Siblings Information: </h5>
+          <Link to='/add-siblings'><br/>+Add</Link>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="detail_parent">
+              </div>
+            </div>
+            { (profile?.siblings || []).map((item,index) => {
+              return( <Sibling key={ index }indexData={ index+1 } item={ item } />)
+            })}
           </div>
         </div>
-        { (profile?.siblings || []).map((item,index) => {
-          return( <Sibling key={ index }indexData={ index+1 } item={ item } />)
-        })}
       </div>
     </div>
-  </div>
-  </div>
   </div> 
 </section>
 </>
