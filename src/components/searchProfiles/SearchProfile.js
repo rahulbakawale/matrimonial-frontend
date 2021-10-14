@@ -16,7 +16,6 @@ const SearchProfile = (props) => {
     useEffect(() => {
       async function onLoad() {
         try {
-          debugger
           const response = await axiosInstance.get(`/search`,{timeout: 5000})
           setsearch(response.data)
           setSearchResult(response.data.results)
@@ -46,7 +45,6 @@ const SearchProfile = (props) => {
   const handleFav = (event, item) =>{
     const { id } = item
       if(!item.favourite){
-        debugger
         axiosInstance.post(`/profiles/${ id }/favorites`).then((response) => {
         }).then((result) => {
           setSearchResult((prevState) => {
