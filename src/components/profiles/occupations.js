@@ -23,7 +23,7 @@ const OccupaTions = (props) => {
       onLoad()
 
     },[])
-
+  
     const handleSubmit = (values) => {  
       // values['salary'] = values.salary.replace(/,/g,'')
       values['salary'] = values.salary && parseInt(values.salary.replace(/,/g,''))
@@ -144,7 +144,7 @@ const OccupaTions = (props) => {
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div className="form-group">
-                        <input type="text" name='state'  value={ values.state } onChange={handleChange} classNameName="form-control" required />
+                        <input type="text" name='state'  value={ values.state } onChange={handleChange} classNameName="form-control"  />
                         <label for="mtrprofession">State</label>
                       </div>
                     </div>
@@ -152,7 +152,7 @@ const OccupaTions = (props) => {
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-9">
                       <div class="form-group">
-                        <input type="text" name='nationality' value={ values.nationality } onChange={handleChange} classNameName="form-control" required  />
+                        <input type="text" name='nationality' value={ values.nationality } onChange={handleChange} classNameName="form-control"   />
                         <label for="mtrprofession">Nationality</label>
                       </div>
                     </div>
