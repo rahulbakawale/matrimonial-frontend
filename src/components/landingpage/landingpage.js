@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Login from '../login/login';
-import Query from '../query/query';
-// import Feedback from '../feedbacks/feedback';
+// import Query from '../query/query';
+import Feedback from '../feedback/feedback'
 import Signup from '../signup/signup';
 import logoImg from 'assets/images/logo.png';
 import bannerImg from 'assets/images/banner.jpg';
@@ -36,8 +36,6 @@ const LandingPage = () => {
 
             </li>
             <li className="menu_link">
-            {/* <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="feedback">Feedback</a> */}
-
               <a className="nav-link hvr-grow" href="javascript:;">FAQ</a>
             </li>
             <li className="menu_link">
@@ -181,21 +179,21 @@ const LandingPage = () => {
         <div className="row">
           <div className="col-lg-8 col-md-8 col-sm-8 col-12">
             <div className="query_text">
-              <h3>Do You have any Query?</h3>
+              <h3>Do You have any FeedBack?</h3>
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-4 col-12">
             <div className="query_link">
             <li className="menu_link menu_btn">
-              <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">Click Here</a>
+              <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="feedback">Click Here</a>
             </li>
             </div>
           </div>
         </div>
       </div>
     </section>
-    {/* <Feedback /> */}
-    <Query />
+    {/* <Query /> */}
+    <Feedback />
     <Login />
     <Signup />
   </>

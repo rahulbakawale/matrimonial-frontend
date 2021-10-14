@@ -11,7 +11,7 @@ const Feedback = (props) => {
       [event.target.name]: event.target.value,
     });
   }
-
+  
   const handleSubmit = (event) => { 
     event.preventDefault()
     axiosInstance.post('/feedbacks',values).then(async(response) =>{
@@ -38,11 +38,25 @@ const Feedback = (props) => {
           </div>
           <div className="modal-body mx-0 d-flex flex-column">
             <div className="query_form">
+              <div className="form-group">
+                <input type="text" name='content' onChange={handleChange} className="form-control" textarea />
+                <label for="name">Content</label>
+              </div> 
               <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="form-group">
+                  <select onChange={handleChange} name='subject' className="form-control" required >
+                    <option value selected={true } disabled={ true } >Select Subject</option>
+                   {
+                    ['Issue/Bug', 'Functionality Modifications', 'Other'].map((item,index)=> 
+                    <option key={ index } value={ item } >{ item }</option>
+                    )
+                    }
+                  </select>
+                </div>  
+                {/* <div className="form-group">
                   <input type="text" name='content' onChange={handleChange} className="form-control" textarea />
                   <label for="name">Content</label>
-                </div>   
+                </div>    */}
                 <span className="query">
                   <button type="submit" className="btn query_btn">Submit</button>
                 </span>
