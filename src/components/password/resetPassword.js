@@ -16,25 +16,26 @@ const ResetPassword = (props) => {
     e.preventDefault()
     axiosInstance.post('/auth/forgot',values).then(async(response) =>{
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    axiosInstance.post('/auth/reset',values).then(async(response) =>{
+    // axiosInstance.post('/auth/reset',values).then(async(response) =>{
+      axiosInstance.post('/auth/reset',values).then(async(response) =>{
         // response.data['access-token'] = response.headers['access-token']
         // response.data['uid'] = response.headers['uid']
         // response.data['client'] = response.headers["client"]
         // localStorage.setItem('user',JSON.stringify(response.data))
         window.location.href = '/'
       }).catch((error) => {
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0] )
     })
   }
   return(
   <div className="modal query_modal modalizer animate__animated animate__fast" id="reset" tabindex="-1" role="dialog" data-animate-in="zoomIn" data-animate-out="zoomOut">
-    {/* <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document"> */}
+    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Reset Password </h5>
@@ -43,7 +44,7 @@ const ResetPassword = (props) => {
             </button>
           </div>
           <div className="modal-body mx-0 d-flex flex-column">
-            <div className="query_form">
+            <div className="reset_password a">
               <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="form-group">
                 <input type="text" name='mobile' onChange={handleChange} className="form-control" required />
@@ -53,14 +54,14 @@ const ResetPassword = (props) => {
                   <input type="password" name='password' onChange={handleChange} className="form-control" required />
                   <label for="password">Password</label>
                 </div>
-                <a href="resend" onClick={ resendPassword } >Resend password ?</a>
+                <a className="resend-a" onClick={ resendPassword } >Resend password ?</a>
                 <button type="submit" className="btn query_btn">Submit</button> 
               </form>
             </div>
           </div>
         </div>
       </div>
-    // </div>
+    </div>
   )
 }
 
