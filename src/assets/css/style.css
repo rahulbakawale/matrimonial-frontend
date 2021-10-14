@@ -9,6 +9,11 @@ body {
   background-color: #fff;
 }
 
+
+a:hover{
+  color: #e07900!important
+}
+
 /* redio button css */
 /* .radio-group label > input[type="checkbox"]:checked {
   background: orange;
@@ -19,12 +24,12 @@ body {
 } */
 /* close */
 
-
 a {
   color: #fd900f;
   text-decoration: none;
   background-color: transparent;
 }
+
 .modal-password-title{
     color: white;
     margin-left: 57px;
@@ -37,6 +42,7 @@ a {
 .forgot{
   color: #ff7e01 !important;
 }
+
 
 /* button YES NO CSS start */
 
@@ -206,14 +212,11 @@ input:checked + .slider:before {
 
 /* close css */
 
-/* .main-section{ 
-  /* margin-bottom: 45px; */
-  
-/* fixed isuue parent page  */
-
 .container{
   width: inherit !important;
 }
+
+
 
 .switch_btn h6{
   display: inline-block;
@@ -1993,7 +1996,7 @@ body.modal-open {
   margin: auto;
   display: block;
   color: #fff;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 600;
 }
 
@@ -2466,6 +2469,9 @@ body.modal-open {
   .menubar {
     background: transparent;
     padding: 10px 10px 5px;
+  }
+  .menubar .menu_link.active {
+    border: 1px solid red !important;
   }
 
   .menu_btn {
