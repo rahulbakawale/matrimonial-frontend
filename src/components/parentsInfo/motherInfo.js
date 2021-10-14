@@ -82,13 +82,12 @@ const MotherInfo = (props) => {
 							</div>
 						</div>
 					</div>
-					<div className="row">
-						<div className="col-6 col-md-6 col-sm-6 col-12">
+						{/* <div className="col-6 col-md-6 col-sm-6 col-12">
 							<div className="form-group">
 								<input type="number" name='siblings' value={values.siblings} onChange={handleChange} classNameName="form-control" required />
 								<label for="mtrothdtl">Siblings</label>
 							</div>
-						</div>
+						</div> */}
 						{/* <div className="col-md-6 col-sm-6 col-9">
 							<div class="form-group age_rgp">
 								<label for="siblings">Siblings</label>
@@ -111,53 +110,56 @@ const MotherInfo = (props) => {
 								</div>
 							</div>
 						</div> */}
+					<div className="row">
 						<div className="col-6 col-md-6 col-sm-6 col-12">
 							<div className="form-group">
 								<input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
 								<label for="mtrothdtl">Contact Number</label>
 							</div>
 						</div>
-					</div>
-					<div className="form-group">
-						<input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
-						<label for="mtrothdtl">Other Details</label>
-					</div>
-				<div className="row">
-					<div className="col-md-12 col-sm-12 col-12">
-						<div className="form-group switch_btn">
-							<h6>Contact Person</h6>
-							<label className="switch">
-							<Field type="checkbox" name="contact_person" />
-							<span className="slider round"></span>
-							<span class="absolute-no">NO</span>
-							</label>
+						<div className="col-6 col-md-6 col-sm-6 col-12">
+							<div className="form-group">
+								<input type="text" name='extra_detail'  value={values.extra_detail} onChange={handleChange} classNameName="form-control" required />
+								<label for="mtrothdtl">Other Details</label>
+						    </div>
 						</div>
-					</div>
-					<div className="col-md-12 col-sm-12 col-12">
-						<div className="form-group switch_btn">
+					</div>		
+					<div className="row">
+						<div className="col-md-12 col-sm-12 col-12">
+							<div className="form-group switch_btn">
+								<h6>Contact Person</h6>
+								<label className="switch">
+								<Field type="checkbox" name="contact_person" />
+								<span className="slider round"></span>
+								<span class="absolute-no">NO</span>
+								</label>
+							</div>
+						</div>
+						<div className="col-md-12 col-sm-12 col-12">
+							<div className="form-group switch_btn">
+								<h6>Passed Away</h6>
+								<label className="switch">
+								<Field type="checkbox" name="passed_away" />
+								<span className="slider round"></span>
+								<span class="absolute-no">NO</span>
+								</label>
+							</div>
+						</div>
+						{/* <div className="col-md-12 col-sm-12 col-12">
+							<div className="form-group switch_btn">
 							<h6>Passed Away</h6>
-							<label className="switch">
-							<Field type="checkbox" name="passed_away" />
-							<span className="slider round"></span>
-							<span class="absolute-no">NO</span>
-							</label>
-						</div>
-					</div>
-          {/* <div className="col-md-12 col-sm-12 col-12">
-            <div className="form-group switch_btn">
-              <h6>Passed Away</h6>
-              <div class="button r" id="tabbutton">
-                <label className="switch">
-                  <Field type="checkbox" name="passed_away" />
-                  <div class="knobs">
-                    <span className="slider round"></span>
-                  </div>
-                </label>
-                <div class="layer"></div>
-              </div>
-            </div>
-          </div> */}
-				</div>
+							<div class="button r" id="tabbutton">
+								<label className="switch">
+								<Field type="checkbox" name="passed_away" />
+								<div class="knobs">
+									<span className="slider round"></span>
+								</div>
+								</label>
+								<div class="layer"></div>
+							</div>
+							</div>
+						</div> */}
+				  </div>
 				<button type="submit" className="btn log_reg_btn">{ idProps ? 'Update' : 'Submit'}</button>
 			</form>
 			)}}
