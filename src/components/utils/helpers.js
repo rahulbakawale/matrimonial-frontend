@@ -57,7 +57,7 @@ export const getFeetData = (startft,endft) => {
     var arr = []
     for(var i=startft; i<=endft; i++){
         for(var j=0; j<=11; j++){
-            arr.push(`${i}ft' ${j}in`)
+            arr.push(`${i}Feet' ${j}inch`)
         }
     }
     return arr
@@ -78,5 +78,5 @@ export const convertToFeet = ( value ) => {
     var realFeet = ((value*0.393700) / 12);
     var feet = realFeet.toFixed(1).toString()
     var data =  feet.split('.')
-    return value === null ? "4ft' 0in" : `${data[0] }ft' ${data[1]}in`
+    return value === null ? "4Feet' 0inch" : `${data[0] }Feet' ${data[1]}inch`
 }
