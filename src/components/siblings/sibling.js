@@ -7,6 +7,7 @@ import { Formik,Field } from 'formik';
 import axiosInstance from '../../axiosInstance';
 import _ from 'lodash';
 import Select from 'react-select'
+// import { AppRoutes as ROUTES } from 'constants/routes'
 
 const Sibling = (props) => {
   const id = props?.location?.pathname?.match(/\d+/) && props?.location?.pathname?.match(/\d+/)[0]
@@ -20,6 +21,7 @@ const Sibling = (props) => {
     },[])
   const handleSubmit = (values) => {
     if(id){
+      // axiosInstance.put(`${ ROUTES.SIBLING(id) }`,values).then(async(response) =>{ 
       axiosInstance.put(`/siblings/${ id }`,values).then(async(response) =>{ 
         await getCompleteStep(response.headers)
         props.history.push('/')
@@ -28,14 +30,16 @@ const Sibling = (props) => {
         toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
       })
     }else{
-    axiosInstance.post('/siblings',values).then((response) =>{ 
+    axiosInstance.post('/siblings',values).then(async(response) =>{ 
+      await getCompleteStep(response.headers)
       if(id){
         props.history.push(`/user-profiles/${id}`)
       }else{
-        props.history.push('/partner-preference')
+        const path = props.location.pathname === '/add-siblings' ? '/user-profiles' :  '/partner-preference'
+        props.history.push(path)
       }
     }).catch((error) =>{
-      toast.error(error?.response?.data?.errors[0])
+      toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
   }      
 }
