@@ -113,7 +113,9 @@ const MotherInfo = (props) => {
 					<div className="row">
 						<div className="col-6 col-md-6 col-sm-6 col-12">
 							<div className="form-group">
-								<input type="number" name='contact_number' value={values.contact_number} onChange={handleChange} classNameName="form-control" required />
+								<input type="number" name='contact_number' value={values.contact_number} onChange={(event) =>
+                event.target.value.length <= 10 && handleChange(event) 
+               } classNameName="form-control" required />
 								<label for="mtrothdtl">Contact Number</label>
 							</div>
 						</div>
