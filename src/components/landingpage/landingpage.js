@@ -13,12 +13,17 @@ import step2 from 'assets/images/step2.png';
 import step3 from 'assets/images/step3.png';
 import mobileImg from 'assets/images/mobile.png';
 import playStoreImg from 'assets/images/playStore.png'
-
-const LandingPage = () => {
+import { isLogin } from '../utils/helpers'
+const LandingPage = (props) => {
+  const handleClick = () =>{
+    localStorage.clear();
+    props.history.push('/')
+    }
+ 
   return(
   <>
   <nav className="navbar navbar_menu navbar-expand-lg fixed-top" id="sticky">
-     <div className="container">
+    <div className="container">
         <a className="logo" href="#">
           <img src={logoImg} className="img-fluid" alt=""  />
         </a>
@@ -41,12 +46,18 @@ const LandingPage = () => {
             <li className="menu_link">
               <a className="nav-link hvr-grow" href="javascript:;">Contact Us</a>
             </li>
-            <li className="menu_link menu_btn">
+            {
+              isLogin() ?<button type="submit" className="btn query_btn" onClick={handleClick}>Logout</button>
+              : <>
+              <li className="menu_link menu_btn">
               <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="login">Login</a>
             </li>
             <li className="menu_link menu_btn">
               <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="regs">Sign Up</a>
             </li>
+              </>
+            }
+            
           </ul>
         </div>
       </div>
