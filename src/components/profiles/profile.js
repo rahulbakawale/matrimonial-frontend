@@ -32,6 +32,7 @@ const Profile = (props) => {
 
   const createProfile = (values) =>{
     values['height'] = convertToCm(values.height)
+    debugger
     axiosInstance.post(`/profiles`,values).then(async(response) =>{ 
       await getCompleteStep(response.headers)
     const obj = completeStep()
@@ -215,13 +216,13 @@ const Profile = (props) => {
                 <div className="row">
                   <div className="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
-                      <input type="text" name='caste'  value={ values.caste } onChange={handleChange} classNameName="form-control" required />
+                      <input type="text" name=''  value={ values.caste } onChange={handleChange} classNameName="form-control" required />
                       <label for="mtrprofession">caste</label>
                     </div>
                   </div>
                   <div className="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
-                      <input type="text" name='sub_caste'  value={ values.sub_caste } onChange={handleChange} classNameName="form-control" required />
+                      <input type="text" name=''  value={ values.sub_caste } onChange={handleChange} classNameName="form-control" required />
                       <label for="mtrprofession">Sub caste</label>
                     </div>
                   </div>
@@ -235,7 +236,7 @@ const Profile = (props) => {
                   </div>
                   <div className="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
-                      <input type="text" name='religion' value={ values.religion } onChange={handleChange} classNameName="form-control" required />
+                      <input type="text" name='' value={ values.religion } onChange={handleChange} classNameName="form-control" required />
                       <label for="mtrprofession">Religion</label>
                     </div>
                   </div>
@@ -258,7 +259,7 @@ const Profile = (props) => {
                 <div className="form-group">
                   <div className="row">
                   <div className="col-md-3 col-sm-3 col-12">
-                      <h6>Gender</h6>
+                    <h6>Gender</h6>
                     </div>
                     <div className="col-md-9 col-sm-9 col-12">
                     <div className="radio_opst">
