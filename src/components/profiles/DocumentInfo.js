@@ -29,7 +29,7 @@ const DocumentInfo = (props) => {
       const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
       await getCompleteStep(response.headers)
       if(checkId){
-          props.history.push(`/user-profiles/${checkId}`)
+          props.history.push(`/user-profiles`)
         }else{
           props.history.push('/user-profiles')
         }            

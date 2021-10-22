@@ -18,7 +18,7 @@ const MotherInfo = (props) => {
 	axiosInstance.put(`/parents/${ id }`,values).then(async(response) =>{ 
 		await getCompleteStep(response.headers)
 		if(idProps){
-			props.history.push(`/user-profiles/${idProps}`)
+			props.history.push(`/user-profiles`)
 		}else{
 			props.history.push('/siblings')
 		}

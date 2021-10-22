@@ -31,7 +31,7 @@ const OccupaTions = (props) => {
       axiosInstance.put(`profiles/${id}/occupations`,values).then(async(response) =>{ 
         await getCompleteStep(response.headers)
         if(checkId){
-          props.history.push(`/user-profiles/${checkId}`)
+          props.history.push(`/user-profiles`)
         }else{
           props.history.push('/documents')
         }
