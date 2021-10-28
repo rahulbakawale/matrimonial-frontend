@@ -9,7 +9,7 @@ import logoImg from 'assets/images/logo.png'
 
 const PartnerPreference = (props) => {
   const [ values,setValues] = useState({manglik: false, divorced: false, located_abroad:false})
-  const [ preference, setPreference ] = useState({})
+  const [ preference, setPreference ] = useState({to_age: '18',from_age: '18', caste:'thakur', religion:'hindu'})
   useEffect(() => {
     axiosInstance.get('/partner_preferences').then((response) =>{ 
       const values = { ... response.data }
@@ -45,6 +45,8 @@ const PartnerPreference = (props) => {
 
   const handleSubmit = (values) => {   
     //call salary value Rs
+    values['religion'] = "hindu"
+    values['caste'] = "thakur"
     values['min_salary'] = values.min_salary.replace(/,/g,'')
     values['max_salary']= values.max_salary.replace(/,/g,'')
     values['to_height'] = convertToCm(values.to_height)
@@ -52,7 +54,7 @@ const PartnerPreference = (props) => {
     //pass value for handleSubmit and with help of Formik
     axiosInstance.put('/partner_preferences',values).then(async(response) =>{ 
     await getCompleteStep(response.headers)
-    props.history.push('/profiles')
+    props.history.push('/search-profile')
    }).catch((error) =>{
     toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
   })
@@ -224,13 +226,13 @@ const PartnerPreference = (props) => {
               <div className="row">
                 <div class="col-md-6 col-sm-6 col-9">
                   <div className="form-group">
-                    <input type="text" name='religion' value={ values.religion } onChange={handleChange} classNameName="form-control" required />
+                    <input type="text"  name='religion'  value={ values.religion } onChange={handleChange} classNameName="form-control" readOnly />
                     <label for="mtrprofession"> Your Religion</label>
                   </div>
                 </div>
                   <div class="col-md-6 col-sm-6 col-9">
                     <div className="form-group">
-                      <input type="text" name='caste' value={ values.caste } onChange={handleChange} classNameName="form-control" required />
+                      <input type="text"  name='caste' value={ values.caste } onChange={handleChange} classNameName="form-control"  readOnly />
                       <label for="mtrprofession"> Caste</label>
                     </div>
                   </div>
