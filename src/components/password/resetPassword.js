@@ -36,7 +36,7 @@ const ResetPassword = (props) => {
   return(
   <div className="modal query_modal modalizer animate__animated animate__fast" id="reset" tabindex="-1" role="dialog" data-animate-in="zoomIn" data-animate-out="zoomOut">
     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div className="modal-content">
+        <div className="modal-content reset-password">
           <div className="modal-header">
             <h5 className="modal-title">Reset Password </h5>
             <button type="button" className="close align-self-end closemodal">

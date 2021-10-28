@@ -9,6 +9,15 @@ body {
   background-color: #fff;
 }
 
+.modal-header.forgot-password{
+  padding: 2rem 2rem;
+  margin-left: -97px;
+  padding-top: 3px;
+
+}
+.reset-password label{
+  color:black !important;
+}
 
 a:hover{
   color: #e07900!important

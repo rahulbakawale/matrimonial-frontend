@@ -27,7 +27,7 @@ const ForgotPassword = (props) => {
     <div className="modal query_modal modalizer animate__animated animate__fast" id="pwd" tabindex="-1" role="dialog" data-animate-in="zoomIn" data-animate-out="zoomOut">
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header forgot-password">
             <h5 className="modal-title">Forgot Password</h5>
             <button type="button" className="close align-self-end closemodal">
               <span aria-hidden="true">&times;</span>
