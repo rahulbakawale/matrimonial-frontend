@@ -26,7 +26,7 @@ const Header = (props) => {
                 <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
               </li>
               <li className="menu_link">
-                <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a>
+                <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">Query</a>
                 {/* <a className="nav-link hvr-grow" href="javascript:;">About Us</a> */}
               </li>
               <li className="menu_link">
