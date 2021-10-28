@@ -20,13 +20,13 @@ const MotherInfo = (props) => {
 		if(idProps){
 			props.history.push(`/user-profiles`)
 		}else{
-			props.history.push('/siblings')
+			props.history.push('/profiles')
 		}
 		}).catch((error) =>{
 		toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
 		})
 	}
-	console.log('mohert',MotherInfo) 
+	console.log('mother',MotherInfo) 
 
 	// If not using Form formik  so Use @all code    
 	// const handleChange = (event) =>{
@@ -114,8 +114,8 @@ const MotherInfo = (props) => {
 						<div className="col-6 col-md-6 col-sm-6 col-12">
 							<div className="form-group">
 								<input type="number" name='contact_number' value={values.contact_number} onChange={(event) =>
-                event.target.value.length <= 10 && handleChange(event) 
-               } classNameName="form-control" required />
+									event.target.value.length <= 10 && handleChange(event) 
+									} classNameName="form-control" required />
 								<label for="mtrothdtl">Contact Number</label>
 							</div>
 						</div>

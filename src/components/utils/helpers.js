@@ -80,3 +80,10 @@ export const convertToFeet = ( value ) => {
     var data =  feet.split('.')
     return value === null ? "4 Feet' 0 inch" : `${data[0] } Feet' ${data[1]} inch`
 }
+
+export const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});

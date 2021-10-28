@@ -18,7 +18,7 @@ export const AppRoutes = {
     FAVORITE_PROFILE: "/favorite-profile",
     NOTIFICATION: "/notification",
     BASIC_DETAILS: '/updateUser',
-    IMAGE:          '/',
+    IMAGE: '/user-image',
     SIBLING: (id) => `/sibling/${ id }`,
     ADD_SIBLING: '/add-siblings'
 

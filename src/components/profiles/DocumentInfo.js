@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getCompleteStep } from 'components/utils/helpers';
-import { completeStep } from 'components/utils/helpers';
+import { completeStep,toBase64 } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png';
 import { Formik } from 'formik'
@@ -22,16 +22,19 @@ const DocumentInfo = (props) => {
 
   },[])
 
-  const handleSubmit = (values) => {   
+  const handleSubmit = async(values) => {   
     const formData = new FormData();
-      formData.append('image', fileData);
+      const image = await toBase64(fileData)
+      const imageData = image.split(',')[1]
+      formData.append('image', imageData);
       axiosInstance.put(`profiles/${id}/documents`,values).then(async(response) =>{ 
       const result = await axiosInstance.post(`documents/${ response.data.id }/document_image`,formData)
       await getCompleteStep(response.headers)
+
       if(checkId){
           props.history.push(`/user-profiles`)
         }else{
-          props.history.push('/user-profiles')
+          props.history.push('/user-image')
         }            
         console.log(result)
       }).catch((error) =>{

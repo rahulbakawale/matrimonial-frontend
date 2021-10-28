@@ -21,6 +21,7 @@ import SearchProfile from 'components/searchProfiles/SearchProfile';
 import FavoriteProfile from 'components/favoriteprofiles/favoriteProfile';
 import CompleteStep from 'components/CompleteStep/CompleteStep';
 import PrivateRouteOTP from 'components/routes/privateRouteOTP';
+import UserImg from  'components/userImages/UserImage';
 import Footer from 'components/shared/footer'
 //import Header from 'components/shared/header'
 //import Login from './components/login/login';
@@ -61,6 +62,7 @@ const app = (props) => {
           <PrivateRoutSteps component={QualiFications} path="/qualifications" />
           <PrivateRoutSteps component={OccupaTions} path="/occupations" />
           <PrivateRoutSteps component={DocumentInfo} path="/documents" />
+          <Route component={UserImg} path="/user-image" />
           <PrivateRoute component={UserProfile} path="/user-profiles" />
           {/* create route with ID  profile (UserProfile) create button edit all routes  */}
           <PrivateRoute component={ Profile } path="/user-profile/:id/edit" />

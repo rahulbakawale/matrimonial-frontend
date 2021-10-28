@@ -24,8 +24,6 @@ const basicDetails = compStep?.basic_detail
         return pathname === AppRoutes.PARENTSINFO ? <Component {...props} /> : <Redirect to='/parents-info' />
       }else if(!compStep.siblings_page){
         return pathname === AppRoutes.SIBLINGS ? <Component {...props} /> : <Redirect to='/siblings' />
-      }else if(!compStep.partner_preference){
-        return pathname === AppRoutes.PARTNER_PREFERENCE ? <Component {...props} /> : <Redirect to={AppRoutes.PARTNER_PREFERENCE } />
       }else if(!currentProfile()){
         return pathname === AppRoutes.PROFILES ? <Component { ...props } /> : <Redirect to='/profiles'/>
       }else if(!qualification){
@@ -34,15 +32,17 @@ const basicDetails = compStep?.basic_detail
         return pathname === AppRoutes.OCCUPATION ? <Component { ...props } /> : <Redirect to={AppRoutes.OCCUPATION} />
       }else if(!documentation){
         return pathname === AppRoutes.DOCUMENTS ? <Component { ...props } /> : <Redirect to={AppRoutes.DOCUMENTS} />
-      // }else if (!images){
-      //   return pathname === AppRoutes.IMAGE ? <Component {...props} /> : <Redirect to={AppRoutes.IMAGE} />
+      }else if (!images){
+        return pathname === AppRoutes.IMAGE ? <Component {...props} /> : <Redirect to={AppRoutes.IMAGE} />
+      }else if(!compStep.partner_preference){
+        return pathname === AppRoutes.PARTNER_PREFERENCE ? <Component {...props} /> : <Redirect to={AppRoutes.PARTNER_PREFERENCE } />
       }
       else{
-        if([AppRoutes.PARENTSINFO, AppRoutes.SIBLINGS,
+        if([AppRoutes.PARENTSINFO,AppRoutes.SIBLINGS,
           AppRoutes.PARTNER_PREFERENCE,AppRoutes.PROFILES, 
           AppRoutes.QUALIFICATIONS,AppRoutes.OCCUPATION,AppRoutes.DOCUMENTS
-          ,AppRoutes.BASIC_DETAILS].includes(pathname)){
-            return <Redirect to='/user-profiles' />
+          ,AppRoutes.BASIC_DETAILS,AppRoutes.IMAGE].includes(pathname)){
+            return <Redirect to='/search-profile' />
           }else{
             return <Component {...props} />
         }
