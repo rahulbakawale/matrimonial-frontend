@@ -35,12 +35,20 @@ function openLoginModal(){
 }
 function opneForgotPasswordModal(){
   $('#login').modal('hide')
+  debugger
   $('#pwd').fadeIn('show')
+  // $('#pwd').modal()
 }
 
-function opneResetPasswordModal() {
+function opneResetPasswordModal(values) {
   $('#pwd').modal('hide')
   $('#reset').fadeIn('show')
+  setTimeout(function(){
+    $('#mobile1').val(values.mobile)
+    $('#mobile2').val(values.mobile)
+    $('#link-resend').attr('data-mobile',values.mobile)
+  },10)
+
 }
 
 

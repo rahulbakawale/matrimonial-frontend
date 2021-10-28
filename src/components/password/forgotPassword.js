@@ -16,7 +16,8 @@ const ForgotPassword = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     axiosInstance.post('/auth/forgot',values).then(async(response) =>{
-        window.opneResetPasswordModal()
+        await axiosInstance.put('/mobiles/forget_retry',values)
+        window.opneResetPasswordModal(values)
       }).catch((error) => {
       toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
     })
