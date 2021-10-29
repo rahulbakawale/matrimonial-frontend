@@ -15,6 +15,9 @@ body {
   padding-top: 3px;
 
 }
+.modal-header.otp{
+  margin-right: 93px !important;
+}
 .reset-password label{
   color:black !important;
 }
@@ -51,6 +54,7 @@ a {
 .forgot{
   color: #ff7e01 !important;
 }
+
 
 
 /* button YES NO CSS start */
