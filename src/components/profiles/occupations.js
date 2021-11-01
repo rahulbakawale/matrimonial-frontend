@@ -5,6 +5,8 @@ import { getCompleteStep, handleAmount } from 'components/utils/helpers';
 import { completeStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png';
+// import _ from 'lodash';
+
 import { Formik,Field } from 'formik'
 
 
@@ -17,6 +19,9 @@ const OccupaTions = (props) => {
       async function onLoad(){
         const response = await axiosInstance.get(`/profiles/${ id }`,{timeout: 5000}) 
         const occupationData = { ...response.data.occupation }
+        // if(!_.isEmpty(occupationData)){
+        debugger
+        occupationData['state'] = occupationData.state 
         occupationData['salary'] =  occupationData.salary &&  parseInt(occupationData.salary)?.toLocaleString('hi')
         setOccupation(occupationData)
       }
@@ -136,26 +141,18 @@ const OccupaTions = (props) => {
                     </div>
                   </div>
                   <div class="row">
-                    <div className="col-md-6 col-sm-6 col-9">
+                    <div class="col-md-12 col-sm-12 col-9">
                       <div className="form-group">
                         <input type="text" name='designation'  value={ values.designation } onChange={handleChange} classNameName="form-control" required />
                         <label for="mtrprofession">Designation</label>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    {/* <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div className="form-group">
                         <input type="text" name='state'  value={ values.state } onChange={handleChange} classNameName="form-control"  />
                         <label for="mtrprofession">State</label>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-9">
-                      <div class="form-group">
-                        <input type="text" name='nationality' value={ values.nationality } onChange={handleChange} classNameName="form-control"   />
-                        <label for="mtrprofession">Nationality</label>
-                      </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div class="col-md-12 col-sm-12 col-9">
                     <div className="form-group switch_btn">
