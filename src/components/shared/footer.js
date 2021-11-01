@@ -11,9 +11,7 @@ const Footer = (props) => {
           <ul className="list-inline">
             <li className="list-inline-item foot_menu">
             <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
-            <a href="javascript:;">About Us</a>
-            {/* <a className="nav-link modalinit" href="javascript:;" data-toggle="modal" data-modal="query">About Us</a> */}
-            <a href="javascript:;">FAQ</a> 
+            <a className="modalinit" href="javascript:;" data-toggle="modal" data-modal="query" > Enquirie</a>
             <a href="javascript:;">Contact Us</a> 
             <a href="javascript:;">Privacy Policy</a>
             </li>
