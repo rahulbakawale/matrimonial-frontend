@@ -106,8 +106,8 @@ return(
               <div aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <Header />
-                  <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
-                    <li className="breadcrumb-item active" aria-current="page">Member</li>
+                  <Link to={ `/favorite-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Favorite Profile</a></i></Link>
+                    <li className="breadcrumb-item active" aria-current="page">All Users</li>
                 </ol>
               </div>
           </div>

@@ -41,7 +41,7 @@ return(
           <Header />
           <div aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <Link to={ `/`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">Home</a></i></Link>
+              <Link to={ `/search-profile`}  className="breadcrumb-item"><i className="breadcrumb-item" ><a href="#">All Users</a></i></Link>
               <Link to={`/favorite-profile`} class="breadcrumb-item active"><i aria-current="page"><a href="#">Favourite Members</a></i></Link>
             </ol>
           </div>

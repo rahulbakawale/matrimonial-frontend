@@ -31,7 +31,7 @@ const Query = (props) => {
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Query</h5>
+            <h5 className="modal-title">Enquirie</h5>
             <button type="button" className="close align-self-end closemodal">
               <span aria-hidden="true">&times;</span>
             </button>
