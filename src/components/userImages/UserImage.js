@@ -22,10 +22,10 @@ const UserImg = (props) =>{
   }
   const handleSubmit = async() => {
     const formData = new FormData();
-    const image = await toBase64(fileData1)
-    const imageData = image.split(',')[1]
-    const image1 = await toBase64(fileData2)
-    const imageData1 = image1.split(',')[1]
+    const image = fileData1 && await toBase64(fileData1)
+    const imageData = image &&  image.split(',')[1]
+    const image1 = fileData2 && await toBase64(fileData2)
+    const imageData1 = image1 && image1.split(',')[1]
     formData.append('image', imageData);
     formData.append('image1', imageData1);
     
@@ -74,16 +74,18 @@ const UserImg = (props) =>{
                <h2 class="form_heading add-img"> Add User Image</h2>
                 <form onSubmit={(event) => handleSubmit(event)}>
                   <div class="form-group img_upld_file img2">
-                    <input type="file" id="file" multiple={ true }
+                    <input type="file" id="file" 
                     onChange={ (event) => setFileData1(event.target.files[ 0 ]) } />
                     <label for="file" class="btn-3">
                     <span>Upload  Image1</span>
                     </label>
                   </div>
                   <div class="form-group img_upld_file img2">
-                    <input type="file" id="file" multiple={ true }
-                    onChange={ (event) => setFileData2(event.target.files[ 0 ]) } />
-                    <label for="file" class="btn-3">
+                    <input type="file" id="file1"
+                    onChange={ (event) => 
+                    
+                      setFileData2(event.target.files[ 0 ]) } />
+                    <label for="file1" class="btn-3">
                     <span>Upload  Image2</span>
                     </label>
                   </div>

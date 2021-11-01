@@ -39,6 +39,10 @@ a {
   margin-right: -12px !important;
 }
 
+.img2{
+  margin-left: 255px !important;
+}
+
 .forgot{
   color: #ff7e01 !important;
 }
@@ -238,6 +242,10 @@ input:checked + .slider:before {
   width:inherit;
   margin-top: 25px;
 }
+.form_group_img_upld_file-img2{
+  margin-left: 254px;
+}
+
 .user_info_form select{
   margin-top: 20px;
 }
