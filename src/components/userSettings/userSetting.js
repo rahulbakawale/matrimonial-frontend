@@ -35,17 +35,7 @@ const UserSetting = (props) => {
         toast.error(error?.response?.data?.errors && error?.response?.data?.errors[0])
       })
     },[])
-
-      // useEffect(() => {
-      //   async function onLoad(){
-      //     const response = await axiosInstance.get(`/settings`,{timeout: 5000}) 
-      //     setValues(response.data.values)
-      //     debugger
-      //   }
-      //   onLoad()
-
-      // },[])
-
+    
     const handleSubmit = (values) => {   
       axiosInstance.put('/settings',values).then(async(response) =>{ 
         await getCompleteStep(response.headers)

@@ -5,7 +5,6 @@ import { getCompleteStep, handleAmount } from 'components/utils/helpers';
 import { completeStep } from 'components/utils/helpers';
 import axiosInstance from '../../axiosInstance';
 import logoImg from 'assets/images/logo.png';
-// import _ from 'lodash';
 
 import { Formik,Field } from 'formik'
 
@@ -18,9 +17,7 @@ const OccupaTions = (props) => {
     useEffect(() => {
       async function onLoad(){
         const response = await axiosInstance.get(`/profiles/${ id }`,{timeout: 5000}) 
-        const occupationData = { ...response.data.occupation }
-        // if(!_.isEmpty(occupationData)){
-        debugger
+        const occupationData = { ...response.data.occupation }   
         occupationData['state'] = occupationData.state 
         occupationData['salary'] =  occupationData.salary &&  parseInt(occupationData.salary)?.toLocaleString('hi')
         setOccupation(occupationData)

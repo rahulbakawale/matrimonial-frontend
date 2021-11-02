@@ -32,7 +32,6 @@ const Profile = (props) => {
 
   const createProfile = (values) =>{
     values['height'] = convertToCm(values.height)
-    debugger
     axiosInstance.post(`/profiles`,values).then(async(response) =>{ 
       await getCompleteStep(response.headers)
     const obj = completeStep()
